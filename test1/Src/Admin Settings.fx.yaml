@@ -16,11 +16,7 @@
             ),EmployeeName)
         MoreItemsButtonColor: =Self.ChevronBackground
         SearchFields: =["Claims"]
-        SearchItems: |-
-            =Search(ForAll(Ungroup(
-                        Filter(PersonnelRoster,EmployeeType="Booz Allen"),
-                        EmployeeName
-            ),EmployeeName),ComboBox1.SearchText,Claims)
+        SearchItems: =[]
         X: =40
         Y: =40
         ZIndex: =1

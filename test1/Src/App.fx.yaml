@@ -787,6 +787,7 @@ App As appinfo:
                         SecurityPledge:varRecordTrainingTable.SecurityPledge
                     }
             };
+            //test1
     OnStart: |-
         =Set(
             toolInformation,
