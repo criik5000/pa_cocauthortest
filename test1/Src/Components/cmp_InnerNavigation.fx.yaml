@@ -1,0 +1,102 @@
+cmp_InnerNavigation As CanvasComponent:
+    ButtonIDSelected: =gal_InnerNavigation.Selected.ID
+    ButtonNameSelected: =gal_InnerNavigation.Selected.Name
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =TemplateSizes.InnerNavigationHeight
+    ItemsList: |
+        =Table(
+            {
+                ID: 1,
+                Name: "Button1",
+                Label: "Button 1",
+                Action: "Display",
+                Screen: App.ActiveScreen,
+                Image: SampleImage,
+                Tooltip: "Tooltip",
+                LaunchURL: "",
+                Color: ControlsTheme.ButtonColor,
+                SelectedColor: ControlsTheme.ButtonColor,
+                FillColor: ControlsTheme.NavButtonFill,
+                SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+            },
+            {
+                ID: 2,
+                Name: "Button2",
+                Label: "Button 2",
+                Action: "Display",
+                Tooltip: "Tooltip"
+            }
+        )
+    Width: =App.Width - Self.X
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    "gal_InnerNavigation As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
+        '#CopilotOverlayLabel': ="Filtered"
+        DelayItemLoading: =true
+        Height: =Parent.Height
+        Items: =Parent.ItemsList
+        LoadingSpinner: =LoadingSpinner.Data
+        OnSelect: |-
+            =Switch(
+                ThisItem.Action,
+                "Display",
+                Set(varDisplay,ThisItem.Name),
+                "Navigate",
+                Navigate(ThisItem.Screen),
+                "Launch",
+                Launch(ThisItem.LaunchURL),
+                false
+            );
+        TemplatePadding: =0
+        TemplateSize: =btn_InnerNavigation.Width
+        Width: =Parent.Width
+        ZIndex: =1
+
+        btn_InnerNavigation As button:
+            Align: =If(IsBlank(ThisItem.Image),Align.Center,Align.Left)
+            BorderColor: =ColorFade(Self.Fill, -40%)
+            BorderThickness: =1
+            Color: |-
+                =If(ThisItem.IsSelected,ColorFade(Self.Fill,30%),ControlsTheme.NavButtonColor)
+                /*
+                If(
+                    ThisItem.IsSelected,
+                    Coalesce(ThisItem.SelectedColor,ControlsTheme.NavButtonSelectedColor),
+                    Coalesce(ThisItem.Color,ControlsTheme.NavButtonColor)
+                )
+                */
+            Fill: |
+                =If(
+                    ThisItem.IsSelected,
+                    Coalesce(ThisItem.SelectedFillColor,ControlsTheme.NavButtonSelectedFill),
+                    Coalesce(ThisItem.FillColor,ControlsTheme.NavButtonFill)
+                )
+            Height: =42
+            OnSelect: |-
+                =Switch(
+                    ThisItem.Action,
+                    "Display",
+                    Set(varDisplay,ThisItem.Name)
+                );
+            PaddingLeft: =If(IsBlank(ThisItem.Image),5,img_InnerNavigation.Width + 5)
+            RadiusTopLeft: =15
+            RadiusTopRight: =15
+            Size: =12
+            Text: =ThisItem.Label
+            Tooltip: =ThisItem.Tooltip
+            Width: =200
+            Y: =Parent.Height - Self.Height
+            ZIndex: =1
+
+        img_InnerNavigation As image:
+            Height: =btn_InnerNavigation.Height
+            Image: =ThisItem.Image
+            OnSelect: =Select(Parent)
+            RadiusTopLeft: =btn_InnerNavigation.RadiusTopLeft
+            Visible: =!IsBlank(ThisItem.Image)
+            Width: =Self.Height
+            Y: =btn_InnerNavigation.Y
+            ZIndex: =2
+

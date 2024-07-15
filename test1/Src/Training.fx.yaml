@@ -1,0 +1,866 @@
+Training As screen:
+    OnVisible: |-
+        =/*
+        If(
+            tgl_WriteMetrics.Value,
+            cmp_AccessMetrics_LS.WriteAccessMetric(accessMetrics)
+        );
+        Set(
+            actionSelected,
+            ""
+        );
+        */
+
+    cnt_ContentArea_TR As groupContainer.manualLayoutContainer:
+        Fill: =ControlsTheme.ScreenBackground
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =TemplateSizes.HeaderHeight
+        ZIndex: =1
+
+        cnt_MainContent_TR As groupContainer.manualLayoutContainer:
+            Fill: =Color.Black
+            Height: =594
+            Width: =Parent.Width
+            Y: =90
+            ZIndex: =3
+
+            lbl_Frequency_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: ="Frequency of Training "
+                Width: =174
+                ZIndex: =1
+
+            lbl_iwatchOnce_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: ="Once"
+                Width: =131
+                X: =174
+                ZIndex: =2
+
+            lbl_MarkingEvery2Years_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: |-
+                    ="Every
+                    2 Years"
+                Width: =116
+                X: =305
+                ZIndex: =3
+
+            lbl_DerivativeEvery2Years_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: |-
+                    ="Every
+                    2 Years"
+                Width: =116
+                X: =421
+                ZIndex: =4
+
+            lbl_ATlevel1_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: ="Yearly"
+                Width: =116
+                X: =537
+                ZIndex: =5
+
+            lbl_OPSECYearly_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: ="Yearly"
+                Width: =116
+                X: =653
+                ZIndex: =6
+
+            lbl_AwarenessYearly_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: ="Yearly"
+                Width: =116
+                X: =769
+                ZIndex: =7
+
+            lbl_ExportControlYearly_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Text: ="Yearly"
+                Width: =116
+                X: =885
+                ZIndex: =8
+
+            lbl_SecurityPledgeYearly_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Text: ="Yearly"
+                Width: =116
+                X: =1001
+                ZIndex: =9
+
+            lbl_SPLJMTrainingOnce_TR As label:
+                Align: =Align.Center
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                Text: ="Once"
+                Width: =116
+                X: =1117
+                ZIndex: =10
+
+            lbl_OnboadingOnce_TR As label:
+                BorderThickness: =1
+                Fill: =ControlsTheme.LabelBorderColor
+                FontWeight: =FontWeight.Semibold
+                PaddingLeft: =35
+                Text: ="Once"
+                Width: =133
+                X: =1233
+                ZIndex: =11
+
+            icn_reset_TR As icon.Reset:
+                Height: =30
+                Icon: =Icon.Reset
+                Width: =30
+                X: =1330
+                Y: =6
+                ZIndex: =12
+
+        cnt_InnerNavigation_TR As groupContainer.horizontalAutoLayoutContainer:
+            Height: =TemplateSizes.InnerNavigationHeight
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Self.X
+            ZIndex: =4
+
+            cmp_InnerNavigation_TR As cmp_InnerNavigation:
+                ItemsList: |-
+                    =////////////////////////////////////////////////////////////////////////
+                    // {
+                    //        ID: 1, (Number)
+                    //        Name: "Button1", (Text)
+                    //        Label: "Button 1", (Text)
+                    //        Action: "Display", (Text, see below for options)
+                    //        Screen: App.ActiveScreen, (Screen control)
+                    //        Tooltip: "Tooltip", (Text)
+                    //        Optional:
+                    //        Image: SampleImage, (Image)
+                    //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                    //        Color: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        SelectedColor: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        FillColor: ControlsTheme.NavButtonFill, (Color, if going to be different from template)
+                    //        SelectedFillColor: ControlsTheme.NavButtonSelectedFill (Color, if going to be different from template)
+                    //    }
+                    // Action:
+                    // "Display": Sets the output property "DisplayName" to the "Name" property,
+                    // "Navigate": Navigates to the "Screen" screen,
+                    // "Launch": Launches the "LaunchURL" in a new tab
+                    // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                    ////////////////////////////////////////////////////////////////////////
+                    Table(
+                        {
+                            ID: 1,
+                            Name: "Button1",
+                            Label: "Employee Information",
+                            Action: "Display",
+                            Screen: App.ActiveScreen,
+                            
+                            Tooltip: "Tooltip",
+                            LaunchURL: "",
+                            Color: ControlsTheme.ButtonColor,
+                            SelectedColor: ControlsTheme.ButtonColor,
+                            FillColor: ControlsTheme.NavButtonFill,
+                            SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+                        },
+                        {
+                            ID: 2,
+                            Name: "Required Training",
+                            Label: "Required Training",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        },
+                        {
+                            ID: 3,
+                            Name: "Access",
+                            Label: "Access",
+                            Action: "Display",
+                            Screen: App.ActiveScreen,
+                            Tooltip: "Tooltip",
+                            LaunchURL: "",
+                            Color: ControlsTheme.ButtonColor,
+                            SelectedColor: ControlsTheme.ButtonColor,
+                            FillColor: ControlsTheme.NavButtonFill,
+                            SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+                        },
+                        {
+                            ID: 3,
+                            Name: "Employee Experience",
+                            Label: "Employee Experience",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        }
+                    )
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =2
+
+        cnt_galFilterLegend_TR As groupContainer.horizontalAutoLayoutContainer:
+            Height: =40
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMode: =LayoutMode.Auto
+            Width: =1364
+            Y: =50
+            ZIndex: =5
+
+            cmp_TrainingCertificateStatus_TR As cmp_Card_Horiz:
+                CardTooltip: =cmp_TrainingCertificateStatus_TR.KeyValue
+                ComboItems: =fx_drp.CertificateStatus
+                Height: =40
+                KeyValue: ="Training Certificate Status"
+                KeyWidth: =140
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueWidth: =cmp_TrainingCertificateStatus_TR.Width - cmp_TrainingCertificateStatus_TR.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                Visible: =If(varUserPermission="JMSPL"||varUserPermission="PMO",true,false)
+                Width: =340
+                X: =7
+                Y: =57
+
+            cmp_EmployeeType_TR As cmp_Card_Horiz:
+                CardTooltip: =cmp_EmployeeType_TR.KeyValue
+                ComboItems: =fx_drp.EmployeeType
+                Height: =40
+                KeyValue: ="Employee Type"
+                KeyWidth: =140
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueWidth: =cmp_EmployeeType_TR.Width - cmp_EmployeeType_TR.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                Visible: =If(varUserPermission="JMSPL"||varUserPermission="PMO",true,false)
+                Width: =340
+                X: =12
+                Y: =57
+                ZIndex: =2
+
+            lbl_current_TR As label:
+                Align: =Align.Center
+                BorderThickness: =2
+                Color: =Color.Black
+                Fill: =RGBA(169,209,142,1)
+                FontWeight: =FontWeight.Semibold
+                Text: ="Current"
+                Width: =lbl_30Until_TR.Width
+                ZIndex: =3
+
+            lbl_NA_TR As label:
+                Align: =Align.Center
+                BorderThickness: =2
+                Color: =Color.Black
+                Fill: =RGBA(248,203,173,1)
+                FontWeight: =FontWeight.Semibold
+                Text: ="N/A"
+                Width: =lbl_30Until_TR.Width
+                ZIndex: =4
+
+            lbl_30Until_TR As label:
+                Align: =Align.Center
+                BorderThickness: =2
+                Color: =Color.Black
+                Fill: =RGBA(255,230,143,1)
+                FontWeight: =FontWeight.Semibold
+                Size: =12
+                Text: |-
+                    ="30 Days
+                    Until Due"
+                Width: =136
+                ZIndex: =5
+
+            lbl_expired_TR As label:
+                Align: =Align.Center
+                BorderThickness: =2
+                Fill: =RGBA(197,90,17,1)
+                FontWeight: =FontWeight.Semibold
+                Text: ="Expired"
+                Width: =lbl_30Until_TR.Width
+                ZIndex: =6
+
+            lbl_missing_TR As label:
+                Align: =Align.Center
+                BorderThickness: =2
+                Fill: =RGBA(196,64,19,1)
+                FontWeight: =FontWeight.Semibold
+                Text: ="Missing"
+                Width: =140
+                ZIndex: =7
+
+    cnt_Header_TR As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =ColorFade(Self.Fill,-.4)//Color.Black
+        BorderThickness: =5
+        Fill: =Color.Transparent//ThisTheme.Color3
+        Height: =TemplateSizes.HeaderHeight
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =2
+
+        cmp_Header_TR As cmp_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+
+        cmp_Menu_Horizontal_TR As cmp_Menu_Horizontal:
+            ControlsTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                //
+                ControlsTheme
+            FontSizes: |-
+                =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                FontSizes
+            ItemsList: |-
+                =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // Required Format
+                ////////////////////////////////////
+                // {
+                //        ID: 1, (Number)
+                //        Name: "Home", (Text)
+                //        ShowName: true, (Boolean)
+                //        Tooltip: "Click here to return to the Home Screen", (Text)
+                //        Icon: Icon.Home, (Icon)
+                //        ShowIcon: true, (Boolean)
+                //        Action: "Navigate", (Text, see below for values)
+                //        Screen: App.ActiveScreen, (Screen control)
+                //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                //        SubmenuList: [{}] (*optional - Record format includes Name, Tooltip, Action, Screen, LaunchURL)
+                // }
+                // Action:
+                // "Display": Sets the output property "DisplayName" to the "Name" property,
+                // "Navigate": Navigates to the "Screen" screen,
+                // "Launch": Launches the "LaunchURL" in a new tab
+                // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                Table(
+                    {
+                        ID: 1,
+                        Name: "Home",
+                        ShowName: true,
+                        Tooltip: "Click here to return to the Home Screen",
+                        Icon: Icon.Home,
+                        ShowIcon: true,
+                        Action: "Navigate",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    },
+                    {
+                        ID: 2,
+                        Name: "Facilitator Information",
+                        ShowName: true,
+                        Tooltip: "Click here to create a New Item",
+                        Icon: Icon.Add,
+                        ShowIcon: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        SubmenuList: [
+                            {
+                                Name: "Update Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Add New Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Open Dashboard (External)",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            }
+                
+                        ]
+                    },
+                    {
+                        ID: 3,
+                        Name: "Update Facilitator",
+                        ShowName: true,
+                        Tooltip: "Click here to access the App Settings",
+                        Icon: Icon.Settings,
+                        ShowIcon: false,
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    }
+                )
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            SubmenuItemsHeightCalc: =cmp_Menu_Horizontal_TR.SubmenuItemsHeight // DO NOT CHANGE
+            SubmenuItemsToDisplay: =cmp_Menu_Horizontal_TR.SubmenuItemsDisplayed // DO NOT CHANGE
+            ThisTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                // ie below I have only passed in the values used by my component
+                ThisTheme
+            X: =cmp_Header_TR.X + cmp_Header_TR.Width
+            ZIndex: =2
+
+    gal_Training_TR As gallery.galleryVertical:
+        DelayItemLoading: =true
+        Height: =555
+        Items: =Sort(colRecordTrainingTable,PR_ID,SortOrder.Ascending)
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateFill: =
+        TemplatePadding: =0
+        TemplateSize: =79
+        Width: =1353
+        X: =7
+        Y: =213
+        ZIndex: =3
+
+        lbl_Training_EmployeeOnboarding_TR As label:
+            Align: =Align.Center
+            DisplayMode: =If(ThisItem.OnBoarding="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"OnBoarding"});UpdateContext({conDate:Text(ThisItem.OnBoarding)})
+            Size: =11
+            Text: |-
+                ="Employee
+                Onboarding"
+            Width: =110
+            X: =1227
+            Y: =4
+            ZIndex: =1
+
+        lbl_Training_SPLJMTraining_TR As label:
+            Align: =Align.Center
+            DisplayMode: =If(ThisItem.SPLJMTraining="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"SPLJMTraining"});UpdateContext({conDate:Text(ThisItem.SPLJMTraining)})
+            Size: =11
+            Text: |-
+                ="SPL/JM
+                Training"
+            Width: =110
+            X: =1109
+            Y: =4
+            ZIndex: =2
+
+        lbl_Training_SecurityPledge_TR As label:
+            Align: =Align.Center
+            DisplayMode: =If(ThisItem.SecurityPledge="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            HoverFill: =Color.Gray
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"SecurityPledge"});UpdateContext({conDate:Text(ThisItem.SecurityPledge)})
+            Size: =11
+            Text: |-
+                ="Security
+                Pledge"
+            Width: =110
+            X: =993
+            Y: =4
+            ZIndex: =3
+
+        lbl_Training_ExportControl_TR As label:
+            Align: =Align.Center
+            DisplayMode: =If(ThisItem.ExportControl="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            HoverFill: =Color.Gray
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"ExportControl"});UpdateContext({conDate:Text(ThisItem.ExportControl)})
+            Size: =11
+            Text: |-
+                ="Export
+                Control"
+            Width: =110
+            X: =877
+            Y: =4
+            ZIndex: =4
+
+        lbl_Training_CyberAwareness_TR As label:
+            Align: =Align.Center
+            DisplayMode: =If(ThisItem.CyberAwareness="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: |-
+                =
+                If(DateValue(ThisItem.CyberAwareness)>Today(),RGBA(197,90,17,1), RGBA(169,209,142,1))
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"CyberAwareness"});UpdateContext({conDate:Text(ThisItem.CyberAwareness)})
+            Size: =11
+            Text: |-
+                ="Cyber
+                Awareness"
+            Width: =110
+            X: =761
+            Y: =4
+            ZIndex: =5
+
+        lbl_Training_OPSECAwareness_TR As label:
+            Align: =Align.Center
+            Color: |-
+                =If(
+                    ThisItem.OPSEC <> "N/A",
+                    If(
+                        DateDiff(
+                            DateValue(ThisItem.OPSEC),
+                            Today()
+                        ) <= 0,
+                        Color.White,
+                        If(
+                            IsBlank(ThisItem.OPSEC),
+                            Color.White,
+                            Color.Black
+                        )
+                    )
+                )
+            DisplayMode: =If(ThisItem.OPSEC="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: |
+                =If(IsBlank(ThisItem.OPSEC), RGBA(169,64,19,1),ThisItem.OPSEC="N/A",RGBA(248,203,173,1),
+                If(DateDiff(DateValue(ThisItem.OPSEC), Today()) <= 30, RGBA(255,230,143,1),
+                RGBA(169,209,142,1)))
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"OPSEC"});UpdateContext({conDate:Text(ThisItem.OPSEC)})
+            Size: =11
+            Text: |-
+                ="OPSEC
+                Awareness"
+            Width: =110
+            X: =645
+            Y: =4
+            ZIndex: =6
+
+        lbl_Training_ATLevel1_TR As label:
+            Align: =Align.Center
+            Color: |-
+                =If(
+                    ThisItem.ATLevel1 <> "N/A",
+                    If(
+                        DateDiff(
+                            DateValue(ThisItem.ATLevel1),
+                            Today()
+                        ) <= 0,
+                        Color.White,
+                        If(
+                            IsBlank(ThisItem.ATLevel1),
+                            Color.White,
+                            Color.Black
+                        )
+                    )
+                )
+            DisplayMode: =If(ThisItem.ATLevel1="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: |-
+                =If(IsBlank(ThisItem.ATLevel1), RGBA(169,64,19,1),
+                    ThisItem.ATLevel1="N/A",RGBA(248,203,173,1),
+                    DateDiff(DateValue(ThisItem.ATLevel1), Today()) <= 30, RGBA(255,230,143,1),
+                    DateDiff(DateValue(ThisItem.ATLevel1), Today()) <= 1,RGBA(197,90,17,1),
+                RGBA(169,209,142,1))
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"ATLevel1"});UpdateContext({conDate:ThisItem.ATLevel1})
+            Size: =11
+            Text: ="AT Level 1"
+            Width: =110
+            X: =529
+            Y: =4
+            ZIndex: =7
+
+        lbl_Training_DerivativeClassification_TR As label:
+            Align: =Align.Center
+            Color: |-
+                =If(
+                    DateDiff(DateValue(ThisItem.DerivativeClass), Today()) <= 0,Color.White,
+                    If(IsBlank(ThisItem.DerivativeClass), Color.White,
+                
+                Color.Black)
+                )
+            DisplayMode: =If(ThisItem.DerivativeClass="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: |-
+                =If(IsBlank(ThisItem.DerivativeClass), RGBA(169,64,19,1),
+                    ThisItem.DerivativeClass="N/A",RGBA(248,203,173,1),
+                    DateDiff(DateValue(ThisItem.DerivativeClass), Today()) <= 30, RGBA(255,230,143,1),
+                    DateDiff(DateValue(ThisItem.DerivativeClass), Today()) <= 1,RGBA(197,90,17,1),
+                RGBA(169,209,142,1))
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"DerivativeClass"});UpdateContext({conDate:Text(ThisItem.DerivativeClass)})
+            Size: =11
+            Text: |-
+                ="Derivative
+                Classification"
+            Width: =110
+            X: =413
+            Y: =4
+            ZIndex: =8
+
+        lbl_Training_MarkingClassifiedInformation_TR As label:
+            Align: =Align.Center
+            Color: |-
+                =If(
+                    DateDiff(DateValue(ThisItem.MarkingClass), Today()) <= 0,Color.White,
+                    If(IsBlank(ThisItem.MarkingClass), Color.White,
+                
+                Color.Black)
+                )
+            DisplayMode: =If(ThisItem.MarkingClass="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: |-
+                =If(IsBlank(ThisItem.MarkingClass), RGBA(169,64,19,1),
+                    ThisItem.MarkingClass="N/A",RGBA(248,203,173,1),
+                    DateDiff(DateValue(ThisItem.MarkingClass), Today()) <= 30, RGBA(255,230,143,1),
+                    DateDiff(DateValue(ThisItem.MarkingClass), Today()) <= 1,RGBA(197,90,17,1),
+                RGBA(169,209,142,1))
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"MarkClass"});UpdateContext({conDate:Text(ThisItem.MarkingClass)})
+            Size: =11
+            Text: =ThisItem.MarkingClass
+            Width: =110
+            X: =297
+            Y: =4
+            ZIndex: =9
+
+        lbl_Training_iWatch_TR As label:
+            Align: =Align.Center
+            Color: =If(IsBlank(ThisItem.iWATCH),Color.White,Color.Black)
+            DisplayMode: =If(ThisItem.iWATCH="N/A",DisplayMode.Disabled,DisplayMode.Edit)
+            Fill: |
+                =/*
+                If(
+                    IsBlank(
+                        ThisItem.iWATCH
+                    ),
+                    RGBA(169,64,19,1),
+                    If(
+                        DateValue(ThisItem.iWatch)>Today(),
+                        RGBA(197,90,17,1), 
+                        RGBA(169,209,142,1)
+                    )
+                )
+                */
+                
+                If(
+                    IsBlank(ThisItem.iWATCH),
+                    RGBA(169,64,19,1),
+                    RGBA(197,90,17,1)
+                )
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: |-
+                =Select(Parent);UpdateContext({conEdit:true});UpdateContext({conTraining:"iWatch"});UpdateContext({conDate:Text(ThisItem.iWATCH)})
+            Size: =11
+            Text: ="IWatch"
+            Width: =120
+            X: =171
+            Y: =4
+            ZIndex: =10
+
+        lbl_Training_EmployeeName_TR As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Semibold
+            Height: =70
+            OnSelect: =Select(Parent)
+            Size: =11
+            Text: |-
+                =LookUp(PersonnelRoster,Reference_ID=Value(ThisItem.PR_ID),EmployeeLastName & ", " & EmployeeFirstName & "
+                "& EmployeeType
+                )
+            X: =5
+            Y: =4
+            ZIndex: =11
+
+    lbl_PopUpScreen_TR As label:
+        Fill: =RGBA(226,226,226,.75)
+        Height: =768
+        Text: =
+        Visible: =conEdit=true
+        Width: =1366
+        ZIndex: =5
+
+    cnt_PopOutTraining_TR As groupContainer.verticalAutoLayoutContainer:
+        Height: =571
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        RadiusBottomLeft: =5
+        RadiusBottomRight: =5
+        RadiusTopLeft: =5
+        RadiusTopRight: =5
+        Visible: =conEdit=true
+        Width: =647
+        X: =360
+        Y: =80
+        ZIndex: =6
+
+        lbl_TrainingTitle_TR As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Semibold
+            Size: =14
+            Text: =LookUp(TrainingCourses,Ref=conTraining,DisplayName)
+            Width: =cnt_PopOutTraining_TR.Width
+            ZIndex: =1
+
+        lbl_MemberName_TR As label:
+            Align: =Align.Center
+            FontWeight: =FontWeight.Semibold
+            Text: |-
+                ="Required for: "&LookUp(PersonnelRoster,Reference_ID=Value(gal_Training_TR.Selected.PR_ID),EmployeeLastName & ", " & EmployeeFirstName)
+            Width: =cnt_PopOutTraining_TR.Width
+            ZIndex: =2
+
+        cmp_DateCompleted_TR As cmp_Card_Horiz:
+            CardTooltip: =cmp_DateCompleted_TR.KeyValue
+            KeyValue: ="Date Completed"
+            KeyWidth: =450
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ValueDefaultDate: =conDate
+            ValueDefaultText: ="Date Completed"
+            ValueType: |-
+                =5 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            ValueWidth: =cmp_DateCompleted_TR.Width - cmp_DateCompleted_TR.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_PopOutTraining_TR.Width
+            ZIndex: =3
+
+        cmp_RequiresVerification_TR As cmp_Card_Horiz:
+            CardTooltip: =cmp_RequiresVerification_TR.KeyValue
+            KeyValue: ="Client site-certificate requires training manager verification "
+            KeyWidth: =605
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ValueType: |-
+                =6 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            ValueWidth: =cmp_RequiresVerification_TR.Width - cmp_RequiresVerification_TR.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_PopOutTraining_TR.Width
+            ZIndex: =4
+
+        cmp_TrainingInformation_TR As cmp_Card:
+            CardTooltip: =cmp_TrainingInformation_TR.KeyValue
+            Height: =250
+            KeyValue: ="Training Information"
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            ValueDefaultText: =LookUp(TrainingCourses,Ref=conTraining,Description)
+            ValueHeight: =cmp_TrainingInformation_TR.Height - cmp_TrainingInformation_TR.KeyHeight - (2*TemplateSizes.VerticalPadding)
+            ValueType: |-
+                =9 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            Width: =cnt_PopOutTraining_TR.Width
+            ZIndex: =5
+
+        lbl_TrainingURL_TR As label:
+            OnSelect: =
+            PaddingRight: =30
+            Text: =LookUp(TrainingCourses,Ref=conTraining,Link)
+            Width: =cnt_PopOutTraining_TR.Width
+            ZIndex: =6
+
+        atc_TrainingCertificate_TR As attachments:
+            BorderColor: =
+            DisplayMode: =Parent.DisplayMode
+            Height: =100
+            IsInDataCard: =true
+            Items: =
+            LayoutMinHeight: =40
+            MaxAttachments: =1
+            MaxAttachmentSize: =200
+            NoAttachmentsText: ="No Attachment"
+            PaddingBottom: =5
+            PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+            PaddingRight: =5
+            PaddingTop: =5
+            Tooltip: =
+            Width: =450
+            X: =30
+            Y: =
+            ZIndex: =7
+
+    grp_EditTraining_TR As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =10
+
+        icn_Cancel_TR As icon.Cancel:
+            BorderColor: =Color.White
+            BorderThickness: =1
+            Color: =Color.White
+            Height: =30
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({conEdit:false})
+            Visible: =conEdit=true
+            Width: =30
+            X: =970
+            Y: =87
+            ZIndex: =7
+
+        btn_Save_TR As button:
+            OnSelect: |-
+                =UpdateContext({conEdit:false})
+            Text: ="Save"
+            Visible: =conEdit=true
+            X: =831
+            Y: =583
+            ZIndex: =8
+
+        icn_LinttoTraining_TR As icon.Link:
+            Color: =Color.White
+            Height: =30
+            Icon: =Icon.Link
+            OnSelect: =Launch(LookUp(TrainingCourses,Ref=conTraining,Link))
+            Visible: =conEdit=true
+            Width: =30
+            X: =970
+            Y: =516
+            ZIndex: =9
+

@@ -1,0 +1,118 @@
+cmp_Header As CanvasComponent:
+    AppTitle: =appTitle
+    Fill: =RGBA(0, 0, 0, 0)
+    Flat: =true
+    Height: =TemplateSizes.HeaderHeight
+    OnReset: =
+    VersionNumber: =versionNumber
+    Width: =App.Width - TemplateSizes.TopNavigationWidth
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    html_BackgroundPanelDropshadow_cmp_MenuHoriz_1 As htmlViewer:
+        Height: =Parent.Height
+        HtmlText: |-
+            =If(cmp_Header.Flat,
+               "",
+               "<div style='
+                    margin: 0px;
+                    width: " & Parent.Width  -RoundDown(btn_Header.X,0) 
+                                             -RoundDown(btn_Header.X,0) 
+                                             -RoundDown(btn_Header.X,0)
+                                             -RoundDown(btn_Header.X,0)
+                                             -RoundDown(btn_Header.X,0)
+                                             & "px;
+                    height: " & Parent.Height-RoundDown(btn_Header.X,0) 
+                                             -RoundDown(btn_Header.X,0) 
+                                             -RoundDown(btn_Header.X,0)
+                                             -RoundDown(btn_Header.X,0)
+                                             -RoundDown(btn_Header.X,0)
+                                             & "px;
+                    border-radius: 10px;
+                    box-shadow: " & RoundDown(btn_Header.X,0) & "px "
+                                  & RoundDown(btn_Header.X,0) & "px "
+                                  & RoundDown(btn_Header.X,0) & "px "
+                                  & If(ThisTheme.DarkMode, "#CCCCCC" , "#444444") & "'>
+                </div>"
+            )
+        Visible: =!cmp_Header.Flat
+        Width: =Parent.Width
+        X: =0*0
+        Y: =0*0
+        ZIndex: =1
+
+    btn_Header As button:
+        BorderThickness: =If(cmp_Header.Flat, 0, 2)
+        Color: =ThisTheme.AppColorText
+        Fill: =ThisTheme.AppColor
+        Height: =cnt_Header.Height
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        TabIndex: =-1
+        Text: =""
+        Width: =cnt_Header.Width
+        X: =cnt_Header.X
+        Y: =cnt_Header.Y
+        ZIndex: =2
+
+    cnt_Header As groupContainer.verticalAutoLayoutContainer:
+        BorderColor: =Color.Black
+        Fill: =ThisTheme.Color1
+        Height: =Parent.Height-If(cmp_Header.Flat, 0, (Self.X*4))
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width-If(cmp_Header.Flat, 0, (Self.X*4))
+        X: =If(cmp_Header.Flat, 0, RoundDown(Max(Parent.Width*0.3%, Parent.Height*0.6%),0) )
+        Y: =Self.X
+        ZIndex: =3
+
+        cnt_HeaderLeft As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Height: =Parent.Height
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =1
+
+            img_Logo As image:
+                AccessibleLabel: ="this is your company logo - navigates to a website"
+                BorderColor: =RGBA(0, 0, 0, 1)
+                Fill: =ThisTheme.Color1
+                Height: =TemplateSizes.HeaderHeight - lbl_Version.Height
+                HoverBorderColor: =ThisTheme.Color3
+                HoverFill: =ThisTheme.Color2
+                Image: =ET2RC_Logo_Black_Web
+                OnSelect: |-
+                    =Launch("https://github.com/P3N-101/icon-menu-builder")
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Width: =250
+                X: =80
+                Y: =90
+                ZIndex: =1
+
+            lbl_Version As label:
+                Align: =Align.Right
+                Height: =15
+                Size: =FontSizes.TextMinor
+                Text: |-
+                    ="Version: "&versionNumber
+                Width: =Parent.Width
+                ZIndex: =2
+
+        lbl_Title As label:
+            Align: =Align.Center
+            Color: =ThisTheme.AppColorText
+            Fill: =ThisTheme.Color1
+            FontWeight: =FontWeight.Bold
+            Height: =Parent.Height
+            Size: =Min(Self.Width / Max(Len(lbl_Title.Text),1),50) //ControlsFontSizes.AppTitleFontSize
+            Text: =cmp_Header.AppTitle
+            Width: =Parent.Width - img_Logo.Width
+            ZIndex: =2
+

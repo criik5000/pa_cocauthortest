@@ -1,0 +1,838 @@
+cmp_Menu_Horizontal As CanvasComponent:
+    ControlsTheme: |
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        //
+            {
+        
+                LabelTextColor:                     ThisTheme.defaultTextColor,
+                LabelFill:                          ColorFade(ThisTheme.Color1,-30%),
+                LabelBorderColor:                   ThisTheme.Color2,
+                LabelFont:                          ThisTheme.Font,
+        
+                ButtonColor:                        ThisTheme.Color2Text,
+                ButtonFill:                         ThisTheme.Color2,
+                ButtonBorderColor:                  ThisTheme.Color1,
+                ButtonHoverColor:                   ColorFade(ThisTheme.Color2Text, 20%),
+                ButtonHoverFill:                    ColorFade(ThisTheme.Color2,     20%),
+                ButtonHoverBorderColor:             ColorFade(ThisTheme.Color1,     20%),
+                ButtonPressedColor:                 ThisTheme.Color2,
+                ButtonPressedFill:                  ThisTheme.Color2Text,
+                ButtonPressedBorderColor:           ThisTheme.Color2,
+                ButtonFont:                         ThisTheme.Font,
+                ButtonRadiusTopLeft:                5,
+                ButtonRadiusTopRight:               5,
+                ButtonRadiusBottomLeft:             5,
+                ButtonRadiusBottomRight:            5,
+                NavButtonRadiusTopLeft:             15,
+                NavButtonRadiusTopRight:            15,
+                NavButtonRadiusBottomLeft:          0,
+                NavButtonRadiusBottomRight:         0,
+                
+                
+        
+                InputTextColor:                     ThisTheme.Color1Text,
+                InputFill:                          ThisTheme.Color1,
+                InputBorderColor:                   ThisTheme.Color2,
+                InputHoverColor:                    ColorFade(ThisTheme.Color1Text, 20%),
+                InputHoverFill:                     ColorFade(ThisTheme.Color1, 20%),
+                InputHoverBorderColor:              ColorFade(ThisTheme.Color2, 20%),
+                InputPressedColor:                  ThisTheme.Color1Text,
+                InputPressedFill:                   ThisTheme.Color1,
+                InputPressedBorderColor:            ColorFade(ThisTheme.Color2, 20%),
+                InputFont:                          ThisTheme.Font,
+                InputDelayOutput:                   true,
+                InputRadiusTopLeft:                 5,
+                InputRadiusTopRight:                5,
+                InputRadiusBottomLeft:              5,
+                InputRadiusBottomRight:             5,
+        
+                PenInputInkColor:                   ThisTheme.defaultTextColor,
+                PenInputBorderColor:                ThisTheme.defaultTextColor,
+                PenInputInkSize:                    2,
+                PenInputBackground:                 Color.Transparent,
+        
+                DropdownTextColor:                  ThisTheme.Color1Text,
+                DropdownFill:                       ThisTheme.Color1,
+                DropdownBorderColor:                ThisTheme.Color2,
+                DropdownHoverColor:                 ColorFade(ThisTheme.Color1Text, 20%),
+                DropdownHoverFill:                  ColorFade(ThisTheme.Color1, 20%),
+                DropdownHoverBorderColor:           ColorFade(ThisTheme.Color2, 20%),
+                DropdownPressedColor:               ThisTheme.Color1,
+                DropdownPressedFill:                ThisTheme.Color1Text,
+                DropdownPressedBorderColor:         ColorFade(ThisTheme.Color2, -20%),
+                DropdownChevronBackground:          ThisTheme.Color2,
+                DropdownChevronFill:                ThisTheme.Color2Text,
+                DropdownChevronHoverBackground:     ColorFade(ThisTheme.Color2, 20%),
+                DropdownChevronHoverFill:           ColorFade(ThisTheme.Color2Text, 20%),
+                DropdownSelectionColor:             ThisTheme.Color3Text,
+                DropdownSelectionFill:              ThisTheme.Color3,
+                DropdownFont:                       ThisTheme.Font,
+        
+                ComboBoxTextColor:                  ThisTheme.Color1Text,
+                ComboBoxFill:                       ThisTheme.Color1,
+                ComboBoxBorderColor:                ThisTheme.Color2,
+                ComboBoxHoverColor:                 ColorFade(ThisTheme.Color1Text, 20%),
+                ComboBoxHoverFill:                  ColorFade(ThisTheme.Color1, 20%),
+                ComboBoxHoverBorderColor:           ColorFade(ThisTheme.Color2, 20%),
+                ComboBoxPressedColor:               ThisTheme.Color2Text,
+                ComboBoxPressedFill:                ThisTheme.Color2,
+                ComboBoxPressedBorderColor:         ColorFade(ThisTheme.Color2, -20%),
+                ComboBoxSelectionColor:             ThisTheme.Color3Text,
+                ComboBoxSelectionFill:              ThisTheme.Color3,
+                ComboBoxChevronBackground:          ThisTheme.Color2,
+                ComboBoxChevronFill:                ThisTheme.Color2Text,
+                ComboBoxChevronHoverBackground:     ColorFade(ThisTheme.Color2, 20%),
+                ComboBoxChevronHoverFill:           ColorFade(ThisTheme.Color2Text, 20%),
+                ComboBoxFont:                       ThisTheme.Font,
+                ComboBoxMoreItemsButtonColor:       ThisTheme.Color2,
+                
+                DatePickerColor:                    ThisTheme.Color1Text,
+                DatePickerFill:                     ThisTheme.Color1,
+                DatePickerBorderColor:              ThisTheme.Color2,
+                DatePickerIconFill:                 ThisTheme.Color2Text,
+                DatePickerIconBackground:           ThisTheme.Color2,
+                DatePickerSelectedDateFill:         ThisTheme.Color2,
+                DatePickerHoverDateFill:            ThisTheme.Color3Text,
+                DatePickerHeaderFill:               ThisTheme.Color3,
+                DatePickerFont:                     ThisTheme.Font,
+                //
+                // Sancho's note:
+                // Tried to template these but IDE import only picks up design properties currently :(
+                //
+                // DatePickerStartOfWeek:          StartOfWeek.Monday,
+                // DatePickerFormat:               DateTimeFormat.ShortDate,
+                // DatePickerDefaultDate:          Today(),
+                // DatePickerDateTimeZone:         DateTimeZone.Local,
+                // DatePickerLanguage:             "en-GB",
+        
+        
+                ListBoxTextColor:                   ThisTheme.Color1Text,
+                ListBoxFill:                        ThisTheme.Color1,
+                ListBoxBorderColor:                 ThisTheme.Color2,
+                ListBoxHoverColor:                  ColorFade(ThisTheme.Color1Text, 20%),
+                ListBoxHoverFill:                   ColorFade(ThisTheme.Color1, 20%),
+                ListBoxHoverBorderColor:            ColorFade(ThisTheme.Color2, 20%),
+                ListBoxPressedColor:                ThisTheme.Color2Text,
+                ListBoxPressedFill:                 ThisTheme.Color2,
+                ListBoxPressedBorderColor:          ColorFade(ThisTheme.Color2, -20%),       
+                ListBoxSelectionColor:              ThisTheme.Color3Text,
+                ListBoxSelectionFill:               ThisTheme.Color3,
+                ListBoxFont:                        ThisTheme.Font,
+                ListBoxItemPaddingLeft:             10,
+        
+                CheckBoxTextColor:                  ThisTheme.defaultTextColor,
+                CheckBoxInnerBackground:            If(
+                                                        ThisTheme.DarkMode,
+                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                    ),
+                CheckBoxBorderColor:                ThisTheme.Color2,
+                CheckBoxHoverColor:                 ColorFade(ThisTheme.defaultTextColor, 20%),
+                CheckBoxHoverFill:                  ColorFade(Color.Transparent, 20%),
+                CheckBoxHoverBorderColor:           ColorFade(ThisTheme.Color2, 20%),
+                CheckBoxPressedColor:               ColorFade(ThisTheme.defaultTextColor, -20%),
+                CheckBoxPressedFill:                ColorFade(Color.Transparent, -20%),
+                CheckBoxPressedBorderColor:         ColorFade(ThisTheme.Color2, -20%),
+                CheckBoxOutsideBorderColor:         ThisTheme.Color2,
+                CheckBoxFill:                       Color.Transparent,
+                CheckBoxCheckmarkFill:              ThisTheme.defaultTextColor,
+                CheckBoxFont:                       ThisTheme.Font,
+                CheckBoxSize:                       40,
+                
+                RadioTextColor:                     ThisTheme.defaultTextColor,
+                RadioOutsideFill:                   Color.Transparent,
+                RadioOutsideBorderColor:            ThisTheme.Color2,
+                RadioHoverColor:                    ThisTheme.Color2,
+                RadioHoverFill:                     Color.Transparent,
+                RadioPressedColor:                  ThisTheme.defaultTextColor,
+                RadioPressedFill:                   Color.Transparent,
+                RadioBorderColor:                   ThisTheme.Color2,
+                RadioBackgroundFill:                If(ThisTheme.DarkMode,
+                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                    ),
+                RadioSelectionFill:                 ThisTheme.defaultTextColor,
+                RadioFont:                          ThisTheme.Font,
+                RadioSize:                          40,
+                RadioLayout:                        Layout.Horizontal,
+                
+                ToggleTextColor:                    ThisTheme.defaultTextColor,
+                ToggleBorderColor:                  ThisTheme.Color2,
+                ToggleHandleFill:                   ThisTheme.Color2,
+                ToggleFalseFill:                    ThisTheme.Color1,
+                ToggleTrueFill:                     ThisTheme.Color3,
+                ToggleFalseHoverFill:               ColorFade(ThisTheme.Color1, 20%),
+                ToggleTrueHoverFill:                ColorFade(ThisTheme.Color3, 20%),
+                ToggleHoverBorderColor:             ColorFade(ThisTheme.Color2, 20%),
+                TogglePressedBorderColor:           ColorFade(ThisTheme.Color2, -20%),
+                ToggleFont:                         ThisTheme.Font,
+                ToggleTextPosition:                 TextPosition.Left,
+        
+                SliderBorderColor:                  ThisTheme.Color2,
+                SliderHandleFill:                   Color.White,
+                SliderBackground:                   ThisTheme.Color3,
+                SliderValueFill:                    ThisTheme.Color2,
+                SliderHandleHoverFill:              ColorFade(Color.White, 20%),
+                SliderHandleActiveFill:             ColorFade(Color.White, 40%),
+                SliderRailHoverFill:                ColorFade(ThisTheme.Color3,  20%),
+                SliderValueHoverFill:               ColorFade(ThisTheme.Color2,  20%),
+                SliderHoverBorderColor:             ColorFade(ThisTheme.Color2,  20%),
+                SliderPressedBorderColor:           ColorFade(ThisTheme.Color2, -20%),
+                SliderRailThickness:                24,
+                SliderHandleSize:                   24,
+        
+                RatingItemFill:                     ThisTheme.Color2,
+                RatingFill:                         Color.Transparent,
+                RatingBorderColor:                  ThisTheme.Color2,
+        
+                TimerTextColor:                     ThisTheme.Color1Text,
+                TimerFill:                          ThisTheme.Color1,
+                TimerBorderColor:                   ColorFade(ThisTheme.Color1, -20%),
+                TimerHoverColor:                    ColorFade(ThisTheme.Color1Text, 20%),
+                TimerHoverFill:                     ColorFade(ThisTheme.Color1,  20%),
+                TimerHoverBorderColor:              ColorFade(ThisTheme.Color1,  20%),
+                TimerPressedColor:                  ThisTheme.Color1,
+                TimerPressedFill:                   ThisTheme.Color1Text,
+                TimerPressedBorderColor:            ThisTheme.Color1,
+                TimerFont:                          ThisTheme.Font,
+                
+                ImageFill:                          Color.Transparent,
+                ImageBorderColor:                   Color.Transparent,
+                ImageHoverFill:                     Color.Transparent,
+                ImageHoverBorderColor:              Color.Transparent,
+                ImagePressedFill:                   Color.Transparent,
+                ImagePressedBorderColor:            Color.Transparent,
+                ImageRadiusTopLeft:                 0,
+                ImageRadiusTopRight:                0,
+                ImageRadiusBottomLeft:              0,
+                ImageRadiusBottomRight:             0,
+        
+                CameraBorderColor:                  ThisTheme.Color2,
+        
+                BarcodeColor:                       ThisTheme.Color1Text,
+                BarcodeFill:                        ThisTheme.Color1,
+                BarcodeBorderColor:                 ThisTheme.Color2,
+                BarcodeHoverColor:                  ColorFade(ThisTheme.Color1Text, 20%),
+                BarcodeHoverFill:                   ColorFade(ThisTheme.Color1, 20%),
+                BarcodeHoverBorderColor:            ColorFade(ThisTheme.Color2, 20%),
+                BarcodePressedColor:                ThisTheme.Color1,
+                BarcodePressedFill:                 ThisTheme.Color1Text,
+                BarcodePressedBorderColor:          ThisTheme.Color1,
+                BarcodeFont:                        ThisTheme.Font,
+                
+                VideoFill:                          ThisTheme.Color1,
+                VideoBorderColor:                   ThisTheme.Color2,
+        
+                StreamColor:                        ThisTheme.defaultTextColor,
+                StreamFill:                         Color.Transparent,
+                StreamBorderColor:                  ThisTheme.Color2,
+        
+                AudioFill:                          ThisTheme.Color1,
+                AudioBorderColor:                   ColorFade(ThisTheme.Color1, -20%),
+        
+                MicrophoneColor:                    ThisTheme.Color1Text,
+                MicrophoneFill:                     ThisTheme.Color1,
+                MicrophoneBorderColor:              ColorFade(ThisTheme.Color1, -20%),
+                MicrophoneHoverColor:               ColorFade(ThisTheme.Color1Text, 20%),
+                MicrophoneHoverFill:                ColorFade(ThisTheme.Color1, 20%),
+                MicrophoneHoverBorderColor:         ThisTheme.Color1,
+                MicrophonePressedColor:             ColorFade(ThisTheme.Color1Text, -20%),
+                MicrophonePressedFill:              ColorFade(ThisTheme.Color1, -20%),
+                MicrophonePressedBorderColor:       ColorFade(ThisTheme.Color1, -40%),
+        
+                AddPictureColor:                    ThisTheme.Color1Text,
+                AddPictureFill:                     ThisTheme.Color1,
+                AddPictureBorderColor:              ThisTheme.Color2,
+                AddPictureHoverColor:               ThisTheme.Color1Text,
+                AddPictureHoverFill:                ColorFade(ThisTheme.Color1, 20%),
+                AddPictureHoverBorderColor:         ColorFade(ThisTheme.Color2, 20%),
+                AddPicturePressedColor:             ThisTheme.Color1Text,
+                AddPicturePressedFill:              ColorFade(ThisTheme.Color1, -20%),
+                AddPicturePressedBorderColor:       ColorFade(ThisTheme.Color2, -20%),
+                AddPictureFont:                     ThisTheme.Font,
+        
+                ImportColor:                        ThisTheme.Color1Text,
+                ImportFill:                         ThisTheme.Color1,
+                ImportBorderColor:                  ColorFade(ThisTheme.Color1, -20%),
+                ImportFont:                         ThisTheme.Font,
+                ImportHoverColor:                   ColorFade(ThisTheme.Color1Text, 20%),
+                ImportHoverFill:                    ColorFade(ThisTheme.Color1, 20%),
+                ImportHoverBorderColor:             ThisTheme.Color1,
+                ImportPressedColor:                 ThisTheme.Color1Text,
+                ImportPressedFill:                  ColorFade(ThisTheme.Color1, -20%),
+                ImportPressedBorderColor:           ColorFade(ThisTheme.Color1, -40%),
+        
+                ExportColor:                        ThisTheme.Color1Text,
+                ExportFill:                         ThisTheme.Color1,
+                ExportBorderColor:                  ColorFade(ThisTheme.Color1, -20%),
+                ExportFont:                         ThisTheme.Font,
+                ExportHoverColor:                   ColorFade(ThisTheme.Color1Text, 20%),
+                ExportHoverFill:                    ColorFade(ThisTheme.Color1, 20%),
+                ExportHoverBorderColor:             ThisTheme.Color1,
+                ExportPressedColor:                 ThisTheme.Color1Text,
+                ExportPressedFill:                  ColorFade(ThisTheme.Color1, -20%),
+                ExportPressedBorderColor:           ColorFade(ThisTheme.Color1, -40%),
+        
+                ChartLegendColor:                   ThisTheme.defaultTextColor,
+                ChartLegendFont:                    ThisTheme.Font,
+        
+                /////////////////
+                //
+                // Gallery Items
+                //
+                GalleryFill:                        RGBA(0,0,0,0),
+                GalleryBorderColor:                 ThisTheme.Color2,
+                //
+                // Gallery Title and Subtitle
+                //
+                GallerytitleLabelColor:             ThisTheme.Color3,
+                GallerysubtitleLabelColor:          ThisTheme.defaultTextColor,
+                GallerytitleLabelFont:              ThisTheme.Font,
+                GallerysubtitleLabelFont:           ThisTheme.Font,
+                //
+                // Body content label in Flexible Height Gallery
+                //
+                GallerycontentLabelColor:           ThisTheme.defaultTextColor,
+                GallerycontentLabelFont:            ThisTheme.Font,
+                //
+                /////////////////
+        
+                /////////////////
+                //
+                // Icons
+                //
+                // This will apply to all icons
+                // (excluding new screen icons used as BGs)
+                //
+                // IconFill is also used for the background shape of
+                // the New Screen headers in: List
+                //
+                IconFill:                           ThisTheme.Color3,
+                IconHoverFill:                      ThisTheme.Color3Text,
+                IconPressedFill:                    ThisTheme.Color1,
+                // Background set to transparent by default to preserve New Screen-based icons
+                IconBackground:                     Color.Transparent,
+                IconHoverBackground:                Color.Transparent,
+                IconPressedBackground:              Color.Transparent,
+                IconBorderColor:                    ColorFade(ThisTheme.Color3, -20%),
+                IconHoverBorderColor:               ThisTheme.Color3,
+                IconPressedBorderColor:             ColorFade(ThisTheme.Color3, -40%),
+                
+        
+                AttachmentTextColor:                ThisTheme.Color1Text,
+                AttachmentFill:                     ThisTheme.Color1,
+                AttachmentBorderColor:              ThisTheme.Color2,
+                AttachmentHoverColor:               ColorFade(ThisTheme.Color1Text, 20%),
+                AttachmentHoverFill:                ColorFade(ThisTheme.Color1, 20%),
+                AttachmentHoverBorderColor:         ColorFade(ThisTheme.Color2, 20%),
+                AttachmentFont:                     ThisTheme.Font,
+                AttachmentPressedColor:             ThisTheme.Color2Text,
+                AttachmentPressedFill:              ThisTheme.Color2,
+                AttachmentItemColor:                ThisTheme.Color3Text,
+                AttachmentItemFill:                 ThisTheme.Color3,
+                AttachmentItemHoverColor:           ColorFade(ThisTheme.Color3Text, 20%),
+                AttachmentItemHoverFill:            ColorFade(ThisTheme.Color3, 20%),
+        
+                /////////////////
+                //
+                // Forms
+                //
+                EditFormBorderColor:                ThisTheme.Color2,
+                EditFormFill:                       If( 
+                                                        ThisTheme.DarkMode,
+                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                    ),
+                ViewFormBorderColor:                ThisTheme.Color2,
+                ViewFormFill:                       If(
+                                                        ThisTheme.DarkMode,
+                                                        ColorFade(ThisTheme.Color1, -50%),
+                                                        ColorFade(ThisTheme.Color1, 50%)
+                                                    ),
+                // Form Title and * fields
+                FormTitleLabelColor:                ThisTheme.Color3,
+                FormTitleLabelFont:                 ThisTheme.Font,
+        
+                /////////////////
+                //
+                // Screen
+                //
+                ScreenBackground:                   If( 
+                                                        ThisTheme.DarkMode,
+                                                        ColorFade(ThisTheme.BackgroundColor, -50%),
+                                                        ColorFade(ThisTheme.BackgroundColor, 50%)
+                                                    ),
+        
+                /////////////////
+                //
+                // Data Table
+                //
+                //
+                // NotUsed
+                   DataTableColor1:                    ThisTheme.Color1,
+                   DataTableColor2:                    ThisTheme.Color2,
+                // Border Lines between headers
+                DataTableColor3:                    ThisTheme.Color3,
+                //
+                DataTableColor:                     ThisTheme.Color1Text,
+                DataTableFill:                      ThisTheme.Color1,
+                DataTableColorInverted:             ThisTheme.Color3Text,
+                DataTableSelectedColor:             ThisTheme.Color3Text,
+                DataTableSelectedFill:              ThisTheme.Color3,
+                DataTableHoverColor:                ThisTheme.Color2Text,
+                DataTableHoverFill:                 ThisTheme.Color2,
+                DataTableBorderColor:               ThisTheme.Color2,
+                DataTableInputFill:                 ThisTheme.Color1,
+                DataTableFont:                      ThisTheme.Font,
+                DataTableHeadingFont:               ThisTheme.Font,
+                DataTableHeadingColor:              ThisTheme.Color2Text,
+                DataTableHeadingFill:               ThisTheme.Color2,
+                DataTableFontWeight:                FontWeight.Normal,
+                DataTableHeadingFontWeight:         FontWeight.Semibold,
+        
+                /////////////////
+                //
+                // PDFViewer & PowerBI
+                //
+                PdfViewerFill:                      ColorFade(ThisTheme.Color1, -50%),
+                PdfViewerBorderColor:               ThisTheme.Color2,
+                PowerBIBorderColor:                 ThisTheme.Color2,
+                
+                //////////////////////////////////////////////////
+                //                                              //
+                //  These apply to the Insert>New Screen items  //
+                //                                              //
+                //////////////////////////////////////////////////
+                //
+                // Title Label on New Screen Headers
+                //
+                invertedBkgHeaderLabelColor:        ThisTheme.Color2Text,
+                //
+                // New Screen Header background shape for:
+                // Scrollable, Email, People, Meeting,
+                // 
+                // also selected tab shape colour on Meeting screen
+                // see: IconFill also used for other new screen header shapes
+                //
+                IconFillInverted:                   ThisTheme.Color2,
+                //
+                // Label on Success Screen, Tutorial Screen
+                // To / Subject / Message Title on Email screen
+                // SubTitle label on PeopleBrowseGallery on Email Screen
+                // Attendees/Subject/Message labels on Meeting screen
+                // No Times/Locations labels on Schedule tab of Meeting Screen
+                // All Left-side labels, and right-side time labels on Calendar screen
+                // ALSO:
+                // SubHeader Text Colour on Calendar Screen - NB this is same as BG colour
+                // SubHeader Text Colour on Schedule tab of Meeting screen - NB this is same as BG colour
+                //
+                basicNoSizeLabelColor:              ThisTheme.Color3,
+                //
+                // Tick on Success Screen
+                // Send Icon Color on Email Screen
+                //
+                invertedBkgHeaderIconColor:         ThisTheme.Color3Text,
+                //
+                // Title label and icon color in PeopleGallery on Email Screen, People Screen and Meeting Screen
+                //
+                basicNoSizeInvertedBkgLabelColor:   ThisTheme.Color3Text,
+                //
+                // Invite & Schedule tab header label on Meeting screen
+                // Rooms list name label on Schedule tab on Meeting Screen
+                //
+                basicNoSizeWeightColorLabelColor:   ThisTheme.defaultTextColor
+            }
+    Fill: =RGBA(0, 0, 0, 0)
+    Flat: =true
+    FontSizes: |-
+        =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        {
+            TextMain:                       cmp_Menu_Horizontal.ThisTheme.FontSize -1,
+            TextEmphasis:                   cmp_Menu_Horizontal.ThisTheme.FontSize +1,
+            Content:                        cmp_Menu_Horizontal.ThisTheme.FontSize +2,
+            Title:                          cmp_Menu_Horizontal.ThisTheme.FontSize +6,
+            SubTitle:                       cmp_Menu_Horizontal.ThisTheme.FontSize +4,
+            AddPicture:                     cmp_Menu_Horizontal.ThisTheme.FontSize -3
+        }
+    Height: =TemplateSizes.HeaderHeight + Self.SubmenuItemsToDisplay * Self.SubmenuItemsHeight//TemplateSizes.SubmenuHeight
+    ItemsList: |-
+        =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // Required Format
+        ////////////////////////////////////
+        // {
+        //        ID: 1, (Number)
+        //        Name: "Home", (Text)
+        //        ShowName: true, (Boolean)
+        //        Tooltip: "Click here to return to the Home Screen", (Text)
+        //        Icon: Icon.Home, (Icon)
+        //        ShowIcon: true, (Boolean)
+        //        Action: "Navigate", (Text, see below for values)
+        //        Screen: App.ActiveScreen, (Screen control)
+        //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+        //        SubmenuList: [{}] (Record format includes Name, Tooltip, Action, Screen, LaunchURL)
+        //    }
+        // Action:
+        // "Display": Sets the output property "DisplayName" to the "Name" property,
+        // "Navigate": Navigates to the "Screen" screen,
+        // "Launch": Launches the "LaunchURL" in a new tab
+        // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+        Table(
+            {
+                ID: 1,
+                Name: "Home",
+                ShowName: true,
+                Tooltip: "Click here to return to the Home Screen",
+                Icon: Icon.Home,
+                ShowIcon: true,
+                Action: "Navigate",
+                Screen: App.ActiveScreen,
+                LaunchURL: ""
+            },
+            {
+                ID: 2,
+                Name: "New",
+                ShowName: false,
+                Tooltip: "Click here to create a New Item",
+                Icon: Icon.Add,
+                ShowIcon: true,
+                Action: "Submenu",
+                Screen: App.ActiveScreen,
+                SubmenuList: [
+                    {
+                        Name: "Item",
+                        Tooltip: "Click here to return to the Home Screen",
+                        Action: "Navigate",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    },
+                    {
+                        Name: "Form",
+                        Tooltip: "Click here to return to the Home Screen",
+                        Action: "Display"
+                    }
+                ]
+            },
+            {
+                ID: 3,
+                Name: "Settings",
+                Tooltip: "Click here to access the App Settings",
+                Icon: Icon.Settings,
+                Screen: App.ActiveScreen
+            }
+        )
+    ShowHelp: =true
+    SubmenuItemsDisplayed: =SubmenuGallery_Horiz.AllItemsCount
+    SubmenuItemsHeight: =SubmenuGallery_Horiz.TemplateHeight//SubmenuGallery_Horiz.TemplateHeight
+    SubmenuItemsHeightCalc: =0
+    SubmenuItemsToDisplay: =2
+    TabHighlightColor: |-
+        ="#ffffff"
+    ThisTheme: |-
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        // ie below I have only passed in the values used by my component
+            {
+                Color1:                             RGBA(241,  90,  41, 1),
+                Color2:                             RGBA(128,  128, 128, 1),
+                Color3:                             RGBA(159,  58,  19, 1),
+                Color1Text:                         RGBA(245, 245, 245, 1),
+                Color2Text:                         RGBA(245, 245, 245, 1),
+                Color3Text:                         RGBA(245, 245, 245, 1),
+                BackgroundColor:                    RGBA(128, 128, 128, 1),
+                AppColor:                           RGBA(241,  90,  41, 1),
+                AppColorText:                       RGBA(255, 255, 255, 1),
+                
+                defaultTextColor:                   RGBA(245, 245, 245, 1),
+                
+                Font:                               Font.Arial,
+                FontSize:                           10,
+        
+                DarkMode:                           false
+            }
+    Width: =TemplateSizes.TopNavigationWidth
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    html_BackgroundPanelDropshadow_cmp_MenuHoriz As htmlViewer:
+        Height: =Parent.Height
+        HtmlText: |-
+            =If(cmp_Menu_Horizontal.Flat,
+               "",
+               "<div style='
+                    margin: 0px;
+                    width: " & Parent.Width  -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             & "px;
+                    height: " & Parent.Height-RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) 
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             -RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0)
+                                             & "px;
+                    border-radius: 10px;
+                    box-shadow: " & RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) & "px "
+                                  & RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) & "px "
+                                  & RoundDown(btn_MiddlePanel_cmpMenu_Horiz.X,0) & "px "
+                                  & If(cmp_Menu_Horizontal.ThisTheme.DarkMode, "#CCCCCC" , "#444444") & "'>
+                </div>"
+            )
+        Visible: =!cmp_Menu_Horizontal.Flat
+        Width: =Parent.Width
+        X: =0*0
+        Y: =0*0
+        ZIndex: =1
+
+    btn_MiddlePanel_cmpMenu_Horiz As button:
+        BorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonBorderColor
+        BorderThickness: =If(cmp_Menu_Horizontal.Flat, 0, 2)
+        Color: =cmp_Menu_Horizontal.ControlsTheme.ButtonColor
+        Fill: =cmp_Menu_Horizontal.ThisTheme.AppColor
+        Font: =cmp_Menu_Horizontal.ControlsTheme.ButtonFont
+        Height: =TemplateSizes.HeaderHeight
+        HoverBorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverBorderColor
+        HoverColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverColor
+        HoverFill: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverFill
+        PressedBorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonPressedBorderColor
+        PressedColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonPressedColor
+        PressedFill: =cmp_Menu_Horizontal.ControlsTheme.ButtonPressedFill
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        TabIndex: =-1
+        Text: =""
+        Width: =MenuGallery_Horiz.Width
+        X: =MenuGallery_Horiz.X
+        Y: =MenuGallery_Horiz.Y
+        ZIndex: =2
+
+    "MenuGallery_Horiz As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+        '#CopilotOverlayLabel': ="Filtered"
+        AccessibleLabel: ="horizontal Gallery for screens navigation"
+        BorderColor: =cmp_Menu_Horizontal.ControlsTheme.GalleryBorderColor
+        Default: ={}
+        Fill: =cmp_Menu_Horizontal.ControlsTheme.GalleryFill
+        Height: =Min(Parent.Height-If(cmp_Menu_Horizontal.Flat, 0, (Self.X*4)),Parent.Height)
+        Items: |+
+            =
+            If(
+                cmp_Menu_Horizontal_MS.ShowHelp,
+                Table(
+                    cmp_Menu_Horizontal.ItemsList,
+                    {
+                        Name: "Help",
+                        Tooltip: "Help Options",
+                        Icon: Icon.Help,
+                        ShowIcon: true,
+                        ShowName: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: "",
+                        SubmenuList: [
+                            {
+                                Name: "Request",
+                                Tooltip: "Click here to return to the Home Screen"
+                            },
+                            {
+                                Name: "HowTo",
+                                Action: "Launch",
+                                LaunchURL: howToURL&appReference
+                            }
+                        ]
+                    }
+                ),
+                cmp_Menu_Horizontal.ItemsList
+            )
+            
+        OnSelect: |
+            =Switch(
+                Upper(ThisItem.Action),
+                "DISPLAY",
+                Set(
+                    varDisplay,
+                    ThisItem.Name
+                ),
+                "NAVIGATE",
+                Navigate(ThisItem.Screen),
+                "LAUNCH",
+                Launch(ThisItem.LaunchURL),
+                "SUBMENU",
+                If(
+                    ThisItem.Name = actionSelected,
+                    Reset(MenuGallery_Horiz);
+                    Set(
+                        actionSelected,
+                        ""
+                    ),
+                    Set(
+                        actionSelected,
+                        ThisItem.Name
+                    );
+                );
+            );
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =If(Self.AllItemsCount>0, Self.Width/(Self.AllItemsCount), 1)
+        Width: =Parent.Width-If(cmp_Menu_Horizontal.Flat, 0, (Self.X*4))
+        X: =If(cmp_Menu_Horizontal.Flat, 0, RoundDown(Max(Parent.Width*0.3%, Parent.Height*0.6%),0) )
+        Y: =Self.X
+        ZIndex: =3
+
+        btn_SelectedItem_MenuGallery_Horiz As button:
+            BorderColor: =Color.Transparent
+            Color: =Color.Transparent
+            DisplayMode: =DisplayMode.View
+            Fill: =ColorValue(cmp_Menu_Horizontal.TabHighlightColor)
+            Font: =Font.'Segoe UI'
+            Height: =RoundDown(TemplateSizes.HeaderHeight * 80%, 0)
+            HoverBorderColor: =Color.Transparent
+            HoverColor: =Color.Transparent
+            HoverFill: =Color.Transparent
+            OnSelect: =
+            PressedBorderColor: =Color.Transparent
+            PressedColor: =Color.Transparent
+            PressedFill: =Color.Transparent
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Size: =14
+            TabIndex: =-1
+            Text: ="Button"
+            Width: =RoundDown((Parent.TemplateWidth) * 5%, 0)
+            X: =RoundDown((Parent.TemplateWidth) * 5%, 0)
+            Y: =RoundDown(TemplateSizes.HeaderHeight * 10%, 0)
+            ZIndex: =2
+
+        ico_MenuIcon_Horiz As icon.Add:
+            AccessibleLabel: ="navigate to " & ThisItem.Name
+            BorderColor: =cmp_Menu_Horizontal.ControlsTheme.IconBorderColor
+            Color: =ThisTheme.AppColorText
+            DisplayMode: =If(App.ActiveScreen = ThisItem.Screen, DisplayMode.Edit,  DisplayMode.Disabled)
+            Fill: =cmp_Menu_Horizontal.ControlsTheme.IconBackground
+            Height: =TemplateSizes.HeaderHeight * 90%
+            HoverBorderColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverBorderColor
+            HoverColor: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverColor
+            HoverFill: =cmp_Menu_Horizontal.ControlsTheme.ButtonHoverFill
+            Icon: =ThisItem.Icon
+            OnSelect: |-
+                =//Select this item
+                Select(Parent);
+                //perform some other action?
+                //
+                //then navigate to screen
+                //Navigate(ThisItem.Screen);
+            PaddingBottom: =TemplateSizes.HeaderHeight * 15%
+            PaddingLeft: =TemplateSizes.HeaderHeight * 15%
+            PaddingRight: =TemplateSizes.HeaderHeight * 15%
+            PaddingTop: |-
+                =If(
+                    ThisItem.ShowName,
+                    0,
+                    TemplateSizes.HeaderHeight * 15%
+                )
+            PressedBorderColor: =cmp_Menu_Horizontal.ControlsTheme.IconPressedBorderColor
+            PressedColor: =cmp_Menu_Horizontal.ControlsTheme.IconPressedFill
+            PressedFill: =cmp_Menu_Horizontal.ControlsTheme.IconPressedBackground
+            TabIndex: =0
+            Tooltip: =ThisItem.Tooltip
+            Visible: =ThisItem.ShowIcon
+            Width: =Parent.TemplateWidth - Self.X//Parent.TemplateWidth *90%
+            X: =btn_SelectedItem_MenuGallery_Horiz.X + btn_SelectedItem_MenuGallery_Horiz.Width//(Parent.TemplateWidth-Self.Width) * 50%
+            Y: =(TemplateSizes.HeaderHeight - Self.Height) * 50%
+            ZIndex: =3
+
+        lbl_MenuName_Horiz As label:
+            Align: =Align.Center
+            AutoHeight: =true
+            Fill: =RGBA(0,0,0,0)
+            FontWeight: =FontWeight.Bold
+            Height: =24
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            Text: =Upper(ThisItem.Name)
+            Visible: =ThisItem.ShowName
+            Width: =Parent.TemplateWidth - Self.X//ico_MenuIcon_Horiz.Width - Self.X
+            X: =btn_SelectedItem_MenuGallery_Horiz.X + btn_SelectedItem_MenuGallery_Horiz.Width//ico_MenuIcon_Horiz.X
+            Y: |-
+                =If(
+                    ThisItem.ShowIcon,
+                    TemplateSizes.HeaderHeight - Self.Height,
+                    (TemplateSizes.HeaderHeight - Self.Height) / 2
+                )
+            ZIndex: =4
+
+        "SubmenuGallery_Horiz As gallery.'BrowseLayout_Flexible_SocialFeed_ver5.0'":
+            Default: ={}
+            DelayItemLoading: =true
+            Fill: =Color.Transparent
+            Items: =ThisItem.SubmenuList
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =Switch(
+                    ThisItem.Action,
+                    "Display",
+                    Set(varDisplay,ThisItem.Name),
+                    "Navigate",
+                    Navigate(ThisItem.Screen),
+                    "Launch",
+                    Launch(ThisItem.LaunchURL),
+                    "Submenu",
+                    false
+                );
+                Reset(MenuGallery_Horiz);
+            TemplatePadding: =0
+            TemplateSize: =Min(870, Self.Height - 60)
+            Visible: =ThisItem.IsSelected
+            Width: =Parent.TemplateWidth
+            X: =RoundDown((Parent.TemplateWidth) * 15%, 0)
+            Y: =TemplateSizes.HeaderHeight
+            ZIndex: =5
+
+            lbl_SubmenuTitle As label:
+                AutoHeight: =true
+                BorderColor: =ControlsTheme.LabelTextColor
+                BorderThickness: =1
+                DisabledColor: =RGBA(186, 186, 186, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =cmp_Menu_Horizontal.ThisTheme.AppColor
+                Font: =Font.'Open Sans'
+                FontWeight: =FontWeight.Bold
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =14
+                Text: =Upper(ThisItem.Name)
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth
+                Y: =
+                ZIndex: =2
+
+        lbl_SubmenuItemsCount As label:
+            OnSelect: =Select(Parent)
+            Text: =SubmenuGallery_Horiz.AllItemsCount
+            Visible: =false
+            X: =40
+            Y: =40
+            ZIndex: =6
+

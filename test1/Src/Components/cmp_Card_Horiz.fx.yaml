@@ -1,0 +1,245 @@
+cmp_Card_Horiz As CanvasComponent:
+    CardTooltip: =cmp_Card_Horiz.KeyValue
+    ComboAllowMulti: =false
+    ComboDisplayFields: |-
+        =Table({Value:""})
+    ComboItems: |-
+        =Table({Value:""})
+    ComboSearchFields: =["Value"]
+    ControlsFontSizes: =ControlsFontSizes
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =50
+    KeyValue: ="Key"
+    KeyWidth: =150
+    OnReset: |-
+        =Reset(Card_SLOT_Horiz);
+        Reset(Card_MLOT_Horiz);
+        Reset(Card_Combo_Horiz);
+        Reset(Card_Date_Horiz);
+        Reset(Card_Checkbox_Horiz);
+        Reset(Card_Person_Horiz);
+        Reset(Card_RichText_Horiz);
+    ValueDate: |-
+        =If(
+            Self.ValueType=5,
+            Card_Date_Horiz.SelectedDate
+        )
+    ValueDefaultCheckbox: =true
+    ValueDefaultDate: =
+    ValueDefaultPeople: |-
+        =/*Table(
+            ShowColumns(
+                Office365Users.MyProfile(),
+                City,
+                CompanyName,
+                DisplayName,
+                GivenName,
+                Id,
+                Mail,
+                OfficeLocation,
+                Surname,
+                TelephoneNumber,
+                MailNickname
+            )
+        )*/
+        ForAll(
+        Ungroup(
+            Filter(
+                PersonnelRoster,
+                EmployeeType = "Booz Allen"
+            ),
+            EmployeeName
+        ),EmployeeName)
+    ValueDefaultPerson: |-
+        =//Office365Users.MyProfile()
+        {
+            Claims:"",
+            Department:"",
+            DisplayName:"",
+            Email:"",
+            JobTitle:""
+        }
+    ValueDefaultSelected: |-
+        ={Value:""}
+    ValueDefaultSelectedItems: |-
+        =Table({Value:""})
+    ValueDefaultText: =""
+    ValuePerson: |-
+        =/*{
+            City: Card_Person_Horiz.Selected.City,
+            AccountGroup: Card_Person_Horiz.Selected.CompanyName,
+            DisplayName: Card_Person_Horiz.Selected.DisplayName,
+            FirstName: Card_Person_Horiz.Selected.GivenName,
+            Id: Card_Person_Horiz.Selected.Id,
+            Mail: Card_Person_Horiz.Selected.Mail,
+            OfficeLocation: Card_Person_Horiz.Selected.OfficeLocation,
+            Surname: Card_Person_Horiz.Selected.Surname,
+            PrimaryPhone: Card_Person_Horiz.Selected.TelephoneNumber,
+            MailNickname: Card_Person_Horiz.Selected.MailNickname,
+            Country:Left(Card_Person_Horiz.Selected.OfficeLocation, 3),
+            State:If(Left(Card_Person_Horiz.Selected.OfficeLocation, 3)="USA",Mid(Card_Person_Horiz.Selected.OfficeLocation,6,2),""),
+            DutyLocation:
+            Concatenate(
+                Card_Person_Horiz.Selected.City,
+                If(Left(Card_Person_Horiz.Selected.OfficeLocation, 3)="USA",", "&Mid(Card_Person_Horiz.Selected.OfficeLocation,6,2),""),
+                ", "&Left(Card_Person_Horiz.Selected.OfficeLocation, 3)
+            )
+        
+        }*/
+        Card_Person_Horiz.Selected
+    ValueSearchText: =Card_Person_Horiz.SearchText
+    ValueText: |-
+        =Switch(
+            Self.ValueType,
+            1,
+            Card_Display_Horiz.Text,
+            2,
+            Card_SLOT_Horiz.Text,
+            3,
+            Card_MLOT_Horiz.Text,
+            4,
+            If(
+                cmp_Card_Horiz.ComboAllowMulti,
+                Concat(
+                    Card_Combo_Horiz.SelectedItems,
+                    Value,
+                    ";"
+                ),
+                Card_Combo_Horiz.Selected.Value
+            ),
+            5,
+            Text(
+                Card_Date_Horiz.SelectedDate,
+                "yyyy-mm-dd"
+            )
+        )
+    ValueType: |-
+        =4 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+    ValueWidth: =cmp_Card_Horiz.Width - cmp_Card_Horiz.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+    Width: =500
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    cnt_Card_Horiz As groupContainer.verticalAutoLayoutContainer:
+        Fill: |-
+            =ColorValue("#e6e6e2")//ThisTheme.Color2
+        Height: =Parent.Height
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =TemplateSizes.VerticalPadding
+        PaddingLeft: =TemplateSizes.HorizontalPadding
+        PaddingRight: =TemplateSizes.HorizontalPadding
+        PaddingTop: =TemplateSizes.VerticalPadding
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Card_Key_Horiz As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            Size: =11
+            Text: =cmp_Card_Horiz.KeyValue
+            Tooltip: =cmp_Card_Horiz.CardTooltip
+            Width: =cmp_Card_Horiz.KeyWidth
+            ZIndex: =1
+
+        Card_Display_Horiz As label:
+            Color: =ControlsTheme.InputTextColor
+            Fill: =ColorFade(ControlsTheme.LabelFill,30%)
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            Size: =cmp_Card_Horiz.ControlsFontSizes.LabelFontSize
+            Text: =cmp_Card_Horiz.ValueDefaultText
+            Tooltip: =cmp_Card_Horiz.CardTooltip
+            Visible: =cmp_Card_Horiz.ValueType = 1
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =2
+
+        Card_SLOT_Horiz As text:
+            Default: =cmp_Card_Horiz.ValueDefaultText
+            DelayOutput: =false
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            PaddingLeft: =5
+            PaddingTop: =5
+            Size: =cmp_Card_Horiz.ControlsFontSizes.InputFontSize
+            Tooltip: =cmp_Card_Horiz.CardTooltip
+            Visible: =cmp_Card_Horiz.ValueType = 2
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =3
+
+        Card_MLOT_Horiz As text:
+            Default: =cmp_Card_Horiz.ValueDefaultText
+            DelayOutput: =false
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            PaddingLeft: =5
+            PaddingTop: =5
+            Size: =cmp_Card_Horiz.ControlsFontSizes.InputFontSize
+            Tooltip: =cmp_Card_Horiz.CardTooltip
+            Visible: =cmp_Card_Horiz.ValueType = 3
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =4
+
+        Card_Combo_Horiz As combobox:
+            DefaultSelectedItems: =cmp_Card_Horiz.ValueDefaultSelected
+            DisplayFields: =["Value"]
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            IsSearchable: =false
+            Items: =cmp_Card_Horiz.ComboItems
+            MoreItemsButtonColor: =Self.ChevronBackground
+            SearchFields: =["Value"]
+            SearchItems: =Search(cmp_Card_Horiz.ComboItems,Card_Combo_Horiz.SearchText,Value)
+            SelectMultiple: =false
+            Size: =cmp_Card_Horiz.ControlsFontSizes.ComboBoxFontSize
+            Tooltip: =cmp_Card_Horiz.CardTooltip
+            Visible: =cmp_Card_Horiz.ValueType = 4
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =5
+
+        Card_Date_Horiz As datepicker:
+            DefaultDate: =cmp_Card_Horiz.ValueDefaultDate
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            Tooltip: =cmp_Card_Horiz.CardTooltip
+            Visible: =cmp_Card_Horiz.ValueType = 5
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =6
+
+        Card_Checkbox_Horiz As checkbox:
+            Default: =cmp_Card_Horiz.ValueDefaultCheckbox
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            Size: =cmp_Card_Horiz.ControlsFontSizes.InputFontSize
+            Text: =""
+            Visible: =cmp_Card_Horiz.ValueType = 6
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =7
+
+        Card_Person_Horiz As combobox:
+            Default: =cmp_Card_Horiz.ValueDefaultPerson
+            DefaultSelectedItems: =cmp_Card_Horiz.ValueDefaultPerson
+            DisplayFields: =[""]
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            IsSearchable: =false
+            Items: |-
+                =//cmp_Card_Horiz.ValueDefaultPeople
+                colBoozEmployees
+            MoreItemsButtonColor: =Self.ChevronBackground
+            SearchFields: =[""]
+            SearchItems: =[]
+            SelectMultiple: =cmp_Card_Horiz.ComboAllowMulti
+            Size: =cmp_Card_Horiz.ControlsFontSizes.InputFontSize
+            Template: =ListItemTemplate.Double
+            Visible: =cmp_Card_Horiz.ValueType = 7
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =8
+
+        Card_RichText_Horiz As richTextEditor:
+            Default: =cmp_Card_Horiz.ValueDefaultText
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            Visible: =cmp_Card_Horiz.ValueType = 8
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =9
+
+        Card_HtmlText_Horiz As htmlViewer:
+            Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
+            HtmlText: =cmp_Card_Horiz.ValueDefaultText
+            Visible: =cmp_Card_Horiz.ValueType = 9
+            Width: =cmp_Card_Horiz.ValueWidth
+            ZIndex: =10
+

@@ -1,0 +1,264 @@
+cmp_Card As CanvasComponent:
+    CardTooltip: =cmp_Card.KeyValue
+    ComboAllowMulti: =false
+    ComboDisplayFields: |-
+        =Table({Value:""})
+    ComboItems: |-
+        =Table({Value:""})
+    ComboSearchFields: =["Value"]
+    ControlsFontSizes: =ControlsFontSizes
+    ControlsTheme: |-
+        =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+        // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+        //
+        // You can either pass a record in below that contains the values or the record itself.
+        // If you are listing values, you do not need to input all records, only the used ones.
+        //
+        ControlsTheme
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =90
+    KeyHeight: =40
+    KeyValue: ="Key"
+    OnReset: |-
+        =Reset(Card_SLOT);
+        Reset(Card_MLOT);
+        Reset(Card_Combo);
+        Reset(Card_Date);
+        Reset(Card_Checkbox);
+        Reset(Card_Person);
+        Reset(Card_RichText);
+    ValueDate: |-
+        =If(
+            Self.ValueType=5,
+            Card_Date.SelectedDate
+        )
+    ValueDefaultCheckbox: =false
+    ValueDefaultDate: =
+    ValueDefaultPeople: |-
+        =Table(  {
+                '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                Claims: "",
+                Department: "",
+                DisplayName: "",
+                Email: "",
+                JobTitle: "",
+                Picture: ""
+            }
+        )
+    ValueDefaultPerson: |
+        =  {
+                '@odata.type': "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                Claims: "",
+                Department: "",
+                DisplayName: "",
+                Email: "",
+                JobTitle: "",
+                Picture: ""
+            }
+    ValueDefaultSelected: |-
+        ={Value:""}
+    ValueDefaultSelectedItems: |-
+        =Table({Value:""})
+    ValueDefaultText: =""
+    ValueHeight: =cmp_Card.Height - cmp_Card.KeyHeight - (2*TemplateSizes.VerticalPadding)
+    ValueText: |-
+        =Switch(
+            Self.ValueType,
+            1,
+            Card_Display.Text,
+            2,
+            Card_SLOT.Text,
+            3,
+            Card_MLOT.Text,
+            4,
+            /*
+            If(
+                IsEmpty(cmp_Card.ValueDefaultSelectedItems),
+                Concat(Card_Combo.SelectedItems,Value,";"),
+                Coalesce(
+                    Concat(Card_Combo.SelectedItems,Value,";"),
+                    Concat(cmp_Card.ValueDefaultSelectedItems,Value,";")
+                )
+            ),
+            */
+            If(
+                cmp_Card.ComboAllowMulti,
+                Concat(
+                    Card_Combo.SelectedItems,
+                    Value,
+                    ";"
+                ),
+                Card_Combo.Selected.Value
+            ),
+            5,
+            Text(
+                Card_Date.SelectedDate,
+                "yyyy-mm-dd"
+            )
+        )
+    ValueType: |-
+        =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+    Width: =400
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    cnt_Card As groupContainer.verticalAutoLayoutContainer:
+        Fill: =ThisTheme.Color2
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =TemplateSizes.VerticalPadding
+        PaddingLeft: =TemplateSizes.HorizontalPadding
+        PaddingRight: =TemplateSizes.HorizontalPadding
+        PaddingTop: =TemplateSizes.VerticalPadding
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Card_Key As label:
+            BorderColor: =cmp_Card.ControlsTheme.LabelBorderColor
+            Color: =cmp_Card.ControlsTheme.LabelTextColor
+            Fill: =ColorFade(cmp_Card.ControlsTheme.LabelFill,-.4)
+            Font: =cmp_Card.ControlsTheme.LabelFont
+            Height: =cmp_Card.KeyHeight
+            Size: =cmp_Card.ControlsFontSizes.LabelFontSize
+            Text: =cmp_Card.KeyValue
+            Tooltip: =cmp_Card.CardTooltip
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =1
+
+        Card_Display As label:
+            BorderColor: =cmp_Card.ControlsTheme.LabelBorderColor
+            Color: =cmp_Card.ControlsTheme.LabelTextColor
+            Fill: =cmp_Card.ControlsTheme.LabelFill
+            Font: =cmp_Card.ControlsTheme.LabelFont
+            Height: =cmp_Card.ValueHeight
+            Size: =cmp_Card.ControlsFontSizes.LabelFontSize
+            Text: =cmp_Card.ValueDefaultText
+            Tooltip: =cmp_Card.CardTooltip
+            Visible: =cmp_Card.ValueType = 1
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =2
+
+        Card_SLOT As text:
+            BorderColor: =cmp_Card.ControlsTheme.InputBorderColor
+            Color: =cmp_Card.ControlsTheme.InputTextColor
+            Default: =cmp_Card.ValueDefaultText
+            DelayOutput: =false
+            Fill: =cmp_Card.ControlsTheme.InputFill
+            Font: =cmp_Card.ControlsTheme.InputFont
+            Height: =cmp_Card.ValueHeight
+            HoverBorderColor: =cmp_Card.ControlsTheme.InputHoverBorderColor
+            HoverColor: =cmp_Card.ControlsTheme.InputHoverColor
+            HoverFill: =cmp_Card.ControlsTheme.InputHoverFill
+            PressedBorderColor: =cmp_Card.ControlsTheme.InputPressedBorderColor
+            PressedColor: =cmp_Card.ControlsTheme.InputPressedColor
+            PressedFill: =cmp_Card.ControlsTheme.InputPressedFill
+            RadiusBottomLeft: =cmp_Card.ControlsTheme.InputRadiusBottomLeft
+            RadiusBottomRight: =cmp_Card.ControlsTheme.InputRadiusBottomRight
+            RadiusTopLeft: =cmp_Card.ControlsTheme.InputRadiusTopLeft
+            RadiusTopRight: =cmp_Card.ControlsTheme.InputRadiusTopRight
+            Size: =cmp_Card.ControlsFontSizes.InputFontSize
+            Tooltip: =cmp_Card.CardTooltip
+            Visible: =cmp_Card.ValueType = 2
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =3
+
+        Card_MLOT As text:
+            BorderColor: =cmp_Card.ControlsTheme.InputBorderColor
+            Color: =cmp_Card.ControlsTheme.InputTextColor
+            Default: =cmp_Card.ValueDefaultText
+            DelayOutput: =false
+            Fill: =cmp_Card.ControlsTheme.InputFill
+            Font: =cmp_Card.ControlsTheme.InputFont
+            Height: =cmp_Card.ValueHeight
+            HoverBorderColor: =cmp_Card.ControlsTheme.InputHoverBorderColor
+            HoverColor: =cmp_Card.ControlsTheme.InputHoverColor
+            HoverFill: =cmp_Card.ControlsTheme.InputHoverFill
+            PressedBorderColor: =cmp_Card.ControlsTheme.InputPressedBorderColor
+            PressedColor: =cmp_Card.ControlsTheme.InputPressedColor
+            PressedFill: =cmp_Card.ControlsTheme.InputPressedFill
+            RadiusBottomLeft: =cmp_Card.ControlsTheme.InputRadiusBottomLeft
+            RadiusBottomRight: =cmp_Card.ControlsTheme.InputRadiusBottomRight
+            RadiusTopLeft: =cmp_Card.ControlsTheme.InputRadiusTopLeft
+            RadiusTopRight: =cmp_Card.ControlsTheme.InputRadiusTopRight
+            Size: =cmp_Card.ControlsFontSizes.InputFontSize
+            Tooltip: =cmp_Card.CardTooltip
+            Visible: =cmp_Card.ValueType = 3
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =4
+
+        Card_Combo As combobox:
+            BorderColor: =cmp_Card.ControlsTheme.ComboBoxBorderColor
+            ChevronBackground: =cmp_Card.ControlsTheme.ComboBoxChevronBackground
+            ChevronFill: =cmp_Card.ControlsTheme.ComboBoxChevronFill
+            ChevronHoverBackground: =cmp_Card.ControlsTheme.ComboBoxChevronHoverBackground
+            ChevronHoverFill: =cmp_Card.ControlsTheme.ComboBoxChevronHoverFill
+            Color: =cmp_Card.ControlsTheme.ComboBoxTextColor
+            DefaultSelectedItems: =cmp_Card.ValueDefaultSelected
+            DisplayFields: =["Value"]
+            Fill: =cmp_Card.ControlsTheme.ComboBoxFill
+            Font: =cmp_Card.ControlsTheme.ComboBoxFont
+            Height: =cmp_Card.ValueHeight
+            HoverBorderColor: =cmp_Card.ControlsTheme.ComboBoxHoverBorderColor
+            HoverColor: =cmp_Card.ControlsTheme.ComboBoxHoverColor
+            HoverFill: =cmp_Card.ControlsTheme.ComboBoxHoverFill
+            Items: =cmp_Card.ComboItems
+            MoreItemsButtonColor: =Self.ChevronBackground
+            PressedBorderColor: =cmp_Card.ControlsTheme.ComboBoxPressedBorderColor
+            PressedColor: =cmp_Card.ControlsTheme.ComboBoxPressedColor
+            PressedFill: =cmp_Card.ControlsTheme.ComboBoxPressedFill
+            SearchFields: =["Value"]
+            SearchItems: =Search(cmp_Card.ComboItems,Card_Combo.SearchText,Value)
+            SelectionColor: =cmp_Card.ControlsTheme.ComboBoxSelectionColor
+            SelectionFill: =cmp_Card.ControlsTheme.ComboBoxSelectionFill
+            SelectMultiple: =false
+            Size: =cmp_Card.ControlsFontSizes.ComboBoxFontSize
+            Tooltip: =cmp_Card.CardTooltip
+            Visible: =cmp_Card.ValueType = 4
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =5
+
+        Card_Date As datepicker:
+            DefaultDate: =cmp_Card.ValueDefaultDate
+            Tooltip: =cmp_Card.CardTooltip
+            Visible: =cmp_Card.ValueType = 5
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =6
+
+        Card_Checkbox As checkbox:
+            Default: =cmp_Card.ValueDefaultCheckbox
+            Height: =cmp_Card.ValueHeight
+            Text: =""
+            Visible: =cmp_Card.ValueType = 6
+            Width: =Parent.Width - (Parent.PaddingLeft+Parent.PaddingRight)
+            ZIndex: =7
+
+        Card_Person As combobox:
+            Default: =cmp_Card.ValueDefaultPerson
+            DefaultSelectedItems: =cmp_Card.ValueDefaultPerson
+            DisplayFields: =["DisplayName"]
+            Height: =cmp_Card.ValueHeight
+            Items: =cmp_Card.ValueDefaultPeople
+            MoreItemsButtonColor: =Self.ChevronBackground
+            SearchFields: =["DisplayName"]
+            SearchItems: =Search(cmp_Card.ValueDefaultPeople,Card_Person.SearchText,DisplayName)
+            SelectMultiple: =cmp_Card.ComboAllowMulti
+            Visible: =cmp_Card.ValueType = 7
+            Width: =Parent.Width - (Parent.PaddingLeft+Parent.PaddingRight)
+            ZIndex: =8
+
+        Card_RichText As richTextEditor:
+            Default: =cmp_Card.ValueDefaultText
+            Height: =cmp_Card.ValueHeight
+            Visible: =cmp_Card.ValueType = 8
+            Width: =Parent.Width - (Parent.PaddingLeft+Parent.PaddingRight)
+            ZIndex: =9
+
+        Card_HtmlText As htmlViewer:
+            Height: =cmp_Card.ValueHeight
+            HtmlText: =cmp_Card.ValueDefaultText
+            Visible: =cmp_Card.ValueType = 9
+            Width: =Parent.Width - (Parent.PaddingLeft+Parent.PaddingRight)
+            ZIndex: =10
+

@@ -1,0 +1,1260 @@
+EmployeeInformation As screen:
+    OnVisible: |+
+        =/*
+        If(
+            tgl_WriteMetrics.Value,
+            cmp_AccessMetrics_LS.WriteAccessMetric(accessMetrics)
+        );
+        Set(
+            actionSelected,
+            ""
+        );
+        */
+        
+
+    cnt_ContentArea_EI As groupContainer.manualLayoutContainer:
+        Fill: =ControlsTheme.ScreenBackground
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =TemplateSizes.HeaderHeight
+        ZIndex: =2
+
+        cnt_MainContent_EI As groupContainer.manualLayoutContainer:
+            Fill: =ControlsTheme.ScreenBackground
+            Height: =Parent.Height - Self.Y
+            Width: =Parent.Width
+            Y: =TemplateSizes.InnerNavigationHeight
+            ZIndex: =1
+
+            cnt_RightPane_IE As groupContainer.manualLayoutContainer:
+                Height: =617
+                Width: =462
+                X: =893
+                Y: =10
+                ZIndex: =2
+
+                lbl_RequiresAccess_IE As label:
+                    Align: =Align.Center
+                    BorderThickness: =3
+                    Fill: =ControlsTheme.CheckBoxBorderColor
+                    FontWeight: =FontWeight.Semibold
+                    Height: =cnt_RightPane_IE.Height/15
+                    PaddingBottom: =2
+                    Text: ="Requires Access"
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =330
+                    ZIndex: =1
+
+                cmp_GovermentInformation_EI As cmp_Card_Horiz:
+                    CardTooltip: =cmp_GovermentInformation_EI.KeyValue
+                    ComboItems: =fx_drp.YesNo
+                    Height: =cnt_RightPane_IE.Height/15
+                    KeyValue: ="Government Information Systems and Networks"
+                    KeyWidth: =365
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).Training.GovernmentNetworkorSystems}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).Training.GovernmentNetworkorSystems}
+                    ValueDefaultText: =First(varRecord).Training.GovernmentNetworkorSystems
+                    ValueType: |-
+                        =If(
+                            First(varRecord).TaskOrderStatus = "inactive",
+                            1,
+                            4
+                        )//1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_GovermentInformation_EI.Width - cmp_GovermentInformation_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =371
+                    ZIndex: =2
+
+                cmp_Foreign_IE As cmp_Card_Horiz:
+                    CardTooltip: =cmp_Foreign_IE.KeyValue
+                    ComboItems: =fx_drp.YesNo
+                    Height: =cnt_RightPane_IE.Height/15
+                    KeyValue: ="Foreign Nationals or Nation Engagements"
+                    KeyWidth: =365
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).Training.ForeignNationalsorEngagement}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).Training.ForeignNationalsorEngagement}
+                    ValueDefaultText: =First(varRecord).Training.ForeignNationalsorEngagement
+                    ValueType: |-
+                        =If(First(varRecord).TaskOrderStatus="inactive",1,4) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_Foreign_IE.Width - cmp_Foreign_IE.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =412
+                    ZIndex: =3
+
+                cmp_DoDInstallations_EI As cmp_Card_Horiz:
+                    CardTooltip: =cmp_DoDInstallations_EI.KeyValue
+                    ComboItems: =fx_drp.YesNo
+                    Height: =cnt_RightPane_IE.Height/15
+                    KeyValue: ="DoD Installations, Facilities, or Controlled Access Areas"
+                    KeyWidth: =365
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).Training.DoDFacilitiesControlledAccess}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).Training.DoDFacilitiesControlledAccess}
+                    ValueDefaultText: =First(varRecord).Training.DoDFacilitiesControlledAccess
+                    ValueType: |-
+                        =If(First(varRecord).TaskOrderStatus="inactive",1,4)//1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_DoDInstallations_EI.Width - cmp_DoDInstallations_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =453
+                    ZIndex: =4
+
+                cmp_BIXtosubmit_EI As cmp_Card_Horiz:
+                    CardTooltip: =cmp_BIXtosubmit_EI.KeyValue
+                    ComboItems: =fx_drp.YesNo
+                    Height: =cnt_RightPane_IE.Height/15
+                    KeyValue: ="BIX to submit TARs/RIPs"
+                    KeyWidth: =365
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).Training.BIXTARsRIPs}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).Training.BIXTARsRIPs}
+                    ValueDefaultText: =First(varRecord).Training.BIXTARsRIPs
+                    ValueType: |-
+                        =If(First(varRecord).TaskOrderStatus="inactive",1,4) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_BIXtosubmit_EI.Width - cmp_BIXtosubmit_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =494
+                    ZIndex: =5
+
+                cmp_EARTHATLASA365_EI As cmp_Card_Horiz:
+                    CardTooltip: =cmp_EARTHATLASA365_EI.KeyValue
+                    ComboItems: =fx_drp.YesNo
+                    Height: =cnt_RightPane_IE.Height/15
+                    KeyValue: ="EARTH/ATLAS (A365)"
+                    KeyWidth: =365
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).Training.A365Access}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).Training.A365Access}
+                    ValueDefaultText: =First(varRecord).Training.A365Access
+                    ValueType: |-
+                        =If(First(varRecord).TaskOrderStatus="inactive",1,4) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_EARTHATLASA365_EI.Width - cmp_EARTHATLASA365_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =535
+                    ZIndex: =6
+
+                cmp_DoDEmail_EI As cmp_Card_Horiz:
+                    CardTooltip: =cmp_DoDEmail_EI.KeyValue
+                    Height: =cnt_RightPane_IE.Height/15
+                    KeyValue: ="DoD Email"
+                    KeyWidth: =130
+                    ValueDefaultText: =First(varRecord).Training.DoDEmail
+                    ValueType: |-
+                        =2//1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_DoDEmail_EI.Width - cmp_DoDEmail_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightPane_IE.Width
+                    Y: =576
+                    ZIndex: =7
+
+                cnt_RightPane_row1_EI As groupContainer.verticalAutoLayoutContainer:
+                    Height: =328
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =462
+                    ZIndex: =17
+
+                    cmp_EmployeeType_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_EmployeeType_EI.KeyValue
+                        ComboItems: =fx_drp.EmployeeType
+                        Height: =cnt_RightPane_IE.Height/15
+                        KeyValue: ="Employee Type"
+                        KeyWidth: =130
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultCheckbox: =false
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).EmployeeType}
+                        ValueDefaultSelectedItems: |-
+                            =Table({Value:First(varRecord).EmployeeType})
+                        ValueDefaultText: =First(varRecord).EmployeeType
+                        ValueType: |-
+                            =If(First(varRecord).TaskOrderStatus="inactive",1,4) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_EmployeeType_EI.Width - cmp_EmployeeType_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_RightPane_IE.Width
+                        Y: =308
+
+                    cmp_TaskOrderStatus_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_TaskOrderStatus_EI.KeyValue
+                        ComboItems: |-
+                            =If(varUserPermission="member",fx_drp.TaskOrderStatus,
+                            varUserPermission="SPLJM",fx_drp.TaskOrderStatusSPLJM,
+                            varUserPermission="PMO",fx_drp.TaskOrderStatusPMO)
+                        Height: =cnt_RightPane_IE.Height/15
+                        KeyValue: ="Task Order Status"
+                        KeyWidth: =130
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).TaskOrderStatus}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).TaskOrderStatus}
+                        ValueDefaultText: =First(varRecord).TaskOrderStatus
+                        ValueType: |-
+                            =If(First(varRecord).TaskOrderStatus="inactive",1,
+                            varUserPermission="PMO"&&First(varRecord).TaskOrderStatus="inactive",4,
+                            varUserPermission="SPLJM"&&First(varRecord).TaskOrderStatus="inactive",1,
+                            varUserPermission="Member"&&First(varRecord).TaskOrderStatus="inactive",1,4)
+                            //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_TaskOrderStatus_EI.Width - cmp_TaskOrderStatus_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_RightPane_IE.Width
+                        Y: =330
+                        ZIndex: =2
+
+                    cmp_StatusDate_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_StatusDate_EI.KeyValue
+                        Height: =cnt_RightPane_IE.Height/15
+                        KeyValue: |-
+                            =If(cmp_TaskOrderStatus_EI.ValueText="Active","To Start Date",
+                            cmp_TaskOrderStatus_EI.ValueText="Temporary","To Start Date",
+                            cmp_TaskOrderStatus_EI.ValueText="On Leave","Leave Return Date",
+                            cmp_TaskOrderStatus_EI.ValueText="Out-Processing",
+                            cmp_TaskOrderStatus_EI.ValueText="Inacttive","Inactive Date")
+                        KeyWidth: =130
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultDate: =First(varRecord).TaskOrderStartDate
+                        ValueType: |-
+                            =If(First(varRecord).TaskOrderStatus="inactive",1,5) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_StatusDate_EI.Width - cmp_StatusDate_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_RightPane_IE.Width
+                        Y: =328
+                        ZIndex: =3
+
+                    cmp_LocationType_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_LocationType_EI.KeyValue
+                        ComboAllowMulti: =true
+                        ComboItems: =fx_drp.LocationType
+                        Height: =cnt_RightPane_IE.Height/15
+                        KeyValue: ="Location Type"
+                        KeyWidth: =130
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).LocationType}
+                        ValueDefaultSelectedItems: =Split(First(varRecord).LocationType,";")
+                        ValueWidth: =cmp_LocationType_EI.Width - cmp_LocationType_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_RightPane_IE.Width
+                        Y: =330
+                        ZIndex: =4
+
+                    cmp_DutyLocation_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_DutyLocation_EI.KeyValue
+                        Height: =cnt_RightPane_IE.Height/15
+                        KeyValue: ="Duty Location"
+                        KeyWidth: =130
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultText: =First(varRecord).DutyLocation
+                        ValueType: =1
+                        ValueWidth: =cmp_DutyLocation_EI.Width - cmp_DutyLocation_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Visible: =If(First(varRecord).EmployeeType<>"Subcontractor",true,false)
+                        Width: =cnt_RightPane_IE.Width
+                        Y: =330
+                        ZIndex: =5
+
+                    cmp_Country_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_Country_EI.KeyValue
+                        Height: =cnt_RightPane_IE.Height/15
+                        KeyValue: ="Country"
+                        KeyWidth: =130
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultText: =First(varRecord).Country//First(Split(Office365Users.UserProfileV2(First(varRecord).CompanyEmail).officeLocation,",")).Value
+                        ValueType: |-
+                            =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_Country_EI.Width - cmp_Country_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_RightPane_IE.Width
+                        Y: =330
+                        ZIndex: =6
+
+                    cnt_RightPane_Row2_EI As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =cnt_RightPane_IE.Height/15
+                        LayoutMinHeight: =cnt_RightPane_IE.Height/15
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        ZIndex: =7
+
+                        cmp_State_EI As cmp_Card_Horiz:
+                            CardTooltip: =cmp_State_EI.KeyValue
+                            Height: |
+                                =cnt_RightPane_IE.Height/15
+                            KeyValue: ="State"
+                            KeyWidth: =130
+                            LayoutMinHeight: =640
+                            LayoutMinWidth: =640
+                            ValueDefaultText: =First(varRecord).State//Office365Users.UserProfileV2(First(varRecord).CompanyEmail).state
+                            ValueType: |-
+                                =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                            ValueWidth: =95
+                            Width: =cnt_RightPane_IE.Width*.5
+                            Y: =328
+
+                        cmp_City_EI As cmp_Card_Horiz:
+                            CardTooltip: =cmp_City_EI.KeyValue
+                            Height: =cnt_RightPane_IE.Height/15
+                            KeyValue: ="City"
+                            KeyWidth: =50
+                            LayoutMinHeight: =640
+                            LayoutMinWidth: =640
+                            ValueDefaultText: =First(varRecord).City//Office365Users.UserProfileV2(First(varRecord).CompanyEmail).city
+                            ValueType: |-
+                                =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                            ValueWidth: =cmp_City_EI.Width - cmp_City_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                            Width: =cnt_RightPane_IE.Width*.5
+                            X: =231
+                            Y: =328
+                            ZIndex: =2
+
+                    cnt_RightPane_Row3_EI As groupContainer.manualLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        LayoutMinHeight: =cnt_RightPane_IE.Height/15
+                        LayoutMinWidth: =250
+                        Visible: =If(varUserPermission="SPLJM"||varUserPermission="PMO",true,false)
+                        ZIndex: =9
+
+                        cmp_RequiresRelo_EI As cmp_Card_Horiz:
+                            CardTooltip: =cmp_RequiresRelo_EI.KeyValue
+                            ComboItems: =fx_drp.YesNo
+                            Height: =cnt_RightPane_IE.Height/15
+                            KeyValue: ="Requires Relocation"
+                            KeyWidth: =130
+                            ValueWidth: =97
+                            Visible: =true
+                            Width: =233
+
+                        btn_openrelo_EI As button:
+                            Height: =32
+                            OnSelect: |-
+                                =UpdateContext({conRelo:true})
+                            PaddingBottom: =3
+                            PaddingTop: =3
+                            Size: =11
+                            Text: ="Additional Information"
+                            Width: =200
+                            X: =250
+                            Y: =4
+                            ZIndex: =2
+
+            cnt_LeftPane_EI As groupContainer.verticalAutoLayoutContainer:
+                Fill: |-
+                    =ColorValue("#e6e6e2")//ThisTheme.Color3
+                Height: =617
+                LayoutDirection: =LayoutDirection.Vertical
+                LayoutMode: =LayoutMode.Auto
+                Width: =872
+                X: =10
+                Y: =10
+                ZIndex: =3
+
+                cnt_LeftPane_Row1_EI As groupContainer.manualLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    FillPortions: =0
+                    Height: =cmp_EmployeeType_EI.Height*3
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Width: =cnt_LeftPane_EI.Width
+                    ZIndex: =1
+
+                    cmp_EmployeeName_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_EmployeeName_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Employee Name"
+                        ValueDefaultText: |-
+                            =Concatenate(
+                                Trim(First(varRecord).EmployeeFirstName),
+                                " ",
+                                Trim(First(varRecord).EmployeeLastName)
+                            )
+                        ValueType: |-
+                            =If(First(varRecord).EmployeeType="Subcontractor",2,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_EmployeeName_EI.Width - cmp_EmployeeName_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width*.4
+
+                    cmp_ID_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_ID_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: |-
+                            ="ID#"
+                        KeyWidth: =40
+                        ValueDefaultText: =First(varRecord).EmployeeID
+                        ValueType: |-
+                            =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_ID_EI.Width - cmp_ID_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width*.15
+                        X: =348
+                        ZIndex: =2
+
+                    cmp_CompanyEmail_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_CompanyEmail_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Company Email"
+                        ValueDefaultText: =First(varRecord).CompanyEmail//Office365Users.UserProfileV2(First(varRecord).CompanyEmail).mail
+                        ValueType: |-
+                            =If(First(varRecord).EmployeeType="Subcontractor",2,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cnt_LeftPane_EI.Width*.55
+                        Width: =cnt_LeftPane_EI.Width*.55
+                        Y: =41
+                        ZIndex: =3
+
+                    cmp_AccountGroup_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_AccountGroup_EI.KeyValue
+                        Height: =41
+                        KeyValue: ="Account Group"
+                        KeyWidth: =120
+                        ValueDefaultText: =First(varRecord).AccountGroup//Office365Users.UserProfileV2(First(varRecord).CompanyEmail).department
+                        ValueType: |-
+                            =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_Primary_EI.Width - cmp_Primary_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Visible: =If(First(varRecord).EmployeeType<>"Subcontractor",true,false)
+                        Width: =394
+                        X: =478
+                        ZIndex: =4
+
+                    cmp_Primary_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_Primary_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: |-
+                            ="Primary #"
+                        KeyWidth: =If(First(varRecord).EmployeeType="Subcontractor",150,120)
+                        ValueDefaultText: =First(varRecord).PrimaryPhone
+                        ValueType: |-
+                            =If(First(varRecord).EmployeeType="Subcontractor",2,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_Primary_EI.Width - cmp_Primary_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width*.45
+                        X: =479
+                        Y: =41
+                        ZIndex: =5
+
+                    cmp_EmailNotification_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_EmailNotification_EI.KeyValue
+                        ComboItems: =fx_drp.EmailPreference
+                        Height: =41
+                        KeyValue: ="Email Notification Preference"
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).EmailNotificationPreference}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).EmailNotificationPreference}
+                        ValueDefaultText: =First(varRecord).EmailNotificationPreference
+                        ValueType: |-
+                            =If(First(varRecord).TaskOrderStatus="inactive",1,4) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cnt_LeftPane_EI.Width*.37
+                        Visible: =If(First(varRecord).EmployeeType<>"Subcontractor",true,false)
+                        Width: =478
+                        Y: =82
+                        ZIndex: =6
+
+                    cmp_LCAT_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_LCAT_EI.KeyValue
+                        Height: =41
+                        KeyValue: ="LCAT"
+                        KeyWidth: =If(First(varRecord).EmployeeType="Subcontractor",150,120)
+                        ValueDefaultText: =First(varRecord).LCAT
+                        ValueType: |-
+                            =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_LCAT_EI.Width - cmp_LCAT_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =If(First(varRecord).EmployeeType="Subcontractor",cnt_LeftPane_Row1_EI.Width,393)
+                        X: =If(First(varRecord).EmployeeType="Subcontractor",0,479)
+                        Y: =82
+                        ZIndex: =7
+
+                cnt_LeftPane_Row2_EI As groupContainer.manualLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    Fill: =Color.Transparent//ControlsTheme.CheckBoxBorderColor
+                    FillPortions: =0
+                    Height: =cmp_EmployeeType_EI.Height*3
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Width: =cnt_LeftPane_EI.Width
+                    ZIndex: =2
+
+                    lbl_DoYouHave_EI As label:
+                        Align: =Align.Center
+                        BorderThickness: =3
+                        Fill: =ControlsTheme.CheckBoxBorderColor
+                        FontWeight: =FontWeight.Semibold
+                        Height: =cnt_RightPane_IE.Height/15
+                        PaddingBottom: =2
+                        Text: ="Do you have the items below for this Task Order?"
+                        Width: =cnt_LeftPane_Row2_EI.Width
+                        ZIndex: =1
+
+                    cmp_BuildingBadge_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_BuildingBadge_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Building Badge"
+                        KeyWidth: =250
+                        ValueDefaultCheckbox: =If(First(varRecord).Training.BuildingBadge="Yes",true,false)
+                        ValueType: |-
+                            =6 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_BuildingBadge_EI.Width - cmp_BuildingBadge_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        Y: =41
+                        ZIndex: =2
+
+                    cmp_CAC_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_CAC_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Common Access Card (CAC)"
+                        KeyWidth: =250
+                        ValueDefaultCheckbox: =If(First(varRecord).Training.CAC="Yes",true,false)
+                        ValueType: |-
+                            =6 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_CAC_EI.Width - cmp_CAC_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        X: =291
+                        Y: =41
+                        ZIndex: =3
+
+                    cmp_SIPRToken_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_SIPRToken_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="SIPR Token"
+                        KeyWidth: =250
+                        ValueDefaultCheckbox: =If(First(varRecord).Training.SIPRToken="Yes",true,false)
+                        ValueType: |-
+                            =6 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_SIPRToken_EI.Width - cmp_SIPRToken_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        X: =582
+                        Y: =41
+                        ZIndex: =4
+
+                    cmp_BoozAllenLaptop_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_BoozAllenLaptop_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Booz Allen Laptop"
+                        KeyWidth: =250
+                        ValueDefaultCheckbox: =If(First(varRecord).Training.BoozAllenLaptop="Yes",true,false)
+                        ValueType: |-
+                            =6 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_BoozAllenLaptop_EI.Width - cmp_BoozAllenLaptop_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        Y: =82
+                        ZIndex: =5
+
+                    cmp_GovermentLaptop_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_GovermentLaptop_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Goverment Laptop"
+                        KeyWidth: =250
+                        ValueDefaultCheckbox: =If(First(varRecord).Training.GFELaptop="Yes",true,false)
+                        ValueType: |-
+                            =6 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_GovermentLaptop_EI.Width - cmp_GovermentLaptop_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        X: =291
+                        Y: =82
+                        ZIndex: =6
+
+                lbl_NDA_EI As label:
+                    Align: =Align.Center
+                    BorderThickness: =3
+                    Fill: =Color.Transparent//ControlsTheme.CheckBoxBorderColor
+                    FontWeight: =FontWeight.Semibold
+                    Height: =cnt_RightPane_IE.Height/15
+                    Text: =
+                    Width: =cnt_LeftPane_Row2_EI.Width
+                    ZIndex: =5
+
+                cnt_LeftPane_Row3_EI As groupContainer.manualLayoutContainer:
+                    AlignInContainer: =AlignInContainer.SetByContainer
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    Width: =cnt_LeftPane_EI.Width
+                    ZIndex: =6
+
+                    cmp_SelectTDL_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_SelectTDL_EI.KeyValue
+                        ComboDisplayFields: =["TDLNumber"]
+                        ComboItems: |-
+                            =Sort(Filter(
+                                colTDL,
+                                IsBlank(
+                                    LookUp(
+                                        First(varRecord).TDL,
+                                        TDLNumber = colTDL[@TDLNumber]
+                                    )
+                                )
+                            ),TDLNumber,SortOrder.Ascending)
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="Select and add TDL"
+                        ValueDefaultText: =
+                        ValueWidth: =cmp_SelectTDL_EI.Width - cmp_SelectTDL_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =699
+                        ZIndex: =2
+
+                    lbl_galInfo_EI As label:
+                        BorderThickness: =3
+                        Fill: =ControlsTheme.CheckBoxBorderColor
+                        FontWeight: =FontWeight.Semibold
+                        Height: =cnt_RightPane_IE.Height/15
+                        PaddingBottom: =2
+                        Size: =11
+                        Text: |-
+                            ="             Primary                                 Organization                                                                TDL# "
+                        Width: =739
+                        Y: =41
+                        ZIndex: =4
+
+                    cmp_JL_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_JL_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="JL"
+                        KeyWidth: =35
+                        ValueDefaultPeople: |
+                            =/*Table(
+                                ShowColumns(
+                                    Office365Users.MyProfile(),
+                                    City,
+                                    CompanyName,
+                                    DisplayName,
+                                    GivenName,
+                                    Id,
+                                    Mail,
+                                    OfficeLocation,
+                                    Surname,
+                                    TelephoneNumber,
+                                    MailNickname
+                                )
+                            )*/
+                        ValueDefaultPerson: |-
+                            =//Office365Users.MyProfile()
+                            First(varRecord).JobLeader
+                        ValueType: |-
+                            =If(First(varRecord).TaskOrderStatus="inactive",1,7) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_JL_EI.Width - cmp_JL_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        Y: =288
+                        ZIndex: =6
+
+                    cmp_SPL_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_SPL_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="SPL"
+                        KeyWidth: =35
+                        ValueDefaultText: =LookUp(colTDL,TDLNumber=First(varRecord).PrimaryTDL,SPL.DisplayName)
+                        ValueType: |-
+                            =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_SPL_EI.Width - cmp_SPL_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        X: =291
+                        Y: =288
+                        ZIndex: =7
+
+                    cmp_JM_EI As cmp_Card_Horiz:
+                        CardTooltip: =cmp_JM_EI.KeyValue
+                        Height: =cmp_EmployeeType_EI.Height
+                        KeyValue: ="JM"
+                        KeyWidth: =35
+                        ValueDefaultText: =LookUp(colTDL,TDLNumber=First(varRecord).PrimaryTDL,JM.DisplayName)
+                        ValueType: |-
+                            =1 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_JM_EI.Width - cmp_JM_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_LeftPane_EI.Width/3
+                        X: =581
+                        Y: =288
+                        ZIndex: =8
+
+                    gal_TDLs_EI As gallery.galleryVertical:
+                        DelayItemLoading: =true
+                        Fill: |-
+                            =ColorValue("#e6e6e2")//ControlsTheme.CheckBoxBorderColor
+                        Height: =206
+                        Items: =First(varRecord).TDL
+                        Layout: =Layout.Vertical
+                        LoadingSpinner: =LoadingSpinner.Data
+                        TemplateSize: =39
+                        Width: =871
+                        X: =1
+                        Y: =82
+                        ZIndex: =9
+
+                        lbl_gal_TDL_org_EI As label:
+                            Align: =Align.Center
+                            Fill: =ControlsTheme.InputFill
+                            Height: =39
+                            OnSelect: =Select(Parent)
+                            Size: =11
+                            Text: |-
+                                =ThisItem.Org
+                                //LookUp(colTDL,TDLNumber=ThisItem.TDLNumber).Organization
+                                //LookUp(colTDL,TDLNumber=ThisItem.TDLNumber).Organization.Value
+                            Width: =270
+                            X: =144
+                            ZIndex: =1
+
+                        Icn_gal_TDL_number_EI As label:
+                            Align: =Align.Center
+                            Fill: =ControlsTheme.InputFill
+                            Height: =39
+                            OnSelect: =Select(Parent)
+                            Size: =11
+                            Text: =ThisItem.TDLNumber
+                            Width: =270
+                            X: =450
+                            ZIndex: =2
+
+                        chk_gal_TDL_EI As checkbox:
+                            Default: =ThisItem.TDLNumber=varPrimaryTDL//ThisItem.Primary="Yes"
+                            Fill: =Color.Transparent
+                            Height: =39
+                            OnCheck: =Set(varPrimaryTDL,ThisItem.TDLNumber);
+                            OnSelect: =Select(Parent)
+                            OnUncheck: =Set(varPrimaryTDL,"");
+                            Text: =
+                            Width: =40
+                            X: =60
+                            ZIndex: =3
+
+                        Icn_gal_TDL_hours_EI As label:
+                            Align: =Align.Center
+                            Fill: =ControlsTheme.InputFill
+                            Height: =39
+                            OnSelect: =Select(Parent)
+                            Size: =11
+                            Text: =Text(ThisItem.Hours)
+                            Width: =100
+                            X: =751
+                            ZIndex: =4
+
+                        Icn_gal_TDL_trash_EI As icon.Trash:
+                            Color: =Color.Black//ControlsTheme.ButtonFill
+                            Height: =39
+                            Icon: =Icon.Trash
+                            OnSelect: |
+                                =ClearCollect(
+                                    _TDLs,
+                                    First(varRecord).TDL
+                                );
+                                RemoveIf(
+                                    _TDLs,
+                                        TDLNumber = ThisItem.TDLNumber
+                                );
+                                Patch(
+                                    varRecord,
+                                    First(varRecord),
+                                    {TDL: Sort(_TDLs,TDLNumber,SortOrder.Ascending)}
+                                );
+                            Width: =40
+                            ZIndex: =5
+
+                    lbl_hours_EI As label:
+                        BorderThickness: =3
+                        Fill: =ControlsTheme.CheckBoxBorderColor
+                        FontWeight: =FontWeight.Semibold
+                        Height: =cnt_RightPane_IE.Height/15
+                        PaddingBottom: =2
+                        Size: =11
+                        Text: ="             Hours"
+                        Width: =145
+                        X: =727
+                        Y: =41
+                        ZIndex: =10
+
+                    btn_addTDL_EI As button:
+                        Height: =32
+                        OnSelect: |-
+                            =ClearCollect(
+                                _TDLs,
+                                First(varRecord).TDL,
+                                {
+                                    TDLNumber: cmp_SelectTDL_EI.ValueText,
+                                    Org: LookUp(
+                                        colTDL,
+                                        TDLNumber = cmp_SelectTDL_EI.ValueText
+                                    ).Organization
+                                }
+                            );
+                            Patch(
+                                varRecord,
+                                First(varRecord),
+                                {TDL: Sort(_TDLs,TDLNumber,SortOrder.Ascending)}
+                            );
+                            Reset(cmp_SelectTDL_EI);
+                        Size: =13
+                        Text: ="Add TDL"
+                        Width: =140
+                        X: =716
+                        Y: =4
+                        ZIndex: =11
+
+        cnt_InnerNavigation_EI As groupContainer.horizontalAutoLayoutContainer:
+            Height: =TemplateSizes.InnerNavigationHeight
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Self.X
+            ZIndex: =2
+
+            cmp_InnerNavigation_EI As cmp_InnerNavigation:
+                ItemsList: |
+                    =////////////////////////////////////////////////////////////////////////
+                    // {
+                    //        ID: 1, (Number)
+                    //        Name: "Button1", (Text)
+                    //        Label: "Button 1", (Text)
+                    //        Action: "Display", (Text, see below for options)
+                    //        Screen: App.ActiveScreen, (Screen control)
+                    //        Tooltip: "Tooltip", (Text)
+                    //        Optional:
+                    //        Image: SampleImage, (Image)
+                    //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                    //        Color: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        SelectedColor: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        FillColor: ControlsTheme.NavButtonFill, (Color, if going to be different from template)
+                    //        SelectedFillColor: ControlsTheme.NavButtonSelectedFill (Color, if going to be different from template)
+                    //    }
+                    // Action:
+                    // "Display": Sets the output property "DisplayName" to the "Name" property,
+                    // "Navigate": Navigates to the "Screen" screen,
+                    // "Launch": Launches the "LaunchURL" in a new tab
+                    // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                    ////////////////////////////////////////////////////////////////////////
+                    Table(
+                        {
+                            ID: 1,
+                            Name: "Button1",
+                            Label: "Employee Information",
+                            Action: "Display",
+                            Screen: App.ActiveScreen,
+                            Tooltip: "Tooltip",
+                            LaunchURL: "",
+                            Color: ControlsTheme.ButtonColor,
+                            SelectedColor: ControlsTheme.ButtonColor,
+                            FillColor: ControlsTheme.NavButtonFill,
+                            SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+                        },
+                        {
+                            ID: 2,
+                            Name: "Required Training",
+                            Label: "Required Training",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        },
+                        {
+                            ID: 3,
+                            Name: "Access",
+                            Label: "Access",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        },
+                        {
+                            ID: 4,
+                            Name: "Employee Experience",
+                            Label: "Employee Experience",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        }
+                    )
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =2
+
+    cnt_Header_IE As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =ColorFade(Self.Fill,-.4)//Color.Black
+        BorderThickness: =5
+        Fill: =Color.Transparent//ThisTheme.Color3
+        Height: =cmp_Menu_Horizontal_OP.Height//TemplateSizes.HeaderHeight
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =5
+
+        cmp_Header_MS_IE As cmp_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+
+        cmp_Menu_Horizontal_IE As cmp_Menu_Horizontal:
+            ControlsTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                //
+                ControlsTheme
+            FontSizes: |-
+                =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                FontSizes
+            ItemsList: |-
+                =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // Required Format
+                ////////////////////////////////////
+                // {
+                //        ID: 1, (Number)
+                //        Name: "Home", (Text)
+                //        ShowName: true, (Boolean)
+                //        Tooltip: "Click here to return to the Home Screen", (Text)
+                //        Icon: Icon.Home, (Icon)
+                //        ShowIcon: true, (Boolean)
+                //        Action: "Navigate", (Text, see below for values)
+                //        Screen: App.ActiveScreen, (Screen control)
+                //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                //        SubmenuList: [{}] (*optional - Record format includes Name, Tooltip, Action, Screen, LaunchURL)
+                // }
+                // Action:
+                // "Display": Sets the output property "DisplayName" to the "Name" property,
+                // "Navigate": Navigates to the "Screen" screen,
+                // "Launch": Launches the "LaunchURL" in a new tab
+                // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                Table(
+                    {
+                        ID: 1,
+                        Name: "Home",
+                        ShowName: true,
+                        Tooltip: "Click here to return to the Home Screen",
+                        Icon: Icon.Home,
+                        ShowIcon: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    },
+                    {
+                        ID: 2,
+                        Name: "Facilitator Information",
+                        ShowName: true,
+                        Tooltip: "Click here to create a New Item",
+                        Icon: Icon.Add,
+                        ShowIcon: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        SubmenuList: [
+                            {
+                                Name: "Update Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Add New Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Open Dashboard (External)",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            }
+                
+                        ]
+                    },
+                    {
+                        ID: 3,
+                        Name: "Update Facilitator",
+                        ShowName: true,
+                        Tooltip: "Click here to access the App Settings",
+                        Icon: Icon.Settings,
+                        ShowIcon: false,
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    }
+                )
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            SubmenuItemsHeightCalc: =cmp_Menu_Horizontal_IE.SubmenuItemsHeight // DO NOT CHANGE
+            SubmenuItemsToDisplay: =cmp_Menu_Horizontal_IE.SubmenuItemsDisplayed // DO NOT CHANGE
+            ThisTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                // ie below I have only passed in the values used by my component
+                ThisTheme
+            X: =cmp_Header_MS_IE.X + cmp_Header_MS_IE.Width
+            ZIndex: =2
+
+    lbl_PopupScreen_EI As label:
+        Fill: =RGBA(226,226,226,.75)
+        Height: =768
+        Text: =
+        Visible: =conRelo=true||varSearchRecord=true
+        Width: =1366
+        ZIndex: =15
+
+    cnt_relopopup_EI As groupContainer.manualLayoutContainer:
+        Height: =364
+        RadiusBottomLeft: =5
+        RadiusBottomRight: =5
+        RadiusTopLeft: =5
+        RadiusTopRight: =5
+        Visible: =conRelo
+        Width: =794
+        X: =286
+        Y: =109
+        ZIndex: =20
+
+        cmp_relofirst_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_relofirst_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="First Name"
+            ValueDefaultText: =First(varRecord).EmployeeFirstName
+            ValueWidth: =cmp_relofirst_EI.Width - cmp_relofirst_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width/2
+
+        cmp_reloonboardingdate_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_reloonboardingdate_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Onboarding Date"
+            ValueDefaultText: =First(varRecord).TaskOrderStartDate
+            ValueWidth: =cmp_reloonboardingdate_EI.Width - cmp_reloonboardingdate_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width/2
+            X: =397
+            Y: =41
+            ZIndex: =2
+
+        cmp_reloprimaryTDL_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_reloprimaryTDL_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Primary TDL"
+            ValueDefaultText: =LookUp(colTDL,TDLNumber=First(varRecord).PrimaryTDL,Title)
+            ValueWidth: =cmp_reloprimaryTDL_EI.Width - cmp_reloprimaryTDL_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width/2
+            Y: =41
+            ZIndex: =3
+
+        cmp_relofrom_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_relofrom_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Moving FROM Location"
+            KeyWidth: =200
+            ValueDefaultText: =First(varRecord).RelocationInfo.FromLocation
+            ValueType: |-
+                =2 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            ValueWidth: =cmp_relofrom_EI.Width - cmp_relofrom_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width
+            Y: =82
+            ZIndex: =4
+
+        cmp_relolast_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_relolast_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Last Name"
+            ValueDefaultText: =First(varRecord).EmployeeLastName
+            ValueWidth: =cmp_relolast_EI.Width - cmp_relolast_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width/2
+            X: =397
+            ZIndex: =5
+
+        cmp_relodate_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_relodate_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Relocation Date"
+            KeyWidth: =200
+            ValueDefaultDate: =First(varRecord).RelocationInfo.RelocationDate
+            ValueDefaultText: =
+            ValueType: |-
+                =5 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            ValueWidth: =cmp_relodate_EI.Width - cmp_relodate_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width/2
+            X: =1
+            Y: =123
+            ZIndex: =6
+
+        cmp_relofamilysize_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_relofamilysize_EI.KeyValue
+            ComboItems: =fx_drp.FamilySize
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Family Size"
+            KeyWidth: =200
+            ValueDefaultSelectedItems: |-
+                ={Value:First(varRecord).RelocationInfo.FamilySize}
+            ValueDefaultText: =First(varRecord).RelocationInfo.FamilySize
+            ValueWidth: =cmp_relofamilysize_EI.Width - cmp_relofamilysize_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width/2
+            X: =397
+            Y: =123
+            ZIndex: =7
+
+        btn_relocancel_EI As button:
+            OnSelect: |-
+                =UpdateContext({conRelo:false})
+            Size: =11
+            Text: ="Cancel"
+            Width: =140
+            X: =129
+            Y: =307
+            ZIndex: =8
+
+        btn_relosubmit_EI As button:
+            OnSelect: |-
+                =UpdateContext({conRelo:false})
+            Size: =11
+            Text: ="Save & Submit Support Request"
+            Width: =139
+            X: =526
+            Y: =307
+            ZIndex: =9
+
+        cmp_relofamilyaccompany_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_relofamilyaccompany_EI.KeyValue
+            ComboItems: =fx_drp.YesNo
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Will your family accompany you on your selected relocation date?"
+            KeyWidth: =597
+            ValueDefaultSelectedItems: |-
+                ={Value:First(varRecord).RelocationInfo.FamilyAccompanyOnRelocationDate}
+            ValueDefaultText: =
+            ValueWidth: =cmp_relofamilyaccompany_EI.Width - cmp_relofamilyaccompany_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width
+            Y: =164
+            ZIndex: =10
+
+        cmp_reloPlannedDepart_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_reloPlannedDepart_EI.KeyValue
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="If No, please select the date of your family’s planned departure "
+            KeyWidth: =597
+            ValueDefaultDate: =First(varRecord).RelocationInfo.FamilyAccompanyOnRelocationDate
+            ValueDefaultSelectedItems: |-
+                ={Value:First(varRecord).RelocationInfo.FamilyAccompanyOnRelocationDate}
+            ValueDefaultText: =
+            ValueType: |-
+                =5 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            ValueWidth: =cmp_reloPlannedDepart_EI.Width - cmp_reloPlannedDepart_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width
+            Y: =205
+            ZIndex: =11
+
+        cmp_reloAggreement_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_reloAggreement_EI.KeyValue
+            ComboItems: =fx_drp.YesNo
+            Height: =cmp_EmployeeType_EI.Height
+            KeyValue: ="Assignment Agreement Status  "
+            KeyWidth: =597
+            ValueDefaultSelectedItems: |-
+                ={Value:First(varRecord).RelocationInfo.AssignmentAgreementStatus}
+            ValueDefaultText: =
+            ValueWidth: =cmp_reloAggreement_EI.Width - cmp_reloAggreement_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Width: =cnt_relopopup_EI.Width
+            Y: =246
+            ZIndex: =12
+
+    cnt_RecordFilterPopup_EI As groupContainer.manualLayoutContainer:
+        Height: =768
+        Visible: =varSearchRecord=true
+        ZIndex: =22
+
+        cmp_TDLFilter_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_TDLFilter_EI.KeyValue
+            ComboDisplayFields: =//colTDLtemp
+            ComboItems: =varRecord
+            Height: =41
+            KeyValue: ="TDL/TDP"
+            ValueWidth: =cmp_TDLFilter_EI.Width - cmp_TDLFilter_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Y: =41
+
+        cmp_FilterEmployeeType_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_FilterEmployeeType_EI.KeyValue
+            ComboItems: =fx_drp.EmployeeType
+            Height: =41
+            KeyValue: ="Employee Type"
+            ValueWidth: =cmp_FilterEmployeeType_EI.Width - cmp_FilterEmployeeType_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Y: =82
+            ZIndex: =2
+
+        cmp_SearchRecords_EI As cmp_Card_Horiz:
+            CardTooltip: =cmp_SearchRecords_EI.KeyValue
+            Height: =41
+            KeyValue: ="Search"
+            ValueType: |-
+                =2 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+            ValueWidth: =cmp_SearchRecords_EI.Width - cmp_SearchRecords_EI.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+            Y: =121
+            ZIndex: =3
+
+        cnt_FilterResults_EI As groupContainer.verticalAutoLayoutContainer:
+            Height: =525
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMode: =LayoutMode.Auto
+            Y: =162
+            ZIndex: =4
+
+            gal_FilteredRecordResults_EI As gallery.galleryVertical:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                DelayItemLoading: =true
+                Height: =114
+                Items: =varRecord
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =1
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplateSize: =32
+                Width: =cnt_FilterResults_EI.Width
+                ZIndex: =2
+
+                lbl_EmployeeNameFilterResults_IE As label:
+                    Height: =32
+                    OnSelect: =Select(Parent)
+                    Text: =ThisItem.EmployeeLastName&", "&ThisItem.EmployeeFirstName
+                    Width: =490
+                    ZIndex: =1
+
+        lbl_searchrecord_EI As label:
+            BorderThickness: =2
+            FontWeight: =FontWeight.Semibold
+            Height: =41
+            Text: ="Filter Records"
+            Width: =500
+            ZIndex: =5
+
+    Button1 As button:
+        OnSelect: =Set(varSearchRecord,true)
+        Text: ="Search User"
+        X: =330
+        Y: =20
+        ZIndex: =23
+
+    Icon1 As icon.Cancel:
+        Color: =Color.White
+        Height: =38
+        Icon: =Icon.Cancel
+        OnSelect: =Set(varSearchRecord,false)
+        Visible: =varSearchRecord=true
+        Width: =38
+        X: =460
+        ZIndex: =24
+
+    TDLcol As button:
+        OnSelect: |-
+            =
+            ClearCollect(colTDLtemp,RenameColumns('TDL-Assignment','TDL/TDP Title',Value,'TDL/TDP Number',TDLNumber))
+        Text: ="TDLcol"
+        X: =460
+        Y: =20
+        ZIndex: =25
+
+    cmp_Company As cmp_Card_Horiz:
+        CardTooltip: =cmp_Company.KeyValue
+        KeyValue: ="Company"
+        ValueDefaultText: =If(cmp_EmployeeType_EI.ValueText="Booz Allen","Booz Allen",First(varRecord).Company)
+        ValueType: |-
+            =2 //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+        ValueWidth: =cmp_Company.Width - cmp_Company.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+        Visible: =false
+        ZIndex: =26
+
+    btn_SaveRecord_1 As button:
+        OnSelect: =Set(varPatchEditedRecord,true);
+        Text: ="SAVE RECORD"
+        X: =10
+        Y: =670
+        ZIndex: =27
+

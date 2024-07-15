@@ -1,0 +1,639 @@
+OutProcessing As screen:
+    OnVisible: |-
+        =/*
+        If(
+            tgl_WriteMetrics.Value,
+            cmp_AccessMetrics_LS.WriteAccessMetric(accessMetrics)
+        );
+        Set(
+            actionSelected,
+            ""
+        );
+        */
+
+    cnt_ContentArea_OP As groupContainer.manualLayoutContainer:
+        Fill: =ControlsTheme.ScreenBackground
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =TemplateSizes.HeaderHeight
+        ZIndex: =2
+
+        cnt_MainContent_OP As groupContainer.manualLayoutContainer:
+            Fill: =ThisTheme.BackgroundColor
+            Height: =Parent.Height - Self.Y
+            Width: =Parent.Width
+            Y: =TemplateSizes.InnerNavigationHeight
+            ZIndex: =1
+
+            cnt_MainHeader_OP As groupContainer.horizontalAutoLayoutContainer:
+                Height: =cmp_EmployeeName_OP.Height
+                LayoutMode: =LayoutMode.Auto
+                Width: =1366
+                ZIndex: =1
+
+                cmp_EmployeeName_OP As cmp_Card_Horiz:
+                    CardTooltip: =cmp_EmployeeName_OP.KeyValue
+                    KeyValue: ="Employee Name"
+                    KeyWidth: =190
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ValueDefaultText: =First(varRecord).EmployeeFirstName&" "&First(varRecord).EmployeeLastName
+                    ValueWidth: =cmp_EmployeeName_OP.Width - cmp_EmployeeName_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_MainHeader_OP.Width/3.5
+
+                cmp_TaskOrderStatus_op As cmp_Card_Horiz:
+                    CardTooltip: =cmp_TaskOrderStatus_op.KeyValue
+                    KeyValue: ="Task Order Status"
+                    KeyWidth: =190
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ValueDefaultText: =First(varRecord).TaskOrderStatus
+                    ValueWidth: =cmp_TaskOrderStatus_op.Width - cmp_TaskOrderStatus_op.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_MainHeader_OP.Width/3.5
+                    ZIndex: =2
+
+                cmp_OutProcessingComplete_OP As cmp_Card_Horiz:
+                    CardTooltip: =cmp_OutProcessingComplete_OP.KeyValue
+                    KeyValue: ="Out-Processing Complete"
+                    KeyWidth: =190
+                    LayoutMinHeight: =640
+                    LayoutMinWidth: =640
+                    ValueDefaultText: =First(varRecord).OutProcessing.OutProcessingCompleted
+                    ValueWidth: =cmp_OutProcessingComplete_OP.Width - cmp_OutProcessingComplete_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_MainHeader_OP.Width/3.5
+                    ZIndex: =3
+
+                Button2 As button:
+                    Fill: =RGBA(101,104,89,1)
+                    Height: =50
+                    Text: ="Save"
+                    Width: =194
+                    ZIndex: =4
+
+            lbl_SPLorJMOutProcessingActions_OP As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                PaddingBottom: =2
+                PaddingTop: =8
+                Text: ="SPL or JM Out-Processing Actions"
+                Width: =cnt_MainContent_OP.Width
+                Y: =50
+                ZIndex: =2
+
+            cnt_MainCenter_OP As groupContainer.horizontalAutoLayoutContainer:
+                Height: =301
+                LayoutMode: =LayoutMode.Auto
+                Width: =cnt_MainContent_OP.Width
+                Y: =100
+                ZIndex: =3
+
+                cnt_MainCenterLeft_OP As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =cmp_OutProcessingStatus_OP.Height*6
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =cnt_MainCenter_OP.Width/2
+                    ZIndex: =1
+
+                    cmp_OutProcessingStatus_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_OutProcessingStatus_OP.KeyValue
+                        ComboItems: =fx_drp.OutProcessingStatus
+                        KeyValue: ="Out- Processing Status"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.OutProcessingStatus}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.OutProcessingStatus}
+                        ValueDefaultText: =First(varRecord).OutProcessing.OutProcessingStatus
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_OutProcessingStatus_OP.Width - cmp_OutProcessingStatus_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenterLeft_OP.Width
+
+                    cmp_CACStatus_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_CACStatus_OP.KeyValue
+                        ComboItems: =fx_drp.CACBadgeTokenStatus
+                        KeyValue: ="CAC Status"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.CACStatus}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.CACStatus}
+                        ValueDefaultText: =First(varRecord).OutProcessing.CACStatus
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_CACStatus_OP.Width - cmp_CACStatus_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenterLeft_OP.Width
+                        ZIndex: =2
+
+                    cmp_BuidingBadgeStatus_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_BuidingBadgeStatus_OP.KeyValue
+                        ComboItems: =fx_drp.CACBadgeTokenStatus
+                        KeyValue: ="Building Badge Status"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.BuildingBadgeStatus}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.BuildingBadgeStatus}
+                        ValueDefaultText: =First(varRecord).OutProcessing.BuildingBadgeStatus
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_BuidingBadgeStatus_OP.Width - cmp_BuidingBadgeStatus_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenterLeft_OP.Width
+                        ZIndex: =3
+
+                    cmp_SIPRTokenStatus_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_SIPRTokenStatus_OP.KeyValue
+                        ComboItems: =fx_drp.CACBadgeTokenStatus
+                        KeyValue: ="SIPR Token Status"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.SIPRTokenStatus}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.SIPRTokenStatus}
+                        ValueDefaultText: =First(varRecord).OutProcessing.SIPRTokenStatus
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_SIPRTokenStatus_OP.Width - cmp_SIPRTokenStatus_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenterLeft_OP.Width
+                        ZIndex: =4
+
+                    cmp_HandRecieptCleared_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_HandRecieptCleared_OP.KeyValue
+                        ComboItems: =fx_drp.HandReceiptsCleared
+                        KeyValue: ="Hand Reciept Cleared"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.HandReceiptsCleared}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.HandReceiptsCleared}
+                        ValueDefaultText: =First(varRecord).OutProcessing.HandReceiptsCleared
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_HandRecieptCleared_OP.Width - cmp_HandRecieptCleared_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenterLeft_OP.Width
+                        ZIndex: =5
+
+                    cmp_BIXCloseOut_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_BIXCloseOut_OP.KeyValue
+                        ComboItems: =fx_drp.HandReceiptsCleared
+                        KeyValue: ="BIX Closed Out (TARs/RIPs)"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.BIXClosedOut}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.BIXClosedOut}
+                        ValueDefaultText: =First(varRecord).OutProcessing.BIXClosedOut
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_BIXCloseOut_OP.Width - cmp_BIXCloseOut_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenterLeft_OP.Width
+                        ZIndex: =6
+
+                cntMainCenterRight_OP As groupContainer.verticalAutoLayoutContainer:
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    ZIndex: =2
+
+                    cmp_FinalOutProcessingDate_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_FinalOutProcessingDate_OP.KeyValue
+                        KeyValue: ="Final Out-Processing Date"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultDate: =First(varRecord).OutProcessing.OutProcessingDate
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",5,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_FinalOutProcessingDate_OP.Width - cmp_FinalOutProcessingDate_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenter_OP.Width/2
+
+                    cmp_RequiresRepartration_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_RequiresRepartration_OP.KeyValue
+                        ComboItems: =fx_drp.YesNo
+                        KeyValue: ="Requires Repatriation for Offboarding/Transfer"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).RequiresRelocation}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).RequiresRelocation}
+                        ValueDefaultText: =First(varRecord).RequiresRelocation
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_RequiresRepartration_OP.Width - cmp_RequiresRepartration_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenter_OP.Width/2
+                        ZIndex: =2
+
+                    cmp_AirfareExpensesCleared_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_AirfareExpensesCleared_OP.KeyValue
+                        ComboItems: =fx_drp.HandReceiptsCleared
+                        KeyValue: ="Airfare Expences Cleared"
+                        KeyWidth: =350
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OutProcessing.AirfareExpensesCleared}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OutProcessing.AirfareExpensesCleared}
+                        ValueDefaultText: =First(varRecord).OutProcessing.AirfareExpensesCleared
+                        ValueType: |-
+                            =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_AirfareExpensesCleared_OP.Width - cmp_AirfareExpensesCleared_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainCenter_OP.Width/2
+                        ZIndex: =3
+
+            lbl_OutProcessingActions_OP As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                PaddingBottom: =2
+                PaddingTop: =8
+                Text: ="PMO Out-Processing Actions"
+                Width: =cnt_MainCenter_OP.Width
+                Y: =401
+                ZIndex: =4
+
+            cnt_MainBottom_OP As groupContainer.horizontalAutoLayoutContainer:
+                Height: =187
+                LayoutMode: =LayoutMode.Auto
+                Width: =1366
+                Y: =451
+                ZIndex: =5
+
+                cnt_MainBottomLeft_OP As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =cnt_MainBottom_OP.Width/3
+                    ZIndex: =2
+
+                    lbl_BIX_OP As label:
+                        Align: =Align.Center
+                        FontWeight: =FontWeight.Semibold
+                        Height: =36
+                        PaddingBottom: =2
+                        PaddingTop: =6
+                        Text: ="BIX"
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =1
+
+                    cmp_BIXProjectRole_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_BIXProjectRole_OP.KeyValue
+                        ComboItems: =fx_drp.BIXProjectRole
+                        KeyValue: ="BIX  Project Role"
+                        KeyWidth: =204
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).BIXProjectRole}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).BIXProjectRole}
+                        ValueDefaultText: =First(varRecord).BIXProjectRole
+                        ValueType: |-
+                            =If(varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_BIXProjectRole_OP.Width - cmp_BIXProjectRole_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =2
+
+                    cmp_AccountStatus_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_AccountStatus_OP.KeyValue
+                        ComboItems: =fx_drp.A365Status
+                        KeyValue: ="Account Status"
+                        KeyWidth: =204
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).A365Status}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).A365Status}
+                        ValueDefaultText: =First(varRecord).A365Status
+                        ValueType: |-
+                            =If(varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_AccountStatus_OP.Width - cmp_AccountStatus_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =3
+
+                    cmp_OktaStatus_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_OktaStatus_OP.KeyValue
+                        ComboItems: =fx_drp.OktaStatus
+                        KeyValue: ="Okta Status"
+                        KeyWidth: =204
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).OktaStatus}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).OktaStatus}
+                        ValueDefaultText: =First(varRecord).OktaStatus
+                        ValueType: |-
+                            =If(varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_OktaStatus_OP.Width - cmp_OktaStatus_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainContent_OP.Width/3
+                        ZIndex: =4
+
+                cnt_MainBottomRight_OP As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =cnt_MainBottom_OP.Width/3
+                    ZIndex: =3
+
+                    lbl_ETOMP_OP As label:
+                        Align: =Align.Center
+                        FontWeight: =FontWeight.Semibold
+                        Height: =36
+                        PaddingBottom: =2
+                        PaddingTop: =6
+                        Text: ="ETOMP"
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =1
+
+                    cmp_RemovedfromET2RCDistro_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_RemovedfromET2RCDistro_OP.KeyValue
+                        ComboItems: =fx_drp.YesNo
+                        KeyValue: ="Removed from ET2RC Distro"
+                        KeyWidth: =204
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).ET2RCDistro}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).ET2RCDistro}
+                        ValueDefaultText: =First(varRecord).ET2RCDistro
+                        ValueType: |-
+                            =If(varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_RemovedfromET2RCDistro_OP.Width - cmp_RemovedfromET2RCDistro_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =2
+
+                Container14 As groupContainer.verticalAutoLayoutContainer:
+                    FillPortions: =0
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutMinHeight: =100
+                    LayoutMinWidth: =250
+                    LayoutMode: =LayoutMode.Auto
+                    Width: =cnt_MainBottom_OP.Width/3
+                    ZIndex: =4
+
+                    lbl_EARTHATLAS_OP As label:
+                        Align: =Align.Center
+                        FontWeight: =FontWeight.Semibold
+                        Height: =36
+                        PaddingBottom: =2
+                        PaddingTop: =6
+                        Text: ="EARTH & ATLAS"
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =1
+
+                    cmp_A365Status_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_A365Status_OP.KeyValue
+                        ComboItems: =fx_drp.A365Status
+                        KeyValue: ="A365 Status"
+                        KeyWidth: =204
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultSelected: |-
+                            ={Value:First(varRecord).A365Status}
+                        ValueDefaultSelectedItems: |-
+                            ={Value:First(varRecord).A365Status}
+                        ValueDefaultText: =First(varRecord).A365Status
+                        ValueType: |-
+                            =If(varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_A365Status_OP.Width - cmp_A365Status_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =2
+
+                    cmp_DateA365StatusChanged_OP As cmp_Card_Horiz:
+                        CardTooltip: =cmp_DateA365StatusChanged_OP.KeyValue
+                        KeyValue: ="Date A365 Status Changed"
+                        KeyWidth: =204
+                        LayoutMinHeight: =640
+                        LayoutMinWidth: =640
+                        ValueDefaultDate: =First(varRecord).A365DateChange
+                        ValueDefaultText: =First(varRecord).A365DateChange
+                        ValueType: |-
+                            =If(varUserPermission="PMO",5,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                        ValueWidth: =cmp_DateA365StatusChanged_OP.Width - cmp_DateA365StatusChanged_OP.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                        Width: =cnt_MainBottom_OP.Width/3
+                        ZIndex: =3
+
+        cnt_InnerNavigation_OP As groupContainer.horizontalAutoLayoutContainer:
+            Height: =TemplateSizes.InnerNavigationHeight
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Self.X
+            ZIndex: =2
+
+            cmp_InnerNavigation_OP As cmp_InnerNavigation:
+                ItemsList: |
+                    =////////////////////////////////////////////////////////////////////////
+                    // {
+                    //        ID: 1, (Number)
+                    //        Name: "Button1", (Text)
+                    //        Label: "Button 1", (Text)
+                    //        Action: "Display", (Text, see below for options)
+                    //        Screen: App.ActiveScreen, (Screen control)
+                    //        Tooltip: "Tooltip", (Text)
+                    //        Optional:
+                    //        Image: SampleImage, (Image)
+                    //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                    //        Color: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        SelectedColor: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        FillColor: ControlsTheme.NavButtonFill, (Color, if going to be different from template)
+                    //        SelectedFillColor: ControlsTheme.NavButtonSelectedFill (Color, if going to be different from template)
+                    //    }
+                    // Action:
+                    // "Display": Sets the output property "DisplayName" to the "Name" property,
+                    // "Navigate": Navigates to the "Screen" screen,
+                    // "Launch": Launches the "LaunchURL" in a new tab
+                    // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                    ////////////////////////////////////////////////////////////////////////
+                    Table(
+                        {
+                            ID: 1,
+                            Name: "Button1",
+                            Label: "Button 1",
+                            Action: "Display",
+                            Screen: App.ActiveScreen,
+                            Tooltip: "Tooltip",
+                            LaunchURL: "",
+                            Color: ControlsTheme.ButtonColor,
+                            SelectedColor: ControlsTheme.ButtonColor,
+                            FillColor: ControlsTheme.NavButtonFill,
+                            SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+                        },
+                        {
+                            ID: 2,
+                            Name: "Button2",
+                            Label: "Button 2",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        }
+                    )
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =2
+
+    cnt_Header_MS_OP As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =ColorFade(Self.Fill,-.4)//Color.Black
+        BorderThickness: =5
+        Fill: =Color.Transparent//ThisTheme.Color3
+        Height: =80
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =5
+
+        cmp_Header_OP As cmp_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+
+        cmp_Menu_Horizontal_OP As cmp_Menu_Horizontal:
+            ControlsTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                //
+                ControlsTheme
+            FontSizes: |-
+                =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                FontSizes
+            ItemsList: |-
+                =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // Required Format
+                ////////////////////////////////////
+                // {
+                //        ID: 1, (Number)
+                //        Name: "Home", (Text)
+                //        ShowName: true, (Boolean)
+                //        Tooltip: "Click here to return to the Home Screen", (Text)
+                //        Icon: Icon.Home, (Icon)
+                //        ShowIcon: true, (Boolean)
+                //        Action: "Navigate", (Text, see below for values)
+                //        Screen: App.ActiveScreen, (Screen control)
+                //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                //        SubmenuList: [{}] (*optional - Record format includes Name, Tooltip, Action, Screen, LaunchURL)
+                // }
+                // Action:
+                // "Display": Sets the output property "DisplayName" to the "Name" property,
+                // "Navigate": Navigates to the "Screen" screen,
+                // "Launch": Launches the "LaunchURL" in a new tab
+                // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                Table(
+                    {
+                        ID: 1,
+                        Name: "Home",
+                        ShowName: true,
+                        Tooltip: "Click here to return to the Home Screen",
+                        Icon: Icon.Home,
+                        ShowIcon: true,
+                        Action: "Navigate",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    },
+                    {
+                        ID: 2,
+                        Name: "Facilitator Information",
+                        ShowName: true,
+                        Tooltip: "Click here to create a New Item",
+                        Icon: Icon.Add,
+                        ShowIcon: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        SubmenuList: [
+                            {
+                                Name: "Update Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Add New Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Open Dashboard (External)",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            }
+                
+                        ]
+                    },
+                    {
+                        ID: 3,
+                        Name: "Update Facilitator",
+                        ShowName: true,
+                        Tooltip: "Click here to access the App Settings",
+                        Icon: Icon.Settings,
+                        ShowIcon: false,
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    }
+                )
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            SubmenuItemsHeightCalc: =cmp_Menu_Horizontal_OP.SubmenuItemsHeight // DO NOT CHANGE
+            SubmenuItemsToDisplay: =cmp_Menu_Horizontal_OP.SubmenuItemsDisplayed // DO NOT CHANGE
+            ThisTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                // ie below I have only passed in the values used by my component
+                ThisTheme
+            X: =cmp_Header_OP.X + cmp_Header_OP.Width
+            ZIndex: =2
+
+    Button4 As button:
+        OnSelect: =Set(varUserPermission,"member")
+        Text: ="member"
+        X: =603
+        ZIndex: =6
+
+    Button6 As button:
+        OnSelect: =Set(varUserPermission,"JMSPL")
+        Text: ="jmspl"
+        X: =763
+        ZIndex: =7
+
+    Button7 As button:
+        OnSelect: =Set(varUserPermission,"PMO")
+        Text: ="PMO"
+        X: =923
+        ZIndex: =8
+

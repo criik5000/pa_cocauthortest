@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "62aad402-de56-44a9-9774-514e51643843",
+    "Name": "ET2RC_TemplateSharePointHTTP",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "1116028c-ca0b-ef11-9f89-002248242e06"
+  }
+]

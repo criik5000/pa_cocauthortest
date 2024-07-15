@@ -1,0 +1,471 @@
+Access As screen:
+    OnVisible: |-
+        =/*
+        If(
+            tgl_WriteMetrics.Value,
+            cmp_AccessMetrics_LS.WriteAccessMetric(accessMetrics)
+        );
+        Set(
+            actionSelected,
+            ""
+        );
+        */
+
+    cnt_ContentArea_AC As groupContainer.manualLayoutContainer:
+        Fill: =ControlsTheme.ScreenBackground
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =TemplateSizes.HeaderHeight
+        ZIndex: =2
+
+        cnt_MainContent_AC As groupContainer.manualLayoutContainer:
+            Fill: =ThisTheme.BackgroundColor
+            Height: =Parent.Height - Self.Y
+            RadiusBottomLeft: =5
+            RadiusBottomRight: =5
+            RadiusTopLeft: =5
+            RadiusTopRight: =5
+            Width: =Parent.Width
+            Y: =TemplateSizes.InnerNavigationHeight
+            ZIndex: =1
+
+            lbl_EmployeeName_AC As label:
+                FontWeight: =FontWeight.Semibold
+                Height: =31
+                Size: =13
+                Text: |-
+                    ="Employee Name: "&First(varRecord).EmployeeFirstName&" "&First(varRecord).EmployeeLastName
+                Width: =430
+                X: =19
+                Y: =7
+                ZIndex: =1
+
+            lbl_EmployeeID_AC As label:
+                FontWeight: =FontWeight.Semibold
+                Height: =31
+                Size: =13
+                Text: |-
+                    ="Employee ID: "&First(varRecord).EmployeeID
+                Width: =430
+                X: =463
+                Y: =7
+                ZIndex: =2
+
+            lbl_TaskOrderStatus_AC As label:
+                FontWeight: =FontWeight.Semibold
+                Height: =31
+                Size: =13
+                Text: |-
+                    ="Task Order Status: "&First(varRecord).TaskOrderStatus
+                Width: =430
+                X: =913
+                Y: =7
+                ZIndex: =3
+
+            lbl_ReadOnlyFields_AC As label:
+                Align: =Align.Center
+                FontWeight: =FontWeight.Semibold
+                Height: =23
+                Italic: =true
+                Size: =13
+                Text: ="These fields are read-only and for informational purposes only. For questions or updates, please contact your Job Leader or Job Manager, or submit a support request."
+                Width: =1366
+                Y: =47
+                ZIndex: =4
+
+            cnt_LeftTop_AC As groupContainer.manualLayoutContainer:
+                BorderThickness: =5
+                Height: =lbl_BoozAllenDistroAdded_AC.Height*4
+                Width: =600
+                X: =50
+                Y: =82
+                ZIndex: =6
+
+                lbl_ETOMP_AC As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    Text: ="ETOMP"
+                    Width: =cnt_LeftTop_AC.Width
+                    ZIndex: =1
+
+                cmp_ET2RCDistro_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_ET2RCDistro_AC.KeyValue
+                    ComboItems: =fx_drp.YesNo
+                    KeyValue: ="ET2RC Distro"
+                    KeyWidth: =160
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).ET2RCDistro}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).ET2RCDistro}
+                    ValueDefaultText: =First(varRecord).ET2RCDistro
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1)
+                        //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_ET2RCDistro_AC.Width - cmp_ET2RCDistro_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_LeftTop_AC.Width
+                    Y: =50
+                    ZIndex: =2
+
+                cmp_WelcomeEmailSent_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_WelcomeEmailSent_AC.KeyValue
+                    KeyValue: ="Welcome Email Sent"
+                    KeyWidth: =160
+                    ValueDefaultDate: =First(varRecord).WelcomeEmailSent
+                    ValueDefaultText: =First(varRecord).WelcomeEmailSent
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",5,1)
+                         //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_WelcomeEmailSent_AC.Width - cmp_WelcomeEmailSent_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_LeftTop_AC.Width
+                    Y: =100
+                    ZIndex: =3
+
+                cmp_LCATValidated_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_LCATValidated_AC.KeyValue
+                    KeyValue: ="LCAT Validated"
+                    KeyWidth: =160
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).LCATValidated}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).LCATValidated}
+                    ValueDefaultText: =First(varRecord).LCATValidated
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1)
+                         //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_LCATValidated_AC.Width - cmp_LCATValidated_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_LeftTop_AC.Width
+                    Y: =150
+                    ZIndex: =4
+
+            cnt_RightCenter_AC As groupContainer.manualLayoutContainer:
+                BorderThickness: =5
+                Height: =lbl_BoozAllenDistroAdded_AC.Height*3
+                Width: =600
+                X: =715
+                Y: =252
+                ZIndex: =7
+
+                lbl_Security_AC As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    Text: ="Security"
+                    Width: =cnt_RightCenter_AC.Width
+                    ZIndex: =1
+
+                cmp_CurrentAccessLevel_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_CurrentAccessLevel_AC.KeyValue
+                    KeyValue: ="Current Access Level"
+                    KeyWidth: =160
+                    ValueDefaultText: =First(varRecord).CurrentAccessLevel
+                    ValueWidth: =cmp_CurrentAccessLevel_AC.Width - cmp_CurrentAccessLevel_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightCenter_AC.Width
+                    Y: =50
+                    ZIndex: =2
+
+                cmp_EligibilityLevel_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_EligibilityLevel_AC.KeyValue
+                    KeyValue: ="Eligibility Level"
+                    KeyWidth: =160
+                    ValueDefaultText: =First(varRecord).EligibilityLevel
+                    ValueWidth: =cmp_EligibilityLevel_AC.Width - cmp_EligibilityLevel_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightCenter_AC.Width
+                    Y: =100
+                    ZIndex: =3
+
+            cnt_LeftBottom_AC As groupContainer.manualLayoutContainer:
+                BorderThickness: =5
+                Height: =320
+                Width: =600
+                X: =50
+                Y: =301
+                ZIndex: =8
+
+                lbl_BoozAllenDistroAdded_AC As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    Text: |-
+                        ="Booz Allen Distros Added to:"
+                    Width: =cnt_LeftBottom_AC.Width
+                    ZIndex: =1
+
+            cnt_RightTop_AC As groupContainer.manualLayoutContainer:
+                BorderThickness: =5
+                Height: =lbl_EARTHATLAS_AC.Height*3
+                Width: =600
+                X: =715
+                Y: =82
+                ZIndex: =9
+
+                lbl_EARTHATLAS_AC As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    Text: ="EARTH & ATLAS"
+                    Width: =cnt_RightTop_AC.Width
+                    ZIndex: =1
+
+                cmp_A365Status_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_A365Status_AC.KeyValue
+                    ComboItems: =fx_drp.A365Status
+                    KeyValue: ="A365 Status"
+                    KeyWidth: =160
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).A365Status}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).A365Status}
+                    ValueDefaultText: =First(varRecord).A365Status
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_A365Status_AC.Width - cmp_A365Status_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightTop_AC.Width
+                    Y: =50
+                    ZIndex: =2
+
+                cmp_StatusChange_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_StatusChange_AC.KeyValue
+                    KeyValue: ="Status Change"
+                    KeyWidth: =160
+                    ValueDefaultDate: =First(varRecord).A365DateChange
+                    ValueDefaultSelected: |-
+                        ={Value:First(varRecord).A365DateChange}
+                    ValueDefaultSelectedItems: |-
+                        ={Value:First(varRecord).A365DateChange}
+                    ValueDefaultText: =First(varRecord).A365DateChange
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",5,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_StatusChange_AC.Width - cmp_StatusChange_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightTop_AC.Width
+                    Y: =100
+                    ZIndex: =3
+
+            cnt_RightBottom_AC As groupContainer.manualLayoutContainer:
+                BorderThickness: =5
+                Width: =600
+                X: =715
+                Y: =421
+                ZIndex: =10
+
+                lbl_BIX_AC As label:
+                    FontWeight: =FontWeight.Semibold
+                    Height: =50
+                    Text: ="BIX"
+                    Width: =cnt_RightBottom_AC.Width
+                    ZIndex: =1
+
+                cmp_ProjectRole_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_ProjectRole_AC.KeyValue
+                    KeyValue: ="Project Role"
+                    KeyWidth: =160
+                    ValueDefaultText: =First(varRecord).BIXProjectRole
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_ProjectRole_AC.Width - cmp_ProjectRole_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightBottom_AC.Width
+                    Y: =50
+                    ZIndex: =2
+
+                cmp_AccountStatus_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_AccountStatus_AC.KeyValue
+                    KeyValue: ="Account Status"
+                    KeyWidth: =160
+                    ValueDefaultText: =First(varRecord).BIXAccountStatus
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_AccountStatus_AC.Width - cmp_AccountStatus_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightBottom_AC.Width
+                    Y: =100
+                    ZIndex: =3
+
+                cmp_OktaAccountStatus_AC As cmp_Card_Horiz:
+                    CardTooltip: =cmp_OktaAccountStatus_AC.KeyValue
+                    KeyValue: ="Okta Account Status"
+                    KeyWidth: =160
+                    ValueDefaultText: =First(varRecord).OktaStatus
+                    ValueType: |-
+                        =If(varUserPermission="JMSPL"||varUserPermission="PMO",4,1) //1: Display, 2: SLOT, 3: MLOT, 4: ComboBox, 5: Date, 6: Checkbox, 7: Person, 8: Rich Text, 9: Rich Text Display
+                    ValueWidth: =cmp_OktaAccountStatus_AC.Width - cmp_OktaAccountStatus_AC.KeyWidth - (2*TemplateSizes.HorizontalPadding)
+                    Width: =cnt_RightBottom_AC.Width
+                    Y: =150
+                    ZIndex: =4
+
+        cnt_InnerNavigation_AC As groupContainer.horizontalAutoLayoutContainer:
+            Height: =TemplateSizes.InnerNavigationHeight
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Self.X
+            X: =
+            ZIndex: =2
+
+            cmp_InnerNavigation_AC As cmp_InnerNavigation:
+                ItemsList: |
+                    =////////////////////////////////////////////////////////////////////////
+                    // {
+                    //        ID: 1, (Number)
+                    //        Name: "Button1", (Text)
+                    //        Label: "Button 1", (Text)
+                    //        Action: "Display", (Text, see below for options)
+                    //        Screen: App.ActiveScreen, (Screen control)
+                    //        Tooltip: "Tooltip", (Text)
+                    //        Optional:
+                    //        Image: SampleImage, (Image)
+                    //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                    //        Color: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        SelectedColor: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        FillColor: ControlsTheme.NavButtonFill, (Color, if going to be different from template)
+                    //        SelectedFillColor: ControlsTheme.NavButtonSelectedFill (Color, if going to be different from template)
+                    //    }
+                    // Action:
+                    // "Display": Sets the output property "DisplayName" to the "Name" property,
+                    // "Navigate": Navigates to the "Screen" screen,
+                    // "Launch": Launches the "LaunchURL" in a new tab
+                    // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                    ////////////////////////////////////////////////////////////////////////
+                    Table(
+                        {
+                            ID: 1,
+                            Name: "Button1",
+                            Label: "Button 1",
+                            Action: "Display",
+                            Screen: App.ActiveScreen,
+                            Tooltip: "Tooltip",
+                            LaunchURL: "",
+                            Color: ControlsTheme.ButtonColor,
+                            SelectedColor: ControlsTheme.ButtonColor,
+                            FillColor: ControlsTheme.NavButtonFill,
+                            SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+                        },
+                        {
+                            ID: 2,
+                            Name: "Button2",
+                            Label: "Button 2",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        }
+                    )
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =2
+
+    cnt_Header_AC As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =ColorFade(Self.Fill,-.4)//Color.Black
+        BorderThickness: =5
+        Fill: =Color.Transparent//ThisTheme.Color3
+        Height: =cmp_Menu_Horizontal_TR.Height//TemplateSizes.HeaderHeight
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =5
+
+        cmp_Header_AC As cmp_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+
+        cmp_Menu_Horizontal_AC As cmp_Menu_Horizontal:
+            ControlsTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                //
+                ControlsTheme
+            FontSizes: |-
+                =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                FontSizes
+            ItemsList: |-
+                =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // Required Format
+                ////////////////////////////////////
+                // {
+                //        ID: 1, (Number)
+                //        Name: "Home", (Text)
+                //        ShowName: true, (Boolean)
+                //        Tooltip: "Click here to return to the Home Screen", (Text)
+                //        Icon: Icon.Home, (Icon)
+                //        ShowIcon: true, (Boolean)
+                //        Action: "Navigate", (Text, see below for values)
+                //        Screen: App.ActiveScreen, (Screen control)
+                //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                //        SubmenuList: [{}] (*optional - Record format includes Name, Tooltip, Action, Screen, LaunchURL)
+                // }
+                // Action:
+                // "Display": Sets the output property "DisplayName" to the "Name" property,
+                // "Navigate": Navigates to the "Screen" screen,
+                // "Launch": Launches the "LaunchURL" in a new tab
+                // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                Table(
+                    {
+                        ID: 1,
+                        Name: "Home",
+                        ShowName: true,
+                        Tooltip: "Click here to return to the Home Screen",
+                        Icon: Icon.Home,
+                        ShowIcon: true,
+                        Action: "Navigate",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    },
+                    {
+                        ID: 2,
+                        Name: "Facilitator Information",
+                        ShowName: true,
+                        Tooltip: "Click here to create a New Item",
+                        Icon: Icon.Add,
+                        ShowIcon: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        SubmenuList: [
+                            {
+                                Name: "Update Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Add New Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Open Dashboard (External)",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            }
+                
+                        ]
+                    },
+                    {
+                        ID: 3,
+                        Name: "Update Facilitator",
+                        ShowName: true,
+                        Tooltip: "Click here to access the App Settings",
+                        Icon: Icon.Settings,
+                        ShowIcon: false,
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    }
+                )
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            SubmenuItemsHeightCalc: =cmp_Menu_Horizontal_AC.SubmenuItemsHeight // DO NOT CHANGE
+            SubmenuItemsToDisplay: =cmp_Menu_Horizontal_AC.SubmenuItemsDisplayed // DO NOT CHANGE
+            ThisTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                // ie below I have only passed in the values used by my component
+                ThisTheme
+            X: =cmp_Header_AC.X + cmp_Header_AC.Width
+            ZIndex: =2
+

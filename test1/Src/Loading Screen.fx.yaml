@@ -1,0 +1,961 @@
+"'Loading Screen' As screen":
+    Height: =Max(App.Height, App.DesignHeight)
+    OnVisible: |
+        =///////////////////////////////////////////////////////////////
+        //
+        //  Start the Loading Screen
+        //
+        //  This starts the Timer, which controls the progress bar
+        //
+        //  If the data Loads before the Progress bar finishes, then
+        //  the user will be happy, and if it finishes just after
+        //  the progress bar, then you've set their expectations
+        //  with the progress bar so they are likely to be more
+        //  accepting of that slight delay.
+        //
+        //  We also set the default loading Text here.
+        //  This text is then updated during each step
+        //  of the Data Loading process.
+        //
+        ///////////////////////////////////////////////////////////////
+        Set(
+            StartLoadingScreenTimer,
+            false
+        );
+        //Set(StartLoadingScreenTimer, true);
+        Set(
+            LoadingText,
+            "..."
+        );
+        //cmp_AccessMetrics_LS.WriteAccessMetric(accessMetrics);
+        //Reset(card_TemplateSetting);
+        ///////////////////////////////////////////////////////////////
+        //
+        //  Data Loading is moved to the OnTimerStart
+        //
+        //  This guaratees that the navigate to the next screen
+        //  will only happen once the data has been completely loaded
+        //
+        //  The above may not apply to your situation and you may want
+        //  the navigate set to another timer if you don't need the
+        //  loaded data to be available during your Home Screen experience.
+        //
+        ///////////////////////////////////////////////////////////////
+        //Set(varEmpID,Left(User().Email,6));
+        Set(
+            myEmail,
+            Coalesce(
+                Param("email"),
+                Office365Users.MyProfile().Mail
+            )
+        );
+        If(
+            IsEmpty(colBoozEmployees),
+            ClearCollect(
+                colBoozEmployees,
+                ForAll(
+                    Ungroup(
+                        Filter(
+                            PersonnelRoster,
+                            EmployeeType = "Booz Allen"
+                        ),
+                        EmployeeName
+                    ),
+                    EmployeeName
+                )
+            )
+        );
+        //Set(loadRecord,true);
+    Orientation: =If('Loading Screen'.Width < 'Loading Screen'.Height, Layout.Vertical, Layout.Horizontal)
+    Size: =1 + CountRows(App.SizeBreakpoints) - CountIf(App.SizeBreakpoints, Value >= 'Loading Screen'.Width)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    img_Background_LS As image:
+        AccessibleLabel: ="a picture of a mountain used as a background imabe"
+        BorderColor: =ColorFade(img_Background_LS.Fill, -20%)
+        Fill: =RGBA(0,0,0,0)
+        FocusedBorderColor: =img_Background_LS.BorderColor
+        Height: =Parent.Height
+        HoverBorderColor: =ColorFade(img_Background_LS.BorderColor, 20%)
+        HoverFill: =ColorFade(img_Background_LS.Fill, 20%)
+        Image: =ET2RCstar_b
+        OnSelect: |-
+            =Launch("https://www.pexels.com/public-domain-images/")
+        PressedBorderColor: =ColorFade(img_Background_LS.BorderColor, -20%)
+        PressedFill: =ColorFade(img_Background_LS.Fill, -20%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Transparency: =0.5-(tmr_LoadingAction_LS.Value / tmr_LoadingAction_LS.Duration)
+        Width: =Parent.Width
+        X: =0*1
+        Y: =0*1
+        ZIndex: =2
+
+    lbl_LoadingText_LS As label:
+        Align: =Align.Center
+        Color: =ThisTheme.Color2Text
+        Fill: =RGBA( 0,0,0, 25%)
+        FocusedBorderThickness: =1
+        Height: =lbl_LoadingBarOutline_LS.Height*2 + 15
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =10
+        Size: =FontSizes.TextEmphasis
+        TabIndex: =0
+        Text: =lbl_LoadingBarOutline_LS.Value & "%" & Char(10) & LoadingText
+        VerticalAlign: =VerticalAlign.Bottom
+        Width: =lbl_LoadingBarOutline_LS.Width + 20
+        X: =lbl_LoadingBarOutline_LS.X -10
+        Y: =lbl_LoadingBarOutline_LS.Y -10
+        ZIndex: =3
+
+    lbl_LoadingBarOutline_LS As slider:
+        AccessibleLabel: ="n/a"
+        BorderColor: =ControlsTheme.LabelBorderColor
+        BorderThickness: =4
+        Default: =(tmr_LoadingAction_LS.Value/tmr_LoadingAction_LS.Duration)*100
+        DisplayMode: =DisplayMode.View
+        HandleActiveFill: =ThisTheme.Color2Text
+        HandleFill: =ThisTheme.Color2Text
+        HandleHoverFill: =ThisTheme.Color2Text
+        HandleSize: =Self.Height*90%
+        Height: =60
+        RailFill: =ColorFade(ThisTheme.Color1, 20%)
+        RailHoverFill: =ColorFade(ThisTheme.Color1, 20%)
+        RailThickness: =Self.Height/2
+        ShowValue: =false
+        ValueFill: =ThisTheme.Color2
+        ValueHoverFill: =Self.ValueFill
+        Width: =1206
+        X: =80
+        Y: =495
+        ZIndex: =4
+
+    tmr_LoadingAction_LS As timer:
+        Duration: =5000
+        OnTimerEnd: |-
+            =///////////////////////////////////////////////////////////////
+            //
+            //  For Demo purposes I have the navigate here
+            //
+            //  This idea here is to give the user 5 seconds of a loading screen max,
+            //  With Text updating below it with every action you do (in this screen's
+            //  OnVisible), this keeps the user occupied while the data loads instead
+            //  of just watching a 'spinner' with no indication or information
+            //
+            //  If you need the user to wait until all of the data is loaded
+            //  then just keep the 'false' value below
+            //
+            ///////////////////////////////////////////////////////////////
+            Navigate(EmployeeInformation, ScreenTransition.Fade);
+            
+            //false
+        OnTimerStart: |-
+            =false;
+            ///////////////////////////////////////////////////////////////
+            //
+            //  Load Your App Data Here
+            //
+            //  It is better to have the user in the App viewing this
+            //  progress than to have them seeing the pre-loader for
+            //  the App. Combine this with Text Messages on the label
+            //  telling the users what you are doing or loading and the
+            //  users will not lose focus. Expected attention span is
+            //  around 0.5s, so there needs to be feedback to keep
+            //  them from just arbitrarily waiting.
+            //
+            //  Wherever possible you should have as little loading
+            //  done during your App OnStart as Possible, as this is done
+            //  during the pre-loader stage before any App screens are
+            //  visible to the user. The variables set during the current
+            //  onStart I have here take only a fractional amount of 
+            //  time to set and are necessary during the OnStart phase,
+            //  as they define the variables that every object's 
+            //  property colours are set to.
+            //
+            ///////////////////////////////////////////////////////////////
+            
+            /////////////Some example data collection frameworks///////////////
+            //
+            // ClearCollect(
+            //              LocalCopyOfDataSource,
+            //              DataSource
+            // );
+            //
+            // OR maybe something like:
+            //
+            // ClearCollect(
+            //              LocalCopyOfFilteredDataSource,
+            //              Filter(
+            //                     DataSource,
+            //                     ValueToFilter = ValueToFilterBy
+            //              )
+            // );
+            //
+            // OR maybe something like:
+            //
+            // Set(
+            //     TheCurrentItem,
+            //     LookUp(
+            //            DataSource,
+            //            ValueToFilter = ValueToFilterBy,
+            //            SecondaryValueToFilter = SecondaryValueToFilterBy,
+            //            StartsWith(TertiaryValueToFilter, TertiaryValueToFilterBy)
+            //              ||
+            //            QuarternaryValueToOptionallyFilter = QuarternaryValueToOptionallyFilterBy
+                          //These || mean OR
+                          //These && mean AND
+            
+            //     )
+            // );
+            
+            
+            ///////////////////////////////////////////////////////////////
+            //
+            //  Navigate to the 'Home' screen once data is loaded
+            //
+            //  Instead of having our timer do the navigation, we have
+            //  the app navigate once it's completed loading the data 
+            //  (i.e once the loading steps above have completed)
+            //
+            //  When the timer completes, it stops, making the
+            //  loading bar look like its at 100% and waiting to navigate.
+            //  This is better from a user perspective for delays,
+            //  Feedback I've received is that they believe the App is
+            //  'thinking' after loading all of the data.
+            //
+            ///////////////////////////////////////////////////////////////
+            
+            //Navigate('Home Screen', ScreenTransition.Fade);
+            
+            ///////////////////////////////////////////////////////////////
+            //
+            //  Reset the timer
+            //
+            //  This is purely for demo purposes,
+            //  and so is the arrow on the next screen,
+            //  as you'd not normally have a user
+            //  come back to the loading screen...
+            //
+            ///////////////////////////////////////////////////////////////
+            //Reset(tmr_LoadingScreen);
+            0+0;
+        Start: =StartLoadingScreenTimer
+        TabIndex: =-1
+        Tooltip: ="This should be hidden - this loads your data and then navigates away"
+        Visible: =false
+        X: =603
+        ZIndex: =5
+
+    cnt_SettingValues As groupContainer.verticalAutoLayoutContainer:
+        Height: =cnt_AdminSettings.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =5
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =10
+        Visible: =isAdmin
+        Width: =cnt_AdminSettings.Width
+        X: =cnt_AdminSettings.X + cnt_AdminSettings.Width + 24
+        Y: =cnt_AdminSettings.Y
+        ZIndex: =6
+
+        lbl_SettingValues As label:
+            Align: =Align.Center
+            AlignInContainer: =AlignInContainer.Stretch
+            FontWeight: =FontWeight.Bold
+            Size: =FontSizes.TextEmphasis
+            Text: ="SETTINGS VALUES"
+            Width: =400
+            ZIndex: =1
+
+        lbl_UserEmail As label:
+            Height: =30
+            Text: |-
+                ="User().Email: "&Lower(User().Email)
+            Width: =400
+            ZIndex: =2
+
+        lbl_isAdmin As label:
+            Height: =30
+            Text: |-
+                ="isAdmin: "&isAdmin
+            Width: =400
+            ZIndex: =3
+
+        tgl_ShowAdmin As toggleSwitch:
+            FalseText: ="Admin List Hidden"
+            TrueFill: =ControlsTheme.ToggleFalseFill
+            TrueText: ="Admin List Shown"
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =4
+
+        "gal_AdminList As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+            DelayItemLoading: =true
+            Items: =colAdmin
+            Layout: =Layout.Vertical
+            LayoutMinHeight: =30
+            LayoutMinWidth: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplatePadding: =0
+            TemplateSize: =30
+            Visible: =tgl_ShowAdmin.Value
+            ZIndex: =5
+
+            lbl_Admin As label:
+                BorderColor: =RGBA(0, 0, 0, 1)
+                Color: =ControlsTheme.GallerycontentLabelColor
+                DisabledColor: =RGBA(186, 186, 186, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Font: =Font.'Open Sans'
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =14
+                Text: =ThisItem.Mail
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth
+                Y: =(Parent.TemplateHeight - (Self.Size * 1.8 )) / 2
+                ZIndex: =2
+
+            icn_Separator_Admin As rectangle:
+                BorderColor: =RGBA(0, 0, 255, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =4
+                HoverFill: =Self.Fill
+                OnSelect: =Select(Parent)
+                PressedFill: =Self.Fill
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - Self.Height
+                ZIndex: =5
+
+        lbl_MALTInformation As label:
+            Align: =Align.Center
+            AlignInContainer: =AlignInContainer.Stretch
+            Text: ="MALT INFORMATION"
+            X: =40
+            Y: =40
+            ZIndex: =6
+
+        frm_ToolInformation As formViewer:
+            BorderThickness: =5
+            DataSource: |-
+                =//Table(toolInformation)
+                MALT_ToolInformation
+            Height: =80
+            Item: =toolInformation
+            LayoutMinHeight: =250
+            LayoutMinWidth: =400
+            NumberOfColumns: =1
+            SnapToColumns: =false
+            Width: =407
+            X: =452
+            Y: =60
+            ZIndex: =7
+
+            AppName_DataCard2 As typedDataCard.textualViewCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="AppName"
+                Default: =ThisItem.AppName
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@MALT_ToolInformation],DataSourceInfo.DisplayName,AppName)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =100
+                WidthFit: =true
+                X: =0
+                Y: =0
+                ZIndex: =1
+
+                DataCardKey6 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue6 As label:
+                    AutoHeight: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey6.Y + DataCardKey6.Height + 5
+                    ZIndex: =2
+
+            VersionNumber_DataCard2 As typedDataCard.textualViewCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="VersionNumber"
+                Default: =ThisItem.VersionNumber
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@MALT_ToolInformation],DataSourceInfo.DisplayName,VersionNumber)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =40
+                Required: =false
+                Width: =Parent.Width
+                WidthFit: =true
+                X: =1
+                Y: =1
+                ZIndex: =1
+
+                DataCardKey7 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue7 As label:
+                    AutoHeight: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey7.Y + DataCardKey7.Height + 5
+                    ZIndex: =2
+
+            AppReference_DataCard1 As typedDataCard.textualViewCard:
+                BorderStyle: =BorderStyle.Solid
+                DataField: ="AppReference"
+                Default: =ThisItem.AppReference
+                DisplayMode: =DisplayMode.View
+                DisplayName: =DataSourceInfo([@MALT_ToolInformation],DataSourceInfo.DisplayName,AppReference)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =64
+                Required: =false
+                Width: =Parent.Width / 2
+                WidthFit: =true
+                X: =0
+                Y: =1
+                ZIndex: =10
+
+                DataCardKey4 As label:
+                    AutoHeight: =true
+                    Height: =34
+                    Text: =Parent.DisplayName
+                    Width: =Parent.Width - 60
+                    Wrap: =false
+                    X: =30
+                    Y: =10
+                    ZIndex: =1
+
+                DataCardValue4 As label:
+                    AutoHeight: =true
+                    DisplayMode: =Parent.DisplayMode
+                    Height: =27
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =Parent.Default
+                    Width: =Parent.Width - 60
+                    X: =30
+                    Y: =DataCardKey4.Y + DataCardKey4.Height + 5
+                    ZIndex: =2
+
+    cnt_AdminSettings As groupContainer.verticalAutoLayoutContainer:
+        BorderThickness: =1
+        DropShadow: =DropShadow.ExtraBold
+        Height: =Parent.Height - (Self.Y * 2)
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =10
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Visible: =isAdmin
+        Width: =420
+        X: =24
+        Y: =24
+        ZIndex: =7
+
+        lbl_ApplicationSettings As label:
+            Align: =Align.Center
+            AlignInContainer: =AlignInContainer.Stretch
+            FontWeight: =FontWeight.Bold
+            Size: =FontSizes.TextEmphasis
+            Text: ="APPLICATION SETTINGS"
+            Width: =400
+            ZIndex: =1
+
+        cnt_DynamicSettings As groupContainer.verticalAutoLayoutContainer:
+            FillPortions: =0
+            Height: =140
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =280
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =2
+
+            card_AppTitle As cmp_Card:
+                CardTooltip: =card_AppTitle.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="App Title (*matches App Name)"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultText: ="ET2RC Personnel Roster"
+                ValueHeight: =card_AppTitle.Height - card_AppTitle.KeyHeight - 10
+                ValueType: =2
+                Y: =251
+
+            card_AppReference As cmp_Card:
+                CardTooltip: =card_AppReference.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="App Reference"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultText: ="pr"
+                ValueHeight: =card_AppReference.Height - card_AppReference.KeyHeight - 10
+                ValueType: =2
+                ZIndex: =2
+
+        cnt_MetricsSettings As groupContainer.verticalAutoLayoutContainer:
+            FillPortions: =0
+            Height: =168
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =3
+
+            tgl_WriteMetrics As toggleSwitch:
+                AlignInContainer: =AlignInContainer.Stretch
+                BorderThickness: =3
+                FalseText: ="Do Not Log Metrics"
+                TrueText: ="Log Metrics"
+                ZIndex: =1
+
+            cmp_MetricsParameters As cmp_Card:
+                CardTooltip: =cmp_MetricsParameters.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="Metrics Parameters"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultText: =
+                ValueHeight: =cmp_MetricsParameters.Height - cmp_MetricsParameters.KeyHeight - 10
+                ValueType: =2
+                ZIndex: =2
+
+            cmp_MetricsAdditional As cmp_Card:
+                CardTooltip: =cmp_MetricsAdditional.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="Metrics Additional Values"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueHeight: =cmp_MetricsAdditional.Height - cmp_MetricsAdditional.KeyHeight - 10
+                ValueType: =2
+                ZIndex: =3
+
+        tgl_AdjustStaticSettings As toggleSwitch:
+            AlignInContainer: =AlignInContainer.Stretch
+            FalseText: ="Static Settings Hidden"
+            TrueFill: =ControlsTheme.ToggleFalseFill
+            TrueText: ="Static Settings Shown"
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =4
+
+        cnt_StaticSettings As groupContainer.verticalAutoLayoutContainer:
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            LayoutOverflowY: =LayoutOverflow.Scroll
+            Visible: =tgl_AdjustStaticSettings.Value
+            ZIndex: =5
+
+            card_Site As cmp_Card:
+                CardTooltip: =card_Site.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="Site"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultText: |-
+                    ="https://boozallen.sharepoint.com/teams/pme_TOPS/et2rc"
+                ValueHeight: =card_Site.Height - card_Site.KeyHeight - 10
+                ValueType: =2
+
+            card_TemplateSetting As cmp_Card:
+                CardTooltip: =card_TemplateSetting.KeyValue
+                ComboDisplayFields: =["Value"]
+                ComboItems: |-
+                    =RenameColumns(
+                        TemplateSettings,
+                        Title,
+                        Value
+                    )
+                ComboSearchFields: =["Title"]
+                Height: =80
+                KeyHeight: =30
+                KeyValue: ="Template Setting"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultSelected: |-
+                    ={Value:"ET2RCOrange"}
+                ValueDefaultSelectedItems: =
+                ValueHeight: =card_TemplateSetting.Height - card_TemplateSetting.KeyHeight - 10
+                ValueType: =4
+                ZIndex: =2
+
+            card_MetricsList As cmp_Card:
+                CardTooltip: =card_MetricsList.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="Metrics List"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultText: ="AppAccessTrackingMetrics"
+                ValueHeight: =card_MetricsList.Height - card_MetricsList.KeyHeight - 10
+                ValueType: =2
+                ZIndex: =4
+
+            card_HowToURL As cmp_Card:
+                CardTooltip: =card_HowToURL.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="How To URL"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueDefaultText: |-
+                    ="https://apps.powerapps.com/play/e/3794568a-2c7e-eb8c-81fb-c175641ecb1d/a/3ff07f5d-aa8b-41aa-b046-578d6dddc1ce?tenantId=d5fe813e-0caa-432a-b2ac-d555aa91bd1c&tool="
+                ValueHeight: =card_HowToURL.Height - card_HowToURL.KeyHeight - 10
+                ValueType: =2
+                ZIndex: =5
+
+            card_SupportRequestURL As cmp_Card:
+                CardTooltip: =card_SupportRequestURL.KeyValue
+                Height: =70
+                KeyHeight: =30
+                KeyValue: ="Support Request URL"
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                ValueHeight: =card_SupportRequestURL.Height - card_SupportRequestURL.KeyHeight - 10
+                ValueType: =2
+                ZIndex: =6
+
+    cnt_Settings3 As groupContainer.verticalAutoLayoutContainer:
+        Height: =cnt_AdminSettings.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =10
+        Visible: =isAdmin
+        Width: =cnt_AdminSettings.Width
+        X: =cnt_SettingValues.X + cnt_SettingValues.Width + 24
+        Y: =cnt_AdminSettings.Y
+        ZIndex: =11
+
+        btn_NavigateToMain As button:
+            AlignInContainer: =AlignInContainer.Stretch
+            OnSelect: |-
+                =Set(StartLoadingScreenTimer,false);
+                Set(StartLoadingScreenTimer,true);
+            Text: ="Go To Main"
+            Visible: =isAdmin
+            X: =1073
+            Y: =40
+            ZIndex: =1
+
+        Label4 As label:
+            FillPortions: =1
+            Overflow: =Overflow.Scroll
+            Text: |-
+                =Substitute(
+                    JSON(accessMetrics),",",","&Char(10))
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =2
+
+        TextInput1 As text:
+            Default: =
+            DelayOutput: =false
+            HintText: ="email address"
+            ZIndex: =3
+
+        Button5 As button:
+            OnSelect: |-
+                =Set(myEmail,TextInput1.Text);
+                Set(loadRecord,true);
+                
+                Navigate(EmployeeInformation);
+            Text: ="LOAD RECORD"
+            ZIndex: =4
+
+        tgl_LoadRecord As toggleSwitch:
+            Default: =loadRecord
+            OnCheck: |-
+                =Set(varPRID,Text(LookUp(PersonnelRoster,CompanyEmail=myEmail).Reference_ID));
+                Trace("varPRID: "&varPRID);
+                ClearCollect(
+                    varRecord,
+                	With(
+                		{
+                			_Training:
+                				ShowColumns(
+                					LookUp(
+                						PRRequiredTrainingAccess,
+                						PR_ID=varPRID
+                					),
+                					GovernmentNetworkorSystems,
+                					ForeignNationalsorEngagement,
+                					DoDEmail,
+                					BuildingBadge,
+                					CAC,
+                					SIPRToken,
+                					BoozAllenLaptop,
+                					GFELaptop,
+                					DoDFacilitiesControlledAccess,
+                					BIXTARsRIPs,
+                					A365Access
+                				),
+                			_TDLRecords:
+                				ShowColumns(
+                					Filter(
+                						PRTDLSub,
+                						PR_ID=varPRID
+                					),
+                					TDLNumber,
+                					Primary,
+                                    Org,
+                                    Hours
+                				),
+                			_OutProcessing:
+                				ShowColumns(
+                					LookUp(
+                						PROutProcessing,
+                						PR_ID=varPRID
+                					),
+                					CACStatus,
+                					BuildingBadgeStatus,
+                					SIPRTokenStatus,
+                					HandReceiptsCleared,
+                					BIXClosedOut,
+                					AirfareExpensesCleared,
+                					OutProcessingCompleted,
+                					OutProcessingDate,
+                					OutProcessingStatus
+                				),
+                			_RelocationInfo:
+                				ShowColumns(
+                					LookUp(
+                						PRRelocationInfo,
+                						PR_ID=varPRID
+                					),
+                					FirstLastName,
+                					PrimaryTDL,
+                					OnboardingDate,
+                					FromLocation,
+                					FamilySize,
+                					RelocationDate,
+                					FamilyAccompanyOnRelocationDate,
+                					IfNoFamilyDepartureDate,
+                					AssignmentAgreementStatus
+                				)
+                		},
+                
+                		AddColumns(
+                			ShowColumns(
+                				LookUp(PersonnelRoster,Reference_ID=Value(varPRID)),
+                				Reference_ID,
+                				EmployeeType,
+                				TaskOrderStatus,
+                				TaskOrderStartDate,
+                				EmployeeName,
+                				EmployeeLastName,
+                				EmployeeFirstName,
+                				AccountGroup,
+                				EmployeeID,
+                				CompanyEmail,
+                				Company,
+                				PrimaryPhone,
+                				LocationType,
+                				DutyLocation,
+                				Country,
+                				State,
+                				City,
+                				ReturnDate,
+                				EmailNotificationPreference,
+                				LCAT,
+                				JobLeader,
+                				RequiresRelocation,
+                				BIXProjectRole,
+                				BIXAccountStatus,
+                				OktaStatus,
+                				ET2RCDistro,
+                				A365Status,
+                				A365DateChange,
+                				LCATValidated,
+                				WelcomeEmailSent,
+                				CurrentAccessLevel,
+                				EligibilityLevel
+                			),
+                			Training,
+                			_Training,
+                			TDL,
+                			_TDLRecords,
+                			PrimaryTDL,
+                			LookUp(_TDLRecords,Primary="Yes").TDLNumber,
+                			OutProcessing,
+                			_OutProcessing,
+                			RelocationInfo,
+                			_RelocationInfo
+                		)
+                	)
+                );
+                Set(varPrimaryTDL,LookUp(PRTDLSub,And(PR_ID=varPRID,Primary="Yes"),TDLNumber));
+                Set(loadRecord,false);
+            ZIndex: =5
+
+        tgl_SaveRecord As toggleSwitch:
+            Default: =varPatchEditedRecord
+            OnChange: =
+            OnCheck: |
+                =Trace(
+                    JSON(
+                        currentRecord,
+                        JSONFormat.IgnoreBinaryData
+                    )
+                );
+                Trace("Patching PR");
+                Patch(
+                    PersonnelRoster,
+                    LookUp(
+                        PersonnelRoster,
+                        Reference_ID = Value(varPRID)
+                    ),
+                    DropColumns(
+                        currentRecord,
+                        RequiredTrainingAccess,
+                        TDLSub,
+                        OutProcessing,
+                        RelocationInfo,
+                        TrainingTable
+                    )
+                );
+                Trace("Patched PR");
+                
+                //RequiredTrainingAccess List
+                Trace("Patching Required Training Access");
+                Patch(
+                    PRRequiredTrainingAccess,
+                    Coalesce(
+                        LookUp(
+                            PRRequiredTrainingAccess,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PRRequiredTrainingAccess)
+                    ),
+                    currentRecord.RequiredTrainingAccess
+                );
+                Trace("Patched Required Training Access");
+                
+                //TDLSub List
+                Trace("Patching TDL");
+                ForAll(
+                    currentRecord.TDLSub As _item,
+                    Patch(
+                        PRTDLSub,
+                        Coalesce(
+                            LookUp(
+                                PRTDLSub,
+                                And(
+                                    PR_ID = varPRID,
+                                    TDLNumber = _item.TDLNumber
+                                )
+                            ),
+                            Defaults(PRTDLSub)
+                        ),
+                        _item
+                    )
+                );
+                Trace("Patched TDL");
+                
+                //OutProcessing List
+                Trace("Patching OutProcessing");
+                Patch(
+                    PROutProcessing,
+                    Coalesce(
+                        LookUp(
+                            PROutProcessing,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PROutProcessing)
+                    ),
+                    currentRecord.OutProcessing
+                );
+                Trace("Patched OutProcessing");
+                
+                //RelocationInfo List
+                Trace("Patching Relocation");
+                Patch(
+                    PRRelocationInfo,
+                    Coalesce(
+                        LookUp(
+                            PRRelocationInfo,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PRRelocationInfo)
+                    ),
+                    currentRecord.RelocationInfo
+                );
+                Trace("Patched Relocation");
+                
+                //TrainingTable List
+                Trace("Patching Training Table");
+                Patch(
+                    PRTrainingTable,
+                    Coalesce(
+                        LookUp(
+                            PRTrainingTable,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PRTrainingTable)
+                    ),
+                    currentRecord.TrainingTable
+                );
+                Trace("Patched Training Table");
+                
+                Set(
+                    varPatchEditedRecord,
+                    false
+                );
+            ZIndex: =6
+
+        btn_SaveRecord As button:
+            OnSelect: =Set(varPatchEditedRecord,true);
+            Text: ="SAVE RECORD"
+            ZIndex: =7
+

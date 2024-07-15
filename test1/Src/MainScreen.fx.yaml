@@ -1,0 +1,348 @@
+MainScreen As screen:
+    OnVisible: |-
+        =/*
+        If(
+            tgl_WriteMetrics.Value,
+            cmp_AccessMetrics_LS.WriteAccessMetric(accessMetrics)
+        );
+        Set(
+            actionSelected,
+            ""
+        );
+        */
+
+    cnt_ContentArea_MS As groupContainer.manualLayoutContainer:
+        Fill: =ControlsTheme.ScreenBackground
+        Height: =Parent.Height - Self.Y
+        Width: =Parent.Width
+        Y: =TemplateSizes.HeaderHeight
+        ZIndex: =2
+
+        cnt_MainContent_MS As groupContainer.manualLayoutContainer:
+            Fill: =ThisTheme.BackgroundColor
+            Height: =Parent.Height - Self.Y
+            Width: =Parent.Width
+            Y: =TemplateSizes.InnerNavigationHeight
+            ZIndex: =1
+
+        cnt_InnerNavigation_MS As groupContainer.horizontalAutoLayoutContainer:
+            Height: =TemplateSizes.InnerNavigationHeight
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width - Self.X
+            X: |-
+                =If(
+                    cnt_VerticalFlyout_MS.Visible,
+                    TemplateSizes.LeftNavigationArrowSize,
+                    0
+                )
+            ZIndex: =2
+
+            cmp_InnerNavigation_MS As cmp_InnerNavigation:
+                ItemsList: |
+                    =////////////////////////////////////////////////////////////////////////
+                    // {
+                    //        ID: 1, (Number)
+                    //        Name: "Button1", (Text)
+                    //        Label: "Button 1", (Text)
+                    //        Action: "Display", (Text, see below for options)
+                    //        Screen: App.ActiveScreen, (Screen control)
+                    //        Tooltip: "Tooltip", (Text)
+                    //        Optional:
+                    //        Image: SampleImage, (Image)
+                    //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                    //        Color: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        SelectedColor: ControlsTheme.ButtonColor, (Color, if going to be different from template)
+                    //        FillColor: ControlsTheme.NavButtonFill, (Color, if going to be different from template)
+                    //        SelectedFillColor: ControlsTheme.NavButtonSelectedFill (Color, if going to be different from template)
+                    //    }
+                    // Action:
+                    // "Display": Sets the output property "DisplayName" to the "Name" property,
+                    // "Navigate": Navigates to the "Screen" screen,
+                    // "Launch": Launches the "LaunchURL" in a new tab
+                    // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                    ////////////////////////////////////////////////////////////////////////
+                    Table(
+                        {
+                            ID: 1,
+                            Name: "Button1",
+                            Label: "Button 1",
+                            Action: "Display",
+                            Screen: App.ActiveScreen,
+                            Image: SampleImage,
+                            Tooltip: "Tooltip",
+                            LaunchURL: "",
+                            Color: ControlsTheme.ButtonColor,
+                            SelectedColor: ControlsTheme.ButtonColor,
+                            FillColor: ControlsTheme.NavButtonFill,
+                            SelectedFillColor: ControlsTheme.NavButtonSelectedFill
+                        },
+                        {
+                            ID: 2,
+                            Name: "Button2",
+                            Label: "Button 2",
+                            Action: "Display",
+                            Tooltip: "Tooltip"
+                        }
+                    )
+                LayoutMinHeight: =640
+                LayoutMinWidth: =640
+                Width: =Parent.Width
+                ZIndex: =2
+
+        cnt_VerticalFlyout_MS As groupContainer.horizontalAutoLayoutContainer:
+            BorderColor: =Color.Black
+            Fill: =Color.Transparent
+            Height: =Parent.Height
+            LayoutMode: =LayoutMode.Auto
+            Width: =icn_ShowVerticalNav_MS.Width + Max(Gallery1.Width) //Add in the list for any additional controls
+            ZIndex: =3
+
+            icn_ShowVerticalNav_MS As icon.ChevronDown:
+                Color: =ThisTheme.AppColorText
+                Height: =Self.Width
+                Icon: =Icon.ChevronRight
+                OnSelect: =Set(showVerticalNav,!showVerticalNav);
+                PaddingBottom: =5
+                PaddingTop: =5
+                Rotation: =If(showVerticalNav,180,0)
+                Width: =TemplateSizes.LeftNavigationArrowSize
+                Y: =TemplateSizes.HeaderHeight
+                ZIndex: =2
+
+            "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                DelayItemLoading: =true
+                FillPortions: =0
+                Items: =PersonnelRoster
+                Layout: =Layout.Vertical
+                LayoutMinHeight: =287
+                LayoutMinWidth: =320
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplatePadding: =0
+                TemplateSize: =104
+                Width: =If(showVerticalNav,400,0)
+                ZIndex: =3
+
+                Image1 As image:
+                    Height: =72
+                    OnSelect: =Select(Parent)
+                    RadiusBottomLeft: =8
+                    RadiusBottomRight: =8
+                    RadiusTopLeft: =8
+                    RadiusTopRight: =8
+                    Width: =72
+                    X: =16
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =1
+
+                Title1 As label:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    Color: =RGBA(71, 69, 64, 1)
+                    DisabledColor: =RGBA(186, 186, 186, 1)
+                    DisabledFill: =RGBA(0, 0, 0, 0)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Font: =Font.'Open Sans'
+                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =14
+                    Text: =ThisItem.Title
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Parent.TemplateWidth - 173
+                    X: =103
+                    Y: =(Parent.TemplateHeight - (Self.Size * 1.8 + Subtitle1.Size * 1.8)) / 2
+                    ZIndex: =2
+
+                Subtitle1 As label:
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    Color: =RGBA(71, 69, 64, 1)
+                    DisabledColor: =RGBA(186, 186, 186, 1)
+                    DisabledFill: =RGBA(0, 0, 0, 0)
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Font: =Font.'Open Sans'
+                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Text: =ThisItem.Reference_ID
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Title1.Width
+                    X: =Title1.X
+                    Y: =Title1.Y + Title1.Height
+                    ZIndex: =3
+
+                NextArrow1 As icon.ChevronRight:
+                    AccessibleLabel: =Self.Tooltip
+                    BorderColor: =RGBA(0, 0, 0, 1)
+                    Color: =RGBA(166, 166, 166, 1)
+                    DisabledBorderColor: =RGBA(56, 56, 56, 1)
+                    DisabledColor: =RGBA(119, 119, 119, 1)
+                    DisabledFill: =Self.Fill
+                    Fill: =RGBA(0, 0, 0, 0)
+                    Height: =50
+                    HoverBorderColor: =ColorFade(Self.BorderColor, 20%)
+                    HoverColor: =ColorFade(Self.Color, 20%)
+                    HoverFill: =Self.Fill
+                    Icon: =Icon.ChevronRight
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =16
+                    PaddingLeft: =16
+                    PaddingRight: =16
+                    PaddingTop: =16
+                    PressedBorderColor: =ColorFade(Self.BorderColor, -20%)
+                    PressedColor: =ColorFade(Self.Color, -20%)
+                    PressedFill: =Self.Fill
+                    Tooltip: ="View item details"
+                    Width: =50
+                    X: =Parent.TemplateWidth - Self.Width - 12
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =4
+
+                Separator1 As rectangle:
+                    BorderColor: =RGBA(0, 0, 255, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
+                    HoverFill: =Self.Fill
+                    OnSelect: =Select(Parent)
+                    PressedFill: =Self.Fill
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =5
+
+                Rectangle1 As rectangle:
+                    Height: =Parent.TemplateHeight - Separator1.Height
+                    OnSelect: =Select(Parent)
+                    Visible: =ThisItem.IsSelected
+                    Width: =4
+                    ZIndex: =6
+
+    cnt_Header_MS As groupContainer.horizontalAutoLayoutContainer:
+        BorderColor: =ColorFade(Self.Fill,-.4)//Color.Black
+        BorderThickness: =5
+        Fill: =Color.Transparent//ThisTheme.Color3
+        Height: =cmp_Menu_Horizontal_MS.Height//TemplateSizes.HeaderHeight
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =5
+
+        cmp_Header_MS As cmp_Header:
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+
+        cmp_Menu_Horizontal_MS As cmp_Menu_Horizontal:
+            ControlsTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                //
+                ControlsTheme
+            FontSizes: |-
+                =// PASTE THE NAME OF YOUR FONT SIZES RECORD HERE - ie 'FontSizes'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                FontSizes
+            ItemsList: |-
+                =// PASTE THE NAME OF YOUR MENU TABLE HERE - ie 'MenuItems'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // Required Format
+                ////////////////////////////////////
+                // {
+                //        ID: 1, (Number)
+                //        Name: "Home", (Text)
+                //        ShowName: true, (Boolean)
+                //        Tooltip: "Click here to return to the Home Screen", (Text)
+                //        Icon: Icon.Home, (Icon)
+                //        ShowIcon: true, (Boolean)
+                //        Action: "Navigate", (Text, see below for values)
+                //        Screen: App.ActiveScreen, (Screen control)
+                //        LaunchURL: "", (Text - url, e.g. https://boozallen.sharepoint.com/)
+                //        SubmenuList: [{}] (*optional - Record format includes Name, Tooltip, Action, Screen, LaunchURL)
+                // }
+                // Action:
+                // "Display": Sets the output property "DisplayName" to the "Name" property,
+                // "Navigate": Navigates to the "Screen" screen,
+                // "Launch": Launches the "LaunchURL" in a new tab
+                // "Submenu": Displays or Hides the Submenu dropdown defined by the "SubmenuList" value
+                Table(
+                    {
+                        ID: 1,
+                        Name: "Home",
+                        ShowName: true,
+                        Tooltip: "Click here to return to the Home Screen",
+                        Icon: Icon.Home,
+                        ShowIcon: true,
+                        Action: "Navigate",
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    },
+                    {
+                        ID: 2,
+                        Name: "Facilitator Information",
+                        ShowName: true,
+                        Tooltip: "Click here to create a New Item",
+                        Icon: Icon.Add,
+                        ShowIcon: false,
+                        Action: "Submenu",
+                        Screen: App.ActiveScreen,
+                        SubmenuList: [
+                            {
+                                Name: "Update Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Add New Facilitator",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            },
+                            {
+                                Name: "Open Dashboard (External)",
+                                ShowName:true,
+                                Tooltip: "Click here to return to the Home Screen",
+                                Action: "Navigate",
+                                Screen: App.ActiveScreen,
+                                LaunchURL: ""
+                            }
+                
+                        ]
+                    },
+                    {
+                        ID: 3,
+                        Name: "Update Facilitator",
+                        ShowName: true,
+                        Tooltip: "Click here to access the App Settings",
+                        Icon: Icon.Settings,
+                        ShowIcon: false,
+                        Screen: App.ActiveScreen,
+                        LaunchURL: ""
+                    }
+                )
+            LayoutMinHeight: =640
+            LayoutMinWidth: =640
+            SubmenuItemsHeightCalc: =cmp_Menu_Horizontal_MS.SubmenuItemsHeight // DO NOT CHANGE
+            SubmenuItemsToDisplay: =cmp_Menu_Horizontal_MS.SubmenuItemsDisplayed // DO NOT CHANGE
+            ThisTheme: |-
+                =// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'
+                // ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT
+                //
+                // You can either pass a record in below that contains the values or the record itself.
+                // If you are listing values, you do not need to input all records, only the used ones.
+                // ie below I have only passed in the values used by my component
+                ThisTheme
+            X: =cmp_Header_MS.X + cmp_Header_MS.Width
+            ZIndex: =2
+

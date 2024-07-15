@@ -1,0 +1,1848 @@
+{
+  "ControlStates": {
+    "btn_MiddlePanel_cmpMenu": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Text",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonBorderColor",
+          "InvariantPropertyName": "BorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonPressedBorderColor",
+          "InvariantPropertyName": "PressedBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonHoverBorderColor",
+          "InvariantPropertyName": "HoverBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "BorderStyle",
+        "FocusedBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonColor",
+          "InvariantPropertyName": "Color",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonPressedColor",
+          "InvariantPropertyName": "PressedColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonHoverColor",
+          "InvariantPropertyName": "HoverColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonFill",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledFill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonPressedFill",
+          "InvariantPropertyName": "PressedFill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonHoverFill",
+          "InvariantPropertyName": "HoverFill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonFont",
+          "InvariantPropertyName": "Font",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "FontWeight",
+        "Align",
+        "VerticalAlign",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "160",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ZIndex",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "RadiusTopLeft",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "RadiusTopRight",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "RadiusBottomLeft",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "RadiusBottomRight",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "2",
+          "InvariantPropertyName": "BorderThickness",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "FocusedBorderThickness",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonFontSize",
+          "InvariantPropertyName": "Size",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Italic",
+        "Underline",
+        "Strikethrough",
+        "PaddingTop",
+        "PaddingRight",
+        "PaddingBottom",
+        "PaddingLeft",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "0",
+          "InvariantPropertyName": "TabIndex",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ContentLanguage"
+      ],
+      "HasDynamicProperties": false,
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": false,
+      "IsDataControl": false,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "btn_MiddlePanel_cmpMenu",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 1,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Data",
+          "PropertyName": "Text",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ContentLanguage",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingBottom",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingTop",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Align",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Italic",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FontWeight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Color",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisplayMode",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusBottomLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusTopRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusTopLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "VerticalAlign",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Strikethrough",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Underline",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Font",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Size",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusBottomRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "TabIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "defaultButtonStyle",
+      "Type": "ControlInfo"
+    },
+    "btn_SelectedItem_MenuGallery_Vert": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Select(Parent)",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Text",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonBorderColor",
+          "InvariantPropertyName": "BorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonPressedBorderColor",
+          "InvariantPropertyName": "PressedBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonHoverBorderColor",
+          "InvariantPropertyName": "HoverBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "BorderStyle",
+        "FocusedBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonColor",
+          "InvariantPropertyName": "Color",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonPressedColor",
+          "InvariantPropertyName": "PressedColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonHoverColor",
+          "InvariantPropertyName": "HoverColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonFill",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledFill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonPressedFill",
+          "InvariantPropertyName": "PressedFill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonHoverFill",
+          "InvariantPropertyName": "HoverFill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonFont",
+          "InvariantPropertyName": "Font",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "FontWeight",
+        "Align",
+        "VerticalAlign",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "160",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ZIndex",
+        "RadiusTopLeft",
+        "RadiusTopRight",
+        "RadiusBottomLeft",
+        "RadiusBottomRight",
+        "BorderThickness",
+        "FocusedBorderThickness",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.ButtonFontSize",
+          "InvariantPropertyName": "Size",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Italic",
+        "Underline",
+        "Strikethrough",
+        "PaddingTop",
+        "PaddingRight",
+        "PaddingBottom",
+        "PaddingLeft",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ContentLanguage",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "TabIndex",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        }
+      ],
+      "HasDynamicProperties": false,
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": false,
+      "IsDataControl": false,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "btn_SelectedItem_MenuGallery_Vert",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 2,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Data",
+          "PropertyName": "Text",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ContentLanguage",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusTopLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingBottom",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingTop",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Strikethrough",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Underline",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Italic",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Size",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusBottomRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusBottomLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "RadiusTopRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "VerticalAlign",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Align",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FontWeight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Font",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisplayMode",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Color",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "TabIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnSelect",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "defaultButtonStyle",
+      "Type": "ControlInfo"
+    },
+    "cmp_Menu_Vertical": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        "Fill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "X",
+        "Y",
+        "ZIndex",
+        "ItemsList",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ThisTheme'\r\n// ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT\r\n//\r\n// You can either pass a record in below that contains the values or the record itself.\r\n// If you are listing values, you do not need to input all records, only the used ones.\r\n// ie below I have only passed in the values used by my component\r\n    {\r\n        Name:                               \"ET2RC Orange\",\r\n\r\n        Color1:                             RGBA(241,  90,  41, 1),\r\n        Color2:                             RGBA(128,  128, 128, 1),\r\n        Color3:                             RGBA(159,  58,  19, 1),\r\n        Color1Text:                         RGBA(245, 245, 245, 1),\r\n        Color2Text:                         RGBA(245, 245, 245, 1),\r\n        Color3Text:                         RGBA(245, 245, 245, 1),\r\n        BackgroundColor:                    RGBA(128, 128, 128, 1),\r\n        AppColor:                           RGBA(241,  90,  41, 1),\r\n        AppColorText:                       RGBA(255, 255, 255, 1),\r\n        \r\n        defaultTextColor:                   RGBA(245, 245, 245, 1),\r\n        \r\n        Font:                               Font.Arial,\r\n        FontSize:                           10,\r\n\r\n        DarkMode:                           false\r\n    }",
+          "InvariantPropertyName": "ThisTheme",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "// PASTE THE NAME OF YOUR THEME RECORD HERE - ie 'ControlsTheme'\r\n// ONLY EXPANDED BELOW DUE TO COMPONENT REQUIREMENT\r\n//\r\n// You can either pass a record in below that contains the values or the record itself.\r\n// If you are listing values, you do not need to input all records, only the used ones.\r\n//\r\n    {\r\n\r\n        LabelTextColor:                     TemplateTheme.defaultTextColor,\r\n        LabelFill:                          ColorFade(TemplateTheme.Color1,-30%),\r\n        LabelBorderColor:                   TemplateTheme.Color2,\r\n        LabelFont:                          TemplateTheme.Font,\r\n\r\n        ButtonColor:                        TemplateTheme.Color2Text,\r\n        ButtonFill:                         TemplateTheme.Color2,\r\n        ButtonBorderColor:                  TemplateTheme.Color1,\r\n        ButtonHoverColor:                   ColorFade(TemplateTheme.Color2Text, 20%),\r\n        ButtonHoverFill:                    ColorFade(TemplateTheme.Color2,     20%),\r\n        ButtonHoverBorderColor:             ColorFade(TemplateTheme.Color1,     20%),\r\n        ButtonPressedColor:                 TemplateTheme.Color2,\r\n        ButtonPressedFill:                  TemplateTheme.Color2Text,\r\n        ButtonPressedBorderColor:           TemplateTheme.Color2,\r\n        ButtonFont:                         TemplateTheme.Font,\r\n        ButtonRadiusTopLeft:                5,\r\n        ButtonRadiusTopRight:               5,\r\n        ButtonRadiusBottomLeft:             5,\r\n        ButtonRadiusBottomRight:            5,\r\n        NavButtonRadiusTopLeft:             15,\r\n        NavButtonRadiusTopRight:            15,\r\n        NavButtonRadiusBottomLeft:          0,\r\n        NavButtonRadiusBottomRight:         0,\r\n        \r\n        \r\n\r\n        InputTextColor:                     TemplateTheme.Color1Text,\r\n        InputFill:                          TemplateTheme.Color1,\r\n        InputBorderColor:                   TemplateTheme.Color2,\r\n        InputHoverColor:                    ColorFade(TemplateTheme.Color1Text, 20%),\r\n        InputHoverFill:                     ColorFade(TemplateTheme.Color1, 20%),\r\n        InputHoverBorderColor:              ColorFade(TemplateTheme.Color2, 20%),\r\n        InputPressedColor:                  TemplateTheme.Color1Text,\r\n        InputPressedFill:                   TemplateTheme.Color1,\r\n        InputPressedBorderColor:            ColorFade(TemplateTheme.Color2, 20%),\r\n        InputFont:                          TemplateTheme.Font,\r\n        InputDelayOutput:                   true,\r\n        InputRadiusTopLeft:                 5,\r\n        InputRadiusTopRight:                5,\r\n        InputRadiusBottomLeft:              5,\r\n        InputRadiusBottomRight:             5,\r\n\r\n        PenInputInkColor:                   TemplateTheme.defaultTextColor,\r\n        PenInputBorderColor:                TemplateTheme.defaultTextColor,\r\n        PenInputInkSize:                    2,\r\n        PenInputBackground:                 Color.Transparent,\r\n\r\n        DropdownTextColor:                  TemplateTheme.Color1Text,\r\n        DropdownFill:                       TemplateTheme.Color1,\r\n        DropdownBorderColor:                TemplateTheme.Color2,\r\n        DropdownHoverColor:                 ColorFade(TemplateTheme.Color1Text, 20%),\r\n        DropdownHoverFill:                  ColorFade(TemplateTheme.Color1, 20%),\r\n        DropdownHoverBorderColor:           ColorFade(TemplateTheme.Color2, 20%),\r\n        DropdownPressedColor:               TemplateTheme.Color1,\r\n        DropdownPressedFill:                TemplateTheme.Color1Text,\r\n        DropdownPressedBorderColor:         ColorFade(TemplateTheme.Color2, -20%),\r\n        DropdownChevronBackground:          TemplateTheme.Color2,\r\n        DropdownChevronFill:                TemplateTheme.Color2Text,\r\n        DropdownChevronHoverBackground:     ColorFade(TemplateTheme.Color2, 20%),\r\n        DropdownChevronHoverFill:           ColorFade(TemplateTheme.Color2Text, 20%),\r\n        DropdownSelectionColor:             TemplateTheme.Color3Text,\r\n        DropdownSelectionFill:              TemplateTheme.Color3,\r\n        DropdownFont:                       TemplateTheme.Font,\r\n\r\n        ComboBoxTextColor:                  TemplateTheme.Color1Text,\r\n        ComboBoxFill:                       TemplateTheme.Color1,\r\n        ComboBoxBorderColor:                TemplateTheme.Color2,\r\n        ComboBoxHoverColor:                 ColorFade(TemplateTheme.Color1Text, 20%),\r\n        ComboBoxHoverFill:                  ColorFade(TemplateTheme.Color1, 20%),\r\n        ComboBoxHoverBorderColor:           ColorFade(TemplateTheme.Color2, 20%),\r\n        ComboBoxPressedColor:               TemplateTheme.Color2Text,\r\n        ComboBoxPressedFill:                TemplateTheme.Color2,\r\n        ComboBoxPressedBorderColor:         ColorFade(TemplateTheme.Color2, -20%),\r\n        ComboBoxSelectionColor:             TemplateTheme.Color3Text,\r\n        ComboBoxSelectionFill:              TemplateTheme.Color3,\r\n        ComboBoxChevronBackground:          TemplateTheme.Color2,\r\n        ComboBoxChevronFill:                TemplateTheme.Color2Text,\r\n        ComboBoxChevronHoverBackground:     ColorFade(TemplateTheme.Color2, 20%),\r\n        ComboBoxChevronHoverFill:           ColorFade(TemplateTheme.Color2Text, 20%),\r\n        ComboBoxFont:                       TemplateTheme.Font,\r\n        ComboBoxMoreItemsButtonColor:       TemplateTheme.Color2,\r\n        \r\n        DatePickerColor:                    TemplateTheme.Color1Text,\r\n        DatePickerFill:                     TemplateTheme.Color1,\r\n        DatePickerBorderColor:              TemplateTheme.Color2,\r\n        DatePickerIconFill:                 TemplateTheme.Color2Text,\r\n        DatePickerIconBackground:           TemplateTheme.Color2,\r\n        DatePickerSelectedDateFill:         TemplateTheme.Color2,\r\n        DatePickerHoverDateFill:            TemplateTheme.Color3Text,\r\n        DatePickerHeaderFill:               TemplateTheme.Color3,\r\n        DatePickerFont:                     TemplateTheme.Font,\r\n        //\r\n        // Sancho's note:\r\n        // Tried to template these but IDE import only picks up design properties currently :(\r\n        //\r\n        // DatePickerStartOfWeek:          StartOfWeek.Monday,\r\n        // DatePickerFormat:               DateTimeFormat.ShortDate,\r\n        // DatePickerDefaultDate:          Today(),\r\n        // DatePickerDateTimeZone:         DateTimeZone.Local,\r\n        // DatePickerLanguage:             \"en-GB\",\r\n\r\n\r\n        ListBoxTextColor:                   TemplateTheme.Color1Text,\r\n        ListBoxFill:                        TemplateTheme.Color1,\r\n        ListBoxBorderColor:                 TemplateTheme.Color2,\r\n        ListBoxHoverColor:                  ColorFade(TemplateTheme.Color1Text, 20%),\r\n        ListBoxHoverFill:                   ColorFade(TemplateTheme.Color1, 20%),\r\n        ListBoxHoverBorderColor:            ColorFade(TemplateTheme.Color2, 20%),\r\n        ListBoxPressedColor:                TemplateTheme.Color2Text,\r\n        ListBoxPressedFill:                 TemplateTheme.Color2,\r\n        ListBoxPressedBorderColor:          ColorFade(TemplateTheme.Color2, -20%),       \r\n        ListBoxSelectionColor:              TemplateTheme.Color3Text,\r\n        ListBoxSelectionFill:               TemplateTheme.Color3,\r\n        ListBoxFont:                        TemplateTheme.Font,\r\n        ListBoxItemPaddingLeft:             10,\r\n\r\n        CheckBoxTextColor:                  TemplateTheme.defaultTextColor,\r\n        CheckBoxInnerBackground:            If(\r\n                                                TemplateTheme.DarkMode,\r\n                                                ColorFade(TemplateTheme.Color1, -50%),\r\n                                                ColorFade(TemplateTheme.Color1, 50%)\r\n                                            ),\r\n        CheckBoxBorderColor:                TemplateTheme.Color2,\r\n        CheckBoxHoverColor:                 ColorFade(TemplateTheme.defaultTextColor, 20%),\r\n        CheckBoxHoverFill:                  ColorFade(Color.Transparent, 20%),\r\n        CheckBoxHoverBorderColor:           ColorFade(TemplateTheme.Color2, 20%),\r\n        CheckBoxPressedColor:               ColorFade(TemplateTheme.defaultTextColor, -20%),\r\n        CheckBoxPressedFill:                ColorFade(Color.Transparent, -20%),\r\n        CheckBoxPressedBorderColor:         ColorFade(TemplateTheme.Color2, -20%),\r\n        CheckBoxOutsideBorderColor:         TemplateTheme.Color2,\r\n        CheckBoxFill:                       Color.Transparent,\r\n        CheckBoxCheckmarkFill:              TemplateTheme.defaultTextColor,\r\n        CheckBoxFont:                       TemplateTheme.Font,\r\n        CheckBoxSize:                       40,\r\n        \r\n        RadioTextColor:                     TemplateTheme.defaultTextColor,\r\n        RadioOutsideFill:                   Color.Transparent,\r\n        RadioOutsideBorderColor:            TemplateTheme.Color2,\r\n        RadioHoverColor:                    TemplateTheme.Color2,\r\n        RadioHoverFill:                     Color.Transparent,\r\n        RadioPressedColor:                  TemplateTheme.defaultTextColor,\r\n        RadioPressedFill:                   Color.Transparent,\r\n        RadioBorderColor:                   TemplateTheme.Color2,\r\n        RadioBackgroundFill:                If(TemplateTheme.DarkMode,\r\n                                                ColorFade(TemplateTheme.Color1, -50%),\r\n                                                ColorFade(TemplateTheme.Color1, 50%)\r\n                                            ),\r\n        RadioSelectionFill:                 TemplateTheme.defaultTextColor,\r\n        RadioFont:                          TemplateTheme.Font,\r\n        RadioSize:                          40,\r\n        RadioLayout:                        Layout.Horizontal,\r\n        \r\n        ToggleTextColor:                    TemplateTheme.defaultTextColor,\r\n        ToggleBorderColor:                  TemplateTheme.Color2,\r\n        ToggleHandleFill:                   TemplateTheme.Color2,\r\n        ToggleFalseFill:                    TemplateTheme.Color1,\r\n        ToggleTrueFill:                     TemplateTheme.Color3,\r\n        ToggleFalseHoverFill:               ColorFade(TemplateTheme.Color1, 20%),\r\n        ToggleTrueHoverFill:                ColorFade(TemplateTheme.Color3, 20%),\r\n        ToggleHoverBorderColor:             ColorFade(TemplateTheme.Color2, 20%),\r\n        TogglePressedBorderColor:           ColorFade(TemplateTheme.Color2, -20%),\r\n        ToggleFont:                         TemplateTheme.Font,\r\n        ToggleTextPosition:                 TextPosition.Left,\r\n\r\n        SliderBorderColor:                  TemplateTheme.Color2,\r\n        SliderHandleFill:                   Color.White,\r\n        SliderBackground:                   TemplateTheme.Color3,\r\n        SliderValueFill:                    TemplateTheme.Color2,\r\n        SliderHandleHoverFill:              ColorFade(Color.White, 20%),\r\n        SliderHandleActiveFill:             ColorFade(Color.White, 40%),\r\n        SliderRailHoverFill:                ColorFade(TemplateTheme.Color3,  20%),\r\n        SliderValueHoverFill:               ColorFade(TemplateTheme.Color2,  20%),\r\n        SliderHoverBorderColor:             ColorFade(TemplateTheme.Color2,  20%),\r\n        SliderPressedBorderColor:           ColorFade(TemplateTheme.Color2, -20%),\r\n        SliderRailThickness:                24,\r\n        SliderHandleSize:                   24,\r\n\r\n        RatingItemFill:                     TemplateTheme.Color2,\r\n        RatingFill:                         Color.Transparent,\r\n        RatingBorderColor:                  TemplateTheme.Color2,\r\n\r\n        TimerTextColor:                     TemplateTheme.Color1Text,\r\n        TimerFill:                          TemplateTheme.Color1,\r\n        TimerBorderColor:                   ColorFade(TemplateTheme.Color1, -20%),\r\n        TimerHoverColor:                    ColorFade(TemplateTheme.Color1Text, 20%),\r\n        TimerHoverFill:                     ColorFade(TemplateTheme.Color1,  20%),\r\n        TimerHoverBorderColor:              ColorFade(TemplateTheme.Color1,  20%),\r\n        TimerPressedColor:                  TemplateTheme.Color1,\r\n        TimerPressedFill:                   TemplateTheme.Color1Text,\r\n        TimerPressedBorderColor:            TemplateTheme.Color1,\r\n        TimerFont:                          TemplateTheme.Font,\r\n        \r\n        ImageFill:                          Color.Transparent,\r\n        ImageBorderColor:                   Color.Transparent,\r\n        ImageHoverFill:                     Color.Transparent,\r\n        ImageHoverBorderColor:              Color.Transparent,\r\n        ImagePressedFill:                   Color.Transparent,\r\n        ImagePressedBorderColor:            Color.Transparent,\r\n        ImageRadiusTopLeft:                 0,\r\n        ImageRadiusTopRight:                0,\r\n        ImageRadiusBottomLeft:              0,\r\n        ImageRadiusBottomRight:             0,\r\n\r\n        CameraBorderColor:                  TemplateTheme.Color2,\r\n\r\n        BarcodeColor:                       TemplateTheme.Color1Text,\r\n        BarcodeFill:                        TemplateTheme.Color1,\r\n        BarcodeBorderColor:                 TemplateTheme.Color2,\r\n        BarcodeHoverColor:                  ColorFade(TemplateTheme.Color1Text, 20%),\r\n        BarcodeHoverFill:                   ColorFade(TemplateTheme.Color1, 20%),\r\n        BarcodeHoverBorderColor:            ColorFade(TemplateTheme.Color2, 20%),\r\n        BarcodePressedColor:                TemplateTheme.Color1,\r\n        BarcodePressedFill:                 TemplateTheme.Color1Text,\r\n        BarcodePressedBorderColor:          TemplateTheme.Color1,\r\n        BarcodeFont:                        TemplateTheme.Font,\r\n        \r\n        VideoFill:                          TemplateTheme.Color1,\r\n        VideoBorderColor:                   TemplateTheme.Color2,\r\n\r\n        StreamColor:                        TemplateTheme.defaultTextColor,\r\n        StreamFill:                         Color.Transparent,\r\n        StreamBorderColor:                  TemplateTheme.Color2,\r\n\r\n        AudioFill:                          TemplateTheme.Color1,\r\n        AudioBorderColor:                   ColorFade(TemplateTheme.Color1, -20%),\r\n\r\n        MicrophoneColor:                    TemplateTheme.Color1Text,\r\n        MicrophoneFill:                     TemplateTheme.Color1,\r\n        MicrophoneBorderColor:              ColorFade(TemplateTheme.Color1, -20%),\r\n        MicrophoneHoverColor:               ColorFade(TemplateTheme.Color1Text, 20%),\r\n        MicrophoneHoverFill:                ColorFade(TemplateTheme.Color1, 20%),\r\n        MicrophoneHoverBorderColor:         TemplateTheme.Color1,\r\n        MicrophonePressedColor:             ColorFade(TemplateTheme.Color1Text, -20%),\r\n        MicrophonePressedFill:              ColorFade(TemplateTheme.Color1, -20%),\r\n        MicrophonePressedBorderColor:       ColorFade(TemplateTheme.Color1, -40%),\r\n\r\n        AddPictureColor:                    TemplateTheme.Color1Text,\r\n        AddPictureFill:                     TemplateTheme.Color1,\r\n        AddPictureBorderColor:              TemplateTheme.Color2,\r\n        AddPictureHoverColor:               TemplateTheme.Color1Text,\r\n        AddPictureHoverFill:                ColorFade(TemplateTheme.Color1, 20%),\r\n        AddPictureHoverBorderColor:         ColorFade(TemplateTheme.Color2, 20%),\r\n        AddPicturePressedColor:             TemplateTheme.Color1Text,\r\n        AddPicturePressedFill:              ColorFade(TemplateTheme.Color1, -20%),\r\n        AddPicturePressedBorderColor:       ColorFade(TemplateTheme.Color2, -20%),\r\n        AddPictureFont:                     TemplateTheme.Font,\r\n\r\n        ImportColor:                        TemplateTheme.Color1Text,\r\n        ImportFill:                         TemplateTheme.Color1,\r\n        ImportBorderColor:                  ColorFade(TemplateTheme.Color1, -20%),\r\n        ImportFont:                         TemplateTheme.Font,\r\n        ImportHoverColor:                   ColorFade(TemplateTheme.Color1Text, 20%),\r\n        ImportHoverFill:                    ColorFade(TemplateTheme.Color1, 20%),\r\n        ImportHoverBorderColor:             TemplateTheme.Color1,\r\n        ImportPressedColor:                 TemplateTheme.Color1Text,\r\n        ImportPressedFill:                  ColorFade(TemplateTheme.Color1, -20%),\r\n        ImportPressedBorderColor:           ColorFade(TemplateTheme.Color1, -40%),\r\n\r\n        ExportColor:                        TemplateTheme.Color1Text,\r\n        ExportFill:                         TemplateTheme.Color1,\r\n        ExportBorderColor:                  ColorFade(TemplateTheme.Color1, -20%),\r\n        ExportFont:                         TemplateTheme.Font,\r\n        ExportHoverColor:                   ColorFade(TemplateTheme.Color1Text, 20%),\r\n        ExportHoverFill:                    ColorFade(TemplateTheme.Color1, 20%),\r\n        ExportHoverBorderColor:             TemplateTheme.Color1,\r\n        ExportPressedColor:                 TemplateTheme.Color1Text,\r\n        ExportPressedFill:                  ColorFade(TemplateTheme.Color1, -20%),\r\n        ExportPressedBorderColor:           ColorFade(TemplateTheme.Color1, -40%),\r\n\r\n        ChartLegendColor:                   TemplateTheme.defaultTextColor,\r\n        ChartLegendFont:                    TemplateTheme.Font,\r\n\r\n        /////////////////\r\n        //\r\n        // Gallery Items\r\n        //\r\n        GalleryFill:                        RGBA(0,0,0,0),\r\n        GalleryBorderColor:                 TemplateTheme.Color2,\r\n        //\r\n        // Gallery Title and Subtitle\r\n        //\r\n        GallerytitleLabelColor:             TemplateTheme.Color3,\r\n        GallerysubtitleLabelColor:          TemplateTheme.defaultTextColor,\r\n        GallerytitleLabelFont:              TemplateTheme.Font,\r\n        GallerysubtitleLabelFont:           TemplateTheme.Font,\r\n        //\r\n        // Body content label in Flexible Height Gallery\r\n        //\r\n        GallerycontentLabelColor:           TemplateTheme.defaultTextColor,\r\n        GallerycontentLabelFont:            TemplateTheme.Font,\r\n        //\r\n        /////////////////\r\n\r\n        /////////////////\r\n        //\r\n        // Icons\r\n        //\r\n        // This will apply to all icons\r\n        // (excluding new screen icons used as BGs)\r\n        //\r\n        // IconFill is also used for the background shape of\r\n        // the New Screen headers in: List\r\n        //\r\n        IconFill:                           TemplateTheme.Color3,\r\n        IconHoverFill:                      TemplateTheme.Color3Text,\r\n        IconPressedFill:                    TemplateTheme.Color1,\r\n        // Background set to transparent by default to preserve New Screen-based icons\r\n        IconBackground:                     Color.Transparent,\r\n        IconHoverBackground:                Color.Transparent,\r\n        IconPressedBackground:              Color.Transparent,\r\n        IconBorderColor:                    ColorFade(TemplateTheme.Color3, -20%),\r\n        IconHoverBorderColor:               TemplateTheme.Color3,\r\n        IconPressedBorderColor:             ColorFade(TemplateTheme.Color3, -40%),\r\n        \r\n\r\n        AttachmentTextColor:                TemplateTheme.Color1Text,\r\n        AttachmentFill:                     TemplateTheme.Color1,\r\n        AttachmentBorderColor:              TemplateTheme.Color2,\r\n        AttachmentHoverColor:               ColorFade(TemplateTheme.Color1Text, 20%),\r\n        AttachmentHoverFill:                ColorFade(TemplateTheme.Color1, 20%),\r\n        AttachmentHoverBorderColor:         ColorFade(TemplateTheme.Color2, 20%),\r\n        AttachmentFont:                     TemplateTheme.Font,\r\n        AttachmentPressedColor:             TemplateTheme.Color2Text,\r\n        AttachmentPressedFill:              TemplateTheme.Color2,\r\n        AttachmentItemColor:                TemplateTheme.Color3Text,\r\n        AttachmentItemFill:                 TemplateTheme.Color3,\r\n        AttachmentItemHoverColor:           ColorFade(TemplateTheme.Color3Text, 20%),\r\n        AttachmentItemHoverFill:            ColorFade(TemplateTheme.Color3, 20%),\r\n\r\n        /////////////////\r\n        //\r\n        // Forms\r\n        //\r\n        EditFormBorderColor:                TemplateTheme.Color2,\r\n        EditFormFill:                       If( \r\n                                                TemplateTheme.DarkMode,\r\n                                                ColorFade(TemplateTheme.Color1, -50%),\r\n                                                ColorFade(TemplateTheme.Color1, 50%)\r\n                                            ),\r\n        ViewFormBorderColor:                TemplateTheme.Color2,\r\n        ViewFormFill:                       If(\r\n                                                TemplateTheme.DarkMode,\r\n                                                ColorFade(TemplateTheme.Color1, -50%),\r\n                                                ColorFade(TemplateTheme.Color1, 50%)\r\n                                            ),\r\n        // Form Title and * fields\r\n        FormTitleLabelColor:                TemplateTheme.Color3,\r\n        FormTitleLabelFont:                 TemplateTheme.Font,\r\n\r\n        /////////////////\r\n        //\r\n        // Screen\r\n        //\r\n        ScreenBackground:                   If( \r\n                                                TemplateTheme.DarkMode,\r\n                                                ColorFade(TemplateTheme.BackgroundColor, -50%),\r\n                                                ColorFade(TemplateTheme.BackgroundColor, 50%)\r\n                                            ),\r\n\r\n        /////////////////\r\n        //\r\n        // Data Table\r\n        //\r\n        //\r\n        // NotUsed\r\n           DataTableColor1:                    TemplateTheme.Color1,\r\n           DataTableColor2:                    TemplateTheme.Color2,\r\n        // Border Lines between headers\r\n        DataTableColor3:                    TemplateTheme.Color3,\r\n        //\r\n        DataTableColor:                     TemplateTheme.Color1Text,\r\n        DataTableFill:                      TemplateTheme.Color1,\r\n        DataTableColorInverted:             TemplateTheme.Color3Text,\r\n        DataTableSelectedColor:             TemplateTheme.Color3Text,\r\n        DataTableSelectedFill:              TemplateTheme.Color3,\r\n        DataTableHoverColor:                TemplateTheme.Color2Text,\r\n        DataTableHoverFill:                 TemplateTheme.Color2,\r\n        DataTableBorderColor:               TemplateTheme.Color2,\r\n        DataTableInputFill:                 TemplateTheme.Color1,\r\n        DataTableFont:                      TemplateTheme.Font,\r\n        DataTableHeadingFont:               TemplateTheme.Font,\r\n        DataTableHeadingColor:              TemplateTheme.Color2Text,\r\n        DataTableHeadingFill:               TemplateTheme.Color2,\r\n        DataTableFontWeight:                FontWeight.Normal,\r\n        DataTableHeadingFontWeight:         FontWeight.Semibold,\r\n\r\n        /////////////////\r\n        //\r\n        // PDFViewer & PowerBI\r\n        //\r\n        PdfViewerFill:                      ColorFade(TemplateTheme.Color1, -50%),\r\n        PdfViewerBorderColor:               TemplateTheme.Color2,\r\n        PowerBIBorderColor:                 TemplateTheme.Color2,\r\n        \r\n        //////////////////////////////////////////////////\r\n        //                                              //\r\n        //  These apply to the Insert>New Screen items  //\r\n        //                                              //\r\n        //////////////////////////////////////////////////\r\n        //\r\n        // Title Label on New Screen Headers\r\n        //\r\n        invertedBkgHeaderLabelColor:        TemplateTheme.Color2Text,\r\n        //\r\n        // New Screen Header background shape for:\r\n        // Scrollable, Email, People, Meeting,\r\n        // \r\n        // also selected tab shape colour on Meeting screen\r\n        // see: IconFill also used for other new screen header shapes\r\n        //\r\n        IconFillInverted:                   TemplateTheme.Color2,\r\n        //\r\n        // Label on Success Screen, Tutorial Screen\r\n        // To / Subject / Message Title on Email screen\r\n        // SubTitle label on PeopleBrowseGallery on Email Screen\r\n        // Attendees/Subject/Message labels on Meeting screen\r\n        // No Times/Locations labels on Schedule tab of Meeting Screen\r\n        // All Left-side labels, and right-side time labels on Calendar screen\r\n        // ALSO:\r\n        // SubHeader Text Colour on Calendar Screen - NB this is same as BG colour\r\n        // SubHeader Text Colour on Schedule tab of Meeting screen - NB this is same as BG colour\r\n        //\r\n        basicNoSizeLabelColor:              TemplateTheme.Color3,\r\n        //\r\n        // Tick on Success Screen\r\n        // Send Icon Color on Email Screen\r\n        //\r\n        invertedBkgHeaderIconColor:         TemplateTheme.Color3Text,\r\n        //\r\n        // Title label and icon color in PeopleGallery on Email Screen, People Screen and Meeting Screen\r\n        //\r\n        basicNoSizeInvertedBkgLabelColor:   TemplateTheme.Color3Text,\r\n        //\r\n        // Invite & Schedule tab header label on Meeting screen\r\n        // Rooms list name label on Schedule tab on Meeting Screen\r\n        //\r\n        basicNoSizeWeightColorLabelColor:   TemplateTheme.defaultTextColor\r\n    }\r\n",
+          "InvariantPropertyName": "ControlsTheme",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "FontSizes",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"#FFFFFF\"",
+          "InvariantPropertyName": "TabHighlightColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Flat"
+      ],
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": true,
+      "IsDataControl": false,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "cmp_Menu_Vertical",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 0,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Data",
+          "PropertyName": "TabHighlightColor",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Flat",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ControlsTheme",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "FontSizes",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ItemsList",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ThisTheme",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "System"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "",
+      "Type": "ControlInfo"
+    },
+    "galleryTemplate1": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        "TemplateFill"
+      ],
+      "HasDynamicProperties": false,
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": false,
+      "IsDataControl": true,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "galleryTemplate1",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 0,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Design",
+          "PropertyName": "TemplateFill",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "",
+      "Type": "ControlInfo"
+    },
+    "html_BackgroundPanelDropshadow_cmp_Menu": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        "DisplayMode",
+        "DisabledFill",
+        "Font",
+        "Color",
+        "Fill",
+        "BorderColor",
+        "DisabledBorderColor",
+        "PressedBorderColor",
+        "HoverBorderColor",
+        "BorderStyle",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "1240",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "656",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "126",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "112",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ZIndex",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"Show your <b><font color=blue>HTML</font></b> text here.\"",
+          "InvariantPropertyName": "HtmlText",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "Visible",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ContentLanguage"
+      ],
+      "HasDynamicProperties": false,
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": false,
+      "IsDataControl": false,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "html_BackgroundPanelDropshadow_cmp_Menu",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 0,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Data",
+          "PropertyName": "ContentLanguage",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "HtmlText",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Font",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Color",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisplayMode",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedBorderColor",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "",
+      "Type": "ControlInfo"
+    },
+    "ico_MenuIcon_Vert": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Icon.Add",
+          "InvariantPropertyName": "Icon",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconFill",
+          "InvariantPropertyName": "Color",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconPressedFill",
+          "InvariantPropertyName": "PressedColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconHoverFill",
+          "InvariantPropertyName": "HoverColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconBackground",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledFill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconPressedBackground",
+          "InvariantPropertyName": "PressedFill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconHoverBackground",
+          "InvariantPropertyName": "HoverFill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "DisplayMode.Edit",
+          "InvariantPropertyName": "DisplayMode",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "64",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "64",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "BorderStyle",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconBorderColor",
+          "InvariantPropertyName": "BorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconPressedBorderColor",
+          "InvariantPropertyName": "PressedBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.IconHoverBorderColor",
+          "InvariantPropertyName": "HoverBorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "FocusedBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Select(Parent)",
+          "InvariantPropertyName": "OnSelect",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ZIndex",
+        "BorderThickness",
+        "FocusedBorderThickness",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "0",
+          "InvariantPropertyName": "PaddingTop",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "0",
+          "InvariantPropertyName": "PaddingBottom",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "0",
+          "InvariantPropertyName": "PaddingLeft",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "0",
+          "InvariantPropertyName": "PaddingRight",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"\"",
+          "InvariantPropertyName": "Tooltip",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "-1",
+          "InvariantPropertyName": "TabIndex",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"\"",
+          "InvariantPropertyName": "AccessibleLabel",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ContentLanguage"
+      ],
+      "HasDynamicProperties": false,
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": false,
+      "IsDataControl": false,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "ico_MenuIcon_Vert",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 1,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Data",
+          "PropertyName": "Tooltip",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "AccessibleLabel",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ContentLanguage",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisplayMode",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingLeft",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "TabIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingTop",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingRight",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PaddingBottom",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Icon",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Color",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Behavior",
+          "PropertyName": "OnSelect",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "defaultIconStyle",
+      "Type": "ControlInfo"
+    },
+    "MenuGallery_Vert": {
+      "AllowAccessToGlobals": true,
+      "ControlPropertyState": [
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "CustomGallerySample",
+          "InvariantPropertyName": "Items",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "WrapCount",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "Min(160, Self.Height - 60)",
+          "InvariantPropertyName": "TemplateSize",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "TemplatePadding",
+        "Layout",
+        "Transition",
+        "LoadingSpinner",
+        "LoadingSpinnerColor",
+        "DisplayMode",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.GalleryBorderColor",
+          "InvariantPropertyName": "BorderColor",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledBorderColor",
+        "PressedBorderColor",
+        "HoverBorderColor",
+        "BorderStyle",
+        "FocusedBorderColor",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "ControlsTheme.GalleryFill",
+          "InvariantPropertyName": "Fill",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "DisabledFill",
+        "PressedFill",
+        "HoverFill",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "X",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "40",
+          "InvariantPropertyName": "Y",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "640",
+          "InvariantPropertyName": "Width",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "575",
+          "InvariantPropertyName": "Height",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ZIndex",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "ShowScrollbar",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "Visible",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "\"\"",
+          "InvariantPropertyName": "AccessibleLabel",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "ContentLanguage",
+        "MaxTemplateSize",
+        {
+          "AFDDataSourceName": "",
+          "AutoRuleBindingEnabled": false,
+          "AutoRuleBindingString": "",
+          "InvariantPropertyName": "BorderThickness",
+          "IsLockable": false,
+          "NameMapSourceSchema": "?"
+        },
+        "#CopilotOverlayLabel",
+        "#CopilotOverlayVisible"
+      ],
+      "GalleryTemplateChildName": "galleryTemplate1",
+      "HasDynamicProperties": false,
+      "IsAutoGenerated": false,
+      "IsComponentDefinition": false,
+      "IsDataControl": false,
+      "IsFromScreenLayout": false,
+      "IsGroupControl": false,
+      "IsLocked": false,
+      "LayoutName": "",
+      "MetaDataIDKey": "",
+      "Name": "MenuGallery_Vert",
+      "OptimizeForDevices": "Off",
+      "ParentIndex": 2,
+      "PersistMetaDataIDKey": false,
+      "Properties": [
+        {
+          "Category": "Data",
+          "PropertyName": "WrapCount",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "AccessibleLabel",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "ContentLanguage",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Data",
+          "PropertyName": "Items",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "TemplateSize",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Layout",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ZIndex",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Fill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Transition",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "LoadingSpinner",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisplayMode",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Width",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderStyle",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "LoadingSpinnerColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Height",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "HoverFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderColor",
+          "RuleProviderType": "User"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "PressedFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "DisabledFill",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Y",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "Visible",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "ShowScrollbar",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "TemplatePadding",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "FocusedBorderColor",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "X",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "MaxTemplateSize",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "BorderThickness",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "#CopilotOverlayLabel",
+          "RuleProviderType": "Unknown"
+        },
+        {
+          "Category": "Design",
+          "PropertyName": "#CopilotOverlayVisible",
+          "RuleProviderType": "Unknown"
+        }
+      ],
+      "StyleName": "defaultGalleryStyle",
+      "Type": "ControlInfo"
+    }
+  },
+  "TopParentName": "cmp_Menu_Vertical"
+}

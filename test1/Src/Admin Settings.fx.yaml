@@ -1,0 +1,321 @@
+"'Admin Settings' As screen":
+    Height: =Max(App.Height, App.DesignHeight)
+    Orientation: =If('Admin Settings'.Width < 'Admin Settings'.Height, Layout.Vertical, Layout.Horizontal)
+    Size: =1 + CountRows(App.SizeBreakpoints) - CountIf(App.SizeBreakpoints, Value >= 'Admin Settings'.Width)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    ComboBox1 As combobox:
+        Color: =Color.Black
+        DisplayFields: =["Claims"]
+        HoverColor: =Color.Black//ControlsTheme.ComboBoxHoverColor
+        IsSearchable: =false
+        Items: |-
+            =ForAll(Ungroup(
+                        Filter(PersonnelRoster,EmployeeType="Booz Allen"),
+                        EmployeeName
+            ),EmployeeName)
+        MoreItemsButtonColor: =Self.ChevronBackground
+        SearchFields: =["Claims"]
+        SearchItems: |-
+            =Search(ForAll(Ungroup(
+                        Filter(PersonnelRoster,EmployeeType="Booz Allen"),
+                        EmployeeName
+            ),EmployeeName),ComboBox1.SearchText,Claims)
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+    Container1 As groupContainer.verticalAutoLayoutContainer:
+        Height: =622
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =915
+        Y: =146
+        ZIndex: =2
+
+        btn_NavigateToMain_1 As button:
+            AlignInContainer: =AlignInContainer.Stretch
+            OnSelect: |-
+                =Set(StartLoadingScreenTimer,false);
+                Set(StartLoadingScreenTimer,true);
+            Text: ="Go To Main"
+            Visible: =isAdmin
+            X: =1073
+            Y: =40
+            ZIndex: =1
+
+        Label4_1 As label:
+            FillPortions: =1
+            Overflow: =Overflow.Scroll
+            Text: |-
+                =Substitute(
+                    JSON(accessMetrics),",",","&Char(10))
+            Width: =Parent.Width - (Parent.PaddingLeft + Parent.PaddingRight)
+            ZIndex: =2
+
+        TextInput1_1 As text:
+            Default: =
+            DelayOutput: =false
+            HintText: ="email address"
+            ZIndex: =3
+
+        tgl_SaveRecord_1 As toggleSwitch:
+            Default: =varPatchEditedRecord
+            OnChange: =
+            OnCheck: |
+                =Trace(
+                    JSON(
+                        currentRecord,
+                        JSONFormat.IgnoreBinaryData
+                    )
+                );
+                Trace("Patching PR");
+                Patch(
+                    PersonnelRoster,
+                    LookUp(
+                        PersonnelRoster,
+                        Reference_ID = Value(varPRID)
+                    ),
+                    DropColumns(
+                        currentRecord,
+                        RequiredTrainingAccess,
+                        TDLSub,
+                        OutProcessing,
+                        RelocationInfo,
+                        TrainingTable
+                    )
+                );
+                Trace("Patched PR");
+                
+                //RequiredTrainingAccess List
+                Trace("Patching Required Training Access");
+                Patch(
+                    PRRequiredTrainingAccess,
+                    Coalesce(
+                        LookUp(
+                            PRRequiredTrainingAccess,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PRRequiredTrainingAccess)
+                    ),
+                    currentRecord.RequiredTrainingAccess
+                );
+                Trace("Patched Required Training Access");
+                
+                //TDLSub List
+                Trace("Patching TDL");
+                ForAll(
+                    currentRecord.TDLSub As _item,
+                    Patch(
+                        PRTDLSub,
+                        Coalesce(
+                            LookUp(
+                                PRTDLSub,
+                                And(
+                                    PR_ID = varPRID,
+                                    TDLNumber = _item.TDLNumber
+                                )
+                            ),
+                            Defaults(PRTDLSub)
+                        ),
+                        _item
+                    )
+                );
+                Trace("Patched TDL");
+                
+                //OutProcessing List
+                Trace("Patching OutProcessing");
+                Patch(
+                    PROutProcessing,
+                    Coalesce(
+                        LookUp(
+                            PROutProcessing,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PROutProcessing)
+                    ),
+                    currentRecord.OutProcessing
+                );
+                Trace("Patched OutProcessing");
+                
+                //RelocationInfo List
+                Trace("Patching Relocation");
+                Patch(
+                    PRRelocationInfo,
+                    Coalesce(
+                        LookUp(
+                            PRRelocationInfo,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PRRelocationInfo)
+                    ),
+                    currentRecord.RelocationInfo
+                );
+                Trace("Patched Relocation");
+                
+                //TrainingTable List
+                Trace("Patching Training Table");
+                Patch(
+                    PRTrainingTable,
+                    Coalesce(
+                        LookUp(
+                            PRTrainingTable,
+                            PR_ID = varPRID
+                        ),
+                        Defaults(PRTrainingTable)
+                    ),
+                    currentRecord.TrainingTable
+                );
+                Trace("Patched Training Table");
+                
+                Set(
+                    varPatchEditedRecord,
+                    false
+                );
+            ZIndex: =6
+
+        btn_SaveRecord_2 As button:
+            OnSelect: =Set(varPatchEditedRecord,true);
+            Text: ="SAVE RECORD"
+            ZIndex: =7
+
+        Container2 As groupContainer.horizontalAutoLayoutContainer:
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =8
+
+            Button5_1 As button:
+                OnSelect: |-
+                    =Set(myEmail,TextInput1_1.Text);
+                    Set(loadRecord,true);
+                    
+                    Navigate(EmployeeInformation);
+                Text: ="LOAD RECORD"
+                ZIndex: =1
+
+            tgl_LoadRecord_1 As toggleSwitch:
+                Default: =loadRecord
+                OnCheck: |-
+                    =Set(varPRID,Text(LookUp(PersonnelRoster,CompanyEmail=myEmail).Reference_ID));
+                    Trace("varPRID: "&varPRID);
+                    ClearCollect(
+                        varRecord,
+                    	With(
+                    		{
+                    			_Training:
+                    				ShowColumns(
+                    					LookUp(
+                    						PRRequiredTrainingAccess,
+                    						PR_ID=varPRID
+                    					),
+                    					GovernmentNetworkorSystems,
+                    					ForeignNationalsorEngagement,
+                    					DoDEmail,
+                    					BuildingBadge,
+                    					CAC,
+                    					SIPRToken,
+                    					BoozAllenLaptop,
+                    					GFELaptop,
+                    					DoDFacilitiesControlledAccess,
+                    					BIXTARsRIPs,
+                    					A365Access
+                    				),
+                    			_TDLRecords:
+                    				ShowColumns(
+                    					Filter(
+                    						PRTDLSub,
+                    						PR_ID=varPRID
+                    					),
+                    					TDLNumber,
+                    					Primary,
+                                        Org,
+                                        Hours
+                    				),
+                    			_OutProcessing:
+                    				ShowColumns(
+                    					LookUp(
+                    						PROutProcessing,
+                    						PR_ID=varPRID
+                    					),
+                    					CACStatus,
+                    					BuildingBadgeStatus,
+                    					SIPRTokenStatus,
+                    					HandReceiptsCleared,
+                    					BIXClosedOut,
+                    					AirfareExpensesCleared,
+                    					OutProcessingCompleted,
+                    					OutProcessingDate,
+                    					OutProcessingStatus
+                    				),
+                    			_RelocationInfo:
+                    				ShowColumns(
+                    					LookUp(
+                    						PRRelocationInfo,
+                    						PR_ID=varPRID
+                    					),
+                    					FirstLastName,
+                    					PrimaryTDL,
+                    					OnboardingDate,
+                    					FromLocation,
+                    					FamilySize,
+                    					RelocationDate,
+                    					FamilyAccompanyOnRelocationDate,
+                    					IfNoFamilyDepartureDate,
+                    					AssignmentAgreementStatus
+                    				)
+                    		},
+                    
+                    		AddColumns(
+                    			ShowColumns(
+                    				LookUp(PersonnelRoster,Reference_ID=Value(varPRID)),
+                    				Reference_ID,
+                    				EmployeeType,
+                    				TaskOrderStatus,
+                    				TaskOrderStartDate,
+                    				EmployeeName,
+                    				EmployeeLastName,
+                    				EmployeeFirstName,
+                    				AccountGroup,
+                    				EmployeeID,
+                    				CompanyEmail,
+                    				Company,
+                    				PrimaryPhone,
+                    				LocationType,
+                    				DutyLocation,
+                    				Country,
+                    				State,
+                    				City,
+                    				ReturnDate,
+                    				EmailNotificationPreference,
+                    				LCAT,
+                    				JobLeader,
+                    				RequiresRelocation,
+                    				BIXProjectRole,
+                    				BIXAccountStatus,
+                    				OktaStatus,
+                    				ET2RCDistro,
+                    				A365Status,
+                    				A365DateChange,
+                    				LCATValidated,
+                    				WelcomeEmailSent,
+                    				CurrentAccessLevel,
+                    				EligibilityLevel
+                    			),
+                    			Training,
+                    			_Training,
+                    			TDL,
+                    			_TDLRecords,
+                    			PrimaryTDL,
+                    			LookUp(_TDLRecords,Primary="Yes").TDLNumber,
+                    			OutProcessing,
+                    			_OutProcessing,
+                    			RelocationInfo,
+                    			_RelocationInfo
+                    		)
+                    	)
+                    );
+                    Set(varPrimaryTDL,LookUp(PRTDLSub,And(PR_ID=varPRID,Primary="Yes"),TDLNumber));
+                    Set(loadRecord,false);
+                ZIndex: =2
+
