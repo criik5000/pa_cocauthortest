@@ -185,7 +185,7 @@ cmp_Card_Horiz As CanvasComponent:
             Items: =cmp_Card_Horiz.ComboItems
             MoreItemsButtonColor: =Self.ChevronBackground
             SearchFields: =["Value"]
-            SearchItems: =Search(cmp_Card_Horiz.ComboItems,Card_Combo_Horiz.SearchText,Value)
+            SearchItems: =[]
             SelectMultiple: =false
             Size: =cmp_Card_Horiz.ControlsFontSizes.ComboBoxFontSize
             Tooltip: =cmp_Card_Horiz.CardTooltip
@@ -213,14 +213,14 @@ cmp_Card_Horiz As CanvasComponent:
         Card_Person_Horiz As combobox:
             Default: =cmp_Card_Horiz.ValueDefaultPerson
             DefaultSelectedItems: =cmp_Card_Horiz.ValueDefaultPerson
-            DisplayFields: =[""]
+            DisplayFields: =["Claims"]
             Height: =Parent.Height - (Parent.PaddingTop + Parent.PaddingBottom)
             IsSearchable: =false
             Items: |-
                 =//cmp_Card_Horiz.ValueDefaultPeople
                 colBoozEmployees
             MoreItemsButtonColor: =Self.ChevronBackground
-            SearchFields: =[""]
+            SearchFields: =["Claims"]
             SearchItems: =[]
             SelectMultiple: =cmp_Card_Horiz.ComboAllowMulti
             Size: =cmp_Card_Horiz.ControlsFontSizes.InputFontSize
