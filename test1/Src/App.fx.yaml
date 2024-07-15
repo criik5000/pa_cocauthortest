@@ -787,6 +787,7 @@ App As appinfo:
                         SecurityPledge:varRecordTrainingTable.SecurityPledge
                     }
             };
+            //test2
     OnStart: |-
         =Set(
             toolInformation,
@@ -946,6 +947,7 @@ App As appinfo:
             )
         );
         */
+        //test2
     StartScreen: ='Loading Screen'
     Theme: =PowerAppsTheme
 

@@ -45,7 +45,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Switch(\r\n    ThisItem.Action,\r\n    \"Display\",\r\n    Set(varDisplay,ThisItem.Name),\r\n    \"Navigate\",\r\n    Navigate(ThisItem.Screen),\r\n    \"Launch\",\r\n    Launch(ThisItem.LaunchURL),\r\n    false\r\n);",
+                "InvariantScript": "Switch(\n    ThisItem.Action,\n    \"Display\",\n    Set(varDisplay,ThisItem.Name),\n    \"Navigate\",\n    Navigate(ThisItem.Screen),\n    \"Launch\",\n    Launch(ThisItem.LaunchURL),\n    false\n);",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -422,13 +422,13 @@
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(ThisItem.IsSelected,ColorFade(Self.Fill,30%),ControlsTheme.NavButtonColor)\r\n/*\r\nIf(\r\n    ThisItem.IsSelected,\r\n    Coalesce(ThisItem.SelectedColor,ControlsTheme.NavButtonSelectedColor),\r\n    Coalesce(ThisItem.Color,ControlsTheme.NavButtonColor)\r\n)\r\n*/",
+                "InvariantScript": "If(ThisItem.IsSelected,ColorFade(Self.Fill,30%),ControlsTheme.NavButtonColor)\n/*\nIf(\n    ThisItem.IsSelected,\n    Coalesce(ThisItem.SelectedColor,ControlsTheme.NavButtonSelectedColor),\n    Coalesce(ThisItem.Color,ControlsTheme.NavButtonColor)\n)\n*/",
                 "Property": "Color",
                 "RuleProviderType": "Unknown"
               },
               {
                 "Category": "Design",
-                "InvariantScript": "If(\r\n    ThisItem.IsSelected,\r\n    Coalesce(ThisItem.SelectedFillColor,ControlsTheme.NavButtonSelectedFill),\r\n    Coalesce(ThisItem.FillColor,ControlsTheme.NavButtonFill)\r\n)\r\n",
+                "InvariantScript": "If(\n    ThisItem.IsSelected,\n    Coalesce(ThisItem.SelectedFillColor,ControlsTheme.NavButtonSelectedFill),\n    Coalesce(ThisItem.FillColor,ControlsTheme.NavButtonFill)\n)\n",
                 "Property": "Fill",
                 "RuleProviderType": "Unknown"
               },
@@ -482,7 +482,7 @@
               },
               {
                 "Category": "Behavior",
-                "InvariantScript": "Switch(\r\n    ThisItem.Action,\r\n    \"Display\",\r\n    Set(varDisplay,ThisItem.Name)\r\n);",
+                "InvariantScript": "Switch(\n    ThisItem.Action,\n    \"Display\",\n    Set(varDisplay,ThisItem.Name)\n);",
                 "Property": "OnSelect",
                 "RuleProviderType": "Unknown"
               }
@@ -1142,12 +1142,12 @@
         "NameMapSourceSchema": "?"
       }
     ],
-    "LastModifiedTimestamp": "638566479427419905",
+    "LastModifiedTimestamp": "638566657405408262",
     "Name": "cmp_InnerNavigation",
     "Rules": [
       {
         "Category": "Data",
-        "InvariantScript": "Table(\r\n    {\r\n        ID: 1,\r\n        Name: \"Button1\",\r\n        Label: \"Button 1\",\r\n        Action: \"Display\",\r\n        Screen: App.ActiveScreen,\r\n        Image: SampleImage,\r\n        Tooltip: \"Tooltip\",\r\n        LaunchURL: \"\",\r\n        Color: ControlsTheme.ButtonColor,\r\n        SelectedColor: ControlsTheme.ButtonColor,\r\n        FillColor: ControlsTheme.NavButtonFill,\r\n        SelectedFillColor: ControlsTheme.NavButtonSelectedFill\r\n    },\r\n    {\r\n        ID: 2,\r\n        Name: \"Button2\",\r\n        Label: \"Button 2\",\r\n        Action: \"Display\",\r\n        Tooltip: \"Tooltip\"\r\n    }\r\n)\r\n",
+        "InvariantScript": "Table(\n    {\n        ID: 1,\n        Name: \"Button1\",\n        Label: \"Button 1\",\n        Action: \"Display\",\n        Screen: App.ActiveScreen,\n        Image: SampleImage,\n        Tooltip: \"Tooltip\",\n        LaunchURL: \"\",\n        Color: ControlsTheme.ButtonColor,\n        SelectedColor: ControlsTheme.ButtonColor,\n        FillColor: ControlsTheme.NavButtonFill,\n        SelectedFillColor: ControlsTheme.NavButtonSelectedFill\n    },\n    {\n        ID: 2,\n        Name: \"Button2\",\n        Label: \"Button 2\",\n        Action: \"Display\",\n        Tooltip: \"Tooltip\"\n    }\n)\n",
         "Property": "ItemsList",
         "RuleProviderType": "System"
       },
@@ -1247,7 +1247,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638566479427419905",
+  "LastModifiedTimestamp": "638566657405408262",
   "Name": "48b9721b61de4464b796df66f98d604a",
   "OverridableProperties": {},
   "Version": "1.0"
